@@ -1,14 +1,30 @@
-//
-// Created by ASUS on 2020-10-25.
-//
-
-#ifndef RPG_GAME_CHARACTER_H
-#define RPG_GAME_CHARACTER_H
+#pragma once
+#include<iostream>
+#include <vector>
+#include "Status.h"
 
 
-class Character {
+class Character
+{ 
+    private:
+        Status status();
+        int slot[10];
+    
+    public:
+        Character(Status status);
+        ~Character();
+        void show_stat();
+        void attack();
+
+        Status get_stat();
+        void set_stat();
+        int get_slot();
+        void set_slot(int num);
+        void sort_slot();
+        
+        //Inventory.open();
+        // get set ÇÔ¼öµé
+        // 
+
 
 };
-
-
-#endif //RPG_GAME_CHARACTER_H
