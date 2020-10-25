@@ -4,9 +4,6 @@
 #include <iostream>
 #include "Inventory.h"
 #include "Character.h"
-
-#ifndef RPG_GAME_SHOP_H
-#define RPG_GAME_SHOP_H
 using namespace std;
 struct Item {
     int itemNum;
@@ -30,50 +27,17 @@ struct Item {
 //
 class Shop {
 private:
-    Item *sellList;
+    //Item *sellList;
     string choice;
+    //Character myCharacter;
 public:
-    Shop(Item *sellList, Character myCharacter, Inventory myInventory) {
-        this->sellList = sellList;
-        int index;
-        this->myCharacter = myCharacter;
-        showShop(myInventory);
-        cout << "\n어떤 동작을 하시겠습니까?\n";
-        cin >> choice >> index;
-        if (choice.compare("buy")) {
-            buy(index);
-        } else if (choice.compare("sell")) {
-            sell(index, 1);
-        }
-    }
+   /* Shop(Item *sellList, Character myCharacter, Inventory myInventory);
 
-    void showShop(Inventory inventory) {
-    }
-
-
-    bool buy(int index) {
-        if (index >= sizeof(sellList) || index < 0) {
-            WarningMessage.printWarning(3, "not valid index");
-        } else {
-
-            if (sellList[index] < myCharacter.money) {
-                if (int slotIndex = myCharacter.isEmptySlot() >= 0) {
-                    myCharacter.addSlotList(sellList[index].itemNum);
-                    myCharacter.setMoney(myCharacter.getMoney() - sellList[index].itemPrice);
-                }
-            } else {
-                WarningMessage.printWarning(3, "not enough money");
-                return false;
-            }
-        }
-        return true;
-    }
-
-    bool sell(int sellItemNumber, int sellCount) {
-
-    }
+    void showShop(Inventory inventory);*/
+   Shop();
+    bool buy(int index);
+    bool sell(int sellItemNumber, int sellCount);
 
 };
 
 
-#endif //RPG_GAME_SHOP_H
