@@ -1,6 +1,6 @@
 #include "Item.h"
 const string Item::namelist[4] = {"목검","장검","HP포션","MP포션"}; // 번호에 따른 아이템 이름들
-
+vector<vector<int>> itemlist;
 Item::Item()
     :itemNum(0),itemType(0),itemValue(1),itemPrice(0)
 {
