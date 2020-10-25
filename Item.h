@@ -8,7 +8,7 @@ using namespace std;
 class Item {
     private:
         static const string namelist[4]; // 아이템 번호에 따른 이름들
-        vector<vector<int>> itemlist;
+        static vector<vector<int>> itemlist;
         int itemNum;
         int itemType;
         int itemValue;
