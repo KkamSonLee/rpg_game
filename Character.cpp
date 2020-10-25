@@ -1,8 +1,8 @@
 #include "Character.h"
 
-Character::Character(Status status)
+Character::Character(Status i_status)
 {   
-    this->slot[10] = {0, };
+    this ->status = i_status;
 }
 
 Character::~Character()
@@ -12,35 +12,33 @@ Character::~Character()
 
 Status Character::get_stat()
 {
+    return this->status;
+}
+
+void Character::set_stat(int& i_max_HP, int& i_max_MP, int& i_now_HP,int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location)
+{
+    this->status.setstatus(i_max_HP,i_max_MP, i_now_HP,i_now_MP,  i_atk, i_exp, i_level, i_location);
+}
+
+
+void Character::set_atk(int i_atk)
+{
+    this->status.set_atk(i_atk);
 }
 
 
 void Character:: show_stat()
 {
-    status.show();
+    this->status.show();
 }
 
-void Character:: attack()
+        
+        
+
+void Character:: attack(Monster mon)
 {
-
-
+    
 }
 
-void Character:: sort_slot()
-{
-    int temp;
-    for (int i = 1; i<10; i++){
-        int pre = this->slot[i-1];
-        int cur = this -> slot[i];
-        if((pre && cur) == 0){
-            continue;
-        }
-        else if(pre == 0 && cur > 0){
-            temp = cur;
-            pre = temp;
-            cur = pre;
-        }
 
-    }
-}
  //Inventory open
