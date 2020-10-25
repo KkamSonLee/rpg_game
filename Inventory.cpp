@@ -4,9 +4,24 @@
 
 #include "Inventory.h"
 
-Inventory(int money, int slot[]){
-    this->money = money;
-    for(int i=0; i<sizeof(slot); i++){
-        this->slot.push_back(slot[i]);
+class Iterator;
+
+Inventory::Inventory() {}
+
+Inventory::Inventory(int money, vector<int> slot)
+    : money(money), slot(slot){
+    openInv();
+}
+void Inventory::closeInv() {
+
+}
+void Inventory::openInv(){
+    for(vector<int> :: iterator iter=slot.begin();iter!=slot.end(); iter++ ){
+        cout << (*iter)<< ". " << Item.getItemToString(*(iter)) << "\n";
+    }
+    int choice;
+    cin >> choice;
+    switch (Item.getInstance) {
+
     }
 }
