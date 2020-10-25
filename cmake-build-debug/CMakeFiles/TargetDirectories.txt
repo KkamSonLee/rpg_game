@@ -1,0 +1,3 @@
+C:/Users/ASUS/CLionProjects/RPG_GAME/cmake-build-debug/CMakeFiles/RPG_GAME.dir
+C:/Users/ASUS/CLionProjects/RPG_GAME/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/ASUS/CLionProjects/RPG_GAME/cmake-build-debug/CMakeFiles/rebuild_cache.dir
