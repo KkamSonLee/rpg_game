@@ -8,7 +8,6 @@ Item::Item()
 }
 
 Item::Item(const int& i_itemNum, const int& i_itemType, const int& i_itemValue, const int& i_itemPrice)
-    
 {
     this->itemNum = i_itemNum;
     this->itemType = i_itemType;
@@ -19,7 +18,6 @@ Item::Item(const int& i_itemNum, const int& i_itemType, const int& i_itemValue, 
     itemattribute.push_back(this->itemPrice);
     itemattribute.push_back(this->itemType);
     itemattribute.push_back(this->itemValue);
-
 }
 
 Item::~Item(){}
@@ -31,6 +29,7 @@ int Item::get_itemNum() const
 
 vector<int> Item::get_item() const
 {
+
     return this->itemattribute;
 
 }
@@ -42,5 +41,3 @@ string Item::get_itemName(const int& number) const
     }
     return this->namelist[number-1];
 }
-
-
