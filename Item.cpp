@@ -8,13 +8,16 @@ Item::Item()
 }
 
 Item::Item(const int& i_itemNum, const int& i_itemType, const int& i_itemValue, const int& i_itemPrice)
+
 {
     this->itemNum = i_itemNum;
     this->itemType = i_itemType;
     this->itemPrice = i_itemPrice;
     this -> itemValue = i_itemValue;
 
-    itemattribute.push_back(this->itemNum);
+    vector<int> itemattribute;
+    itemlist[this->itemNum] = itemattribute;
+
     itemattribute.push_back(this->itemPrice);
     itemattribute.push_back(this->itemType);
     itemattribute.push_back(this->itemValue);
@@ -27,10 +30,12 @@ int Item::get_itemNum() const
     return this->itemNum;
 }
 
-vector<int> Item::get_item() const
+vector<int> Item::get_item(int i_num) const
 {
 
-    return this->itemattribute;
+
+//    return this->itemattribute;
+    return this->itemlist[i_num];
 
 }
 
