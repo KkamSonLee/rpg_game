@@ -14,6 +14,7 @@ class Item {
         int itemValue;
         int itemPrice;
         //vector<int> itemattribute; // 아이템 속성들을 담는 벡터
+        int itemarr[][];
 
     public:
         Item();
