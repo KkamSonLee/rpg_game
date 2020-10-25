@@ -10,10 +10,7 @@ Item::Item(const int& itemNum, const int& itemType, const int& itemValue, const 
 
 }
 
-Item::~Item()
-{
-    
-}
+Item::~Item(){}
 
 int Item::get_itemNum() const
 {

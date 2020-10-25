@@ -39,5 +39,5 @@ bool Shop::buy(int index) {
     return true;
 }
 bool Shop::sell(int sellItemNumber, int sellCount){
-
+    return true;
 }

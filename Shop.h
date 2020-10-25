@@ -5,12 +5,6 @@
 #include "Inventory.h"
 #include "Character.h"
 using namespace std;
-struct Item {
-    int itemNum;
-    int itemType;
-    int itemValue;
-    int itemPrice;
-};
 
 //아이템 리스트를 통해 무슨 아이템인지 판별하여 String을 반환해주는 함수
 //내가 할 것
