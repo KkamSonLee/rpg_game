@@ -21,6 +21,7 @@ public:
     void changeequip(int nowAtk, vector<int> item);
     void usepotion(int itemValue, int itemNum);
     int getMoney();
+    Item item;
 private:
     int money;
     vector <int> slot;

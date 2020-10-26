@@ -13,6 +13,7 @@ void Inventory::openInv() {
     int choice;
 
     while (1) {
+        item = Item();
         if (slot.empty() && money == 0) {
             cout << "inventory empty\n";
             closeInv();
@@ -26,7 +27,6 @@ void Inventory::openInv() {
         }
         cout << "choice to use item\n";
         cin >> choice;
-        Item item = Item();
         if (choice == 0) {
             closeInv();
             break;
@@ -64,7 +64,7 @@ void Inventory::usepotion(int itemValue, int itemNum) {
         if (character.get_stat().get_mmp() > character.get_nmp() + itemValue) {
             character.set_nmp(character.get_stat().get_mhp());
         } else {
-            character.setnmp(character.get_nmp() + itemValue);
+            character.set_nmp(character.get_nmp() + itemValue);
         }
     }
 }
