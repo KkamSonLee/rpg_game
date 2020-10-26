@@ -248,7 +248,8 @@ void Town::move(string place) {
 
 void Town::shop() {
 	
-	shop.showShop();
+	Shop shop = Shop(
+	        .showShop();
 }
 
 void Town::stat() {

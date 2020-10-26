@@ -31,7 +31,7 @@ void Shop::showShop() {
     vector<int> temp = myInventory.getSlot();
     cout << "------sell List------\n";
     for (int j = 1; j <= (sizeof(sellList) / sizeof(int)); j++) {
-        cout << j << ". " << myInventory.item.get_itemName(sellList[j + 1]) << "\n";
+        cout << j << ". " << myInventory.item.get_itemName(sellList[j - 1]) << "\n";
     }
     cout << "\n\n";
     cout << "------my Inventory------\n";

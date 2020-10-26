@@ -2,9 +2,14 @@
 // Created by ASUS on 2020-10-25.
 //
 #include "Inventory.h"
+#include <vector>
+#include <iostream>
+#include "item.h"
+#include "Character.h"
 
 Inventory::Inventory(Character subCharacter) : character(subCharacter) {
     money = 0;
+    openInv();
 }
 
 void Inventory::openInv() {

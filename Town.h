@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+using namespace std;
 class Town
 {
 public:
@@ -11,7 +13,7 @@ public:
 	void quit();
 	void load(int);
 	void inventory();
-	void move(string);
+	void move(std::string);
 	void shop();
 	void stat();
 };
