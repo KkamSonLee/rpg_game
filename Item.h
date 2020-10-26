@@ -17,8 +17,8 @@ private:
 
 public:
     Item();
+    Item(int itemNum);
     ~Item();
-
     int get_itemNum() const;
     vector<int> get_item(int i_num) const;
     string get_itemName(const int& number) const;
