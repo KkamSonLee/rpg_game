@@ -1,12 +1,9 @@
 #include "Monster.h"
 
 Status Monster::Monsterlist[99]; // 몬스터의 기본정보들을 담고있습니다(몬스터 도감 같은 개념)
-
+const string Monster::namelist[4] = { "슬라임", "주황버섯", "리본돼지", "스텀프" };
 Monster::Monster()
-    :MonsterNum(0)
-{
-
-
+    :MonsterNum(0){
 }
 
 Monster::Monster(const Status i_status, const int& i_MonsterNum)
@@ -19,9 +16,7 @@ Monster::Monster(const Status i_status, const int& i_MonsterNum)
    
 }
 
-Monster::~Monster()
-{
-
+Monster::~Monster(){
 }
 
 
@@ -36,6 +31,11 @@ void Monster::set_nhp(int i_hp){
 
 int Monster::get_nhp(){
     return this->monsterStatus.get_nhp();
+}
+
+string Monster::get_name(const int& num) {// 몬스터 번호를 입력하면 해당 몬스터의 이름을 반환합니다. 다만 status에서는 몬스터 이름 정보를 줄수 없기 떄문에 코드 내부에서 정적배열을 통해서
+    // 정하는 방식을 사용했습니다. 
+    return this->namelist[num - 1];
 }
 
 int Monster::getMonsterNum() {
