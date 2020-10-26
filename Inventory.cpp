@@ -3,7 +3,6 @@
 //
 #include "Inventory.h"
 
-
 Inventory::Inventory(Character subCharacter) : character(subCharacter) {
     money = 0;
 }
