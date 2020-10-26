@@ -4,7 +4,7 @@
 #include "Inventory.h"
 
 
-Inventory::Inventory(Character subCharacter): character(subCharacter){
+Inventory::Inventory(Character subCharacter) : character(subCharacter) {
     money = 0;
 }
 
@@ -24,7 +24,6 @@ void Inventory::openInv() {
                 cout << i << ". " << Item().get_itemName(*(iter)) << "\n";
             }
         }
-
         cout << "choice to use item\n";
         cin >> choice;
         Item item = Item();
@@ -32,15 +31,17 @@ void Inventory::openInv() {
             closeInv();
             break;
         } else if (choice > 1) {
-            if(choice == 1){
+            if (choice == 1) {
                 cout << "already use equip\n";
-                closeInv();
-                break;
             }
-            if (item.get_item(choice).at(1) == 1) {//itemType
-                changeequip(item.get_item(choice));
-            } else if (item.get_item(choice).at(1) == 0) {
-                usepothion()
+            if (item.get_item(slot[choice]).at(0) == 1) {//itemType
+                changeequip(item.get_item(slot[0]).at(1), item.get_item(choice));
+                int temp = slot.at(0);
+                slot.at(0) = slot.at(choice);
+                slot.at(choice) = temp;
+            } else if (item.get_item(slot[choice]).at(0) == 0) {
+                usepotion(item.get_item(slot[choice]).at(1), slot[choice]);
+                deleteSlot(choice);
             }
         } else {
             continue;
@@ -48,11 +49,24 @@ void Inventory::openInv() {
     }
 }
 
-void Inventory::changeequip(vector<int> item) {
-
+void Inventory::changeequip(int nowAtk, vector<int> item) {
+    character.set_atk((character.get_atk() - nowAtk) + item.at(1));
 }
-void Inventory::usepothion(int itemValue, int itemNum) {
 
+void Inventory::usepotion(int itemValue, int itemNum) {
+    if (itemNum == 3) {
+        if (character.get_stat().get_mhp() > character.get_nhp() + itemValue) {
+            character.set_nhp(character.get_stat().get_mhp());
+        } else {
+            character.set_nhp(character.get_nhp() + itemValue);
+        }
+    } else if (itemNum == 4) {
+        if (character.get_stat().get_mmp() > character.get_nmp() + itemValue) {
+            character.set_nmp(character.get_stat().get_mhp());
+        } else {
+            character.setnmp(character.get_nmp() + itemValue);
+        }
+    }
 }
 
 void Inventory::deleteSlot(int itemLocation) {
@@ -62,7 +76,7 @@ void Inventory::deleteSlot(int itemLocation) {
 }
 
 void Inventory::closeInv() {
-    cout << "진행중이던 작업으로 돌아갑니다." << "\n";
+    cout << "return to game.\n" << "\n";
 }
 
 vector<int> Inventory::getSlot() {
@@ -75,4 +89,8 @@ void Inventory::addSlot(int itemNum) {
 
 void Inventory::changeMoney(int money) {
     this->money += money;
+}
+
+int Inventory::getMoney() {
+    return money;
 }

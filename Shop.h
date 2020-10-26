@@ -21,17 +21,14 @@ using namespace std;
 //
 class Shop {
 private:
-    //Item *sellList;
+    Item sellItem;
+    int sellItemList[4];
     string choice;
-    //Character myCharacter;
+    Character myCharacter;
+    Inventory myInventory;
 public:
-   /* Shop(Item *sellList, Character myCharacter, Inventory myInventory);
-
-    void showShop(Inventory inventory);*/
-   Shop();
+    Shop(Character myCharacter, Inventory myInventory);
+    void showShop(Inventory inventory);
     bool buy(int index);
     bool sell(int sellItemNumber, int sellCount);
-
 };
-
-

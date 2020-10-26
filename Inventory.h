@@ -18,8 +18,9 @@ public:
     void deleteSlot(int itemLocation);
     void addSlot(int itemNum);
     void changeMoney(int money);
-    void changeequip(vector<int> item);
-    void usepothion(int itemValue, int itemNum);
+    void changeequip(int nowAtk, vector<int> item);
+    void usepotion(int itemValue, int itemNum);
+    int getMoney();
 private:
     int money;
     vector <int> slot;

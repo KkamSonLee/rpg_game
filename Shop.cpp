@@ -4,11 +4,8 @@
 
 #include "Shop.h"
 
-Shop::Shop(){
-
-}
-/*Shop::Shop(Item *sellList, Character myCharacter, Inventory myInventory){
-    this->sellList = sellList;
+Shop::Shop(Character myCharacter, Inventory myInventory){
+    sellItemList[4] = {1,2,3,4};
     int index;
     this->myCharacter = myCharacter;
     showShop(myInventory);
@@ -20,9 +17,8 @@ Shop::Shop(){
         sell(index, 1);
     }
 }
- */
 bool Shop::buy(int index) {
-    /*if (index >= sizeof(sellList) || index < 0) {
+    if (index >= sizeof(sellList) || index < 0) {
         WarningMessage.printWarning(3, "not valid index");
     } else {
 
@@ -35,7 +31,7 @@ bool Shop::buy(int index) {
             WarningMessage.printWarning(3, "not enough money");
             return false;
         }
-    }*/
+    }
     return true;
 }
 bool Shop::sell(int sellItemNumber, int sellCount){
