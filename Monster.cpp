@@ -1,7 +1,7 @@
 #include "Monster.h"
 
-//vector<vector<Status>> Monster::Monsterlist;
-Status Monster::Monsterlist[99];
+Status Monster::Monsterlist[99]; // 몬스터의 기본정보들을 담고있습니다(몬스터 도감 같은 개념)
+
 Monster::Monster()
     :MonsterNum(0)
 {
@@ -12,17 +12,10 @@ Monster::Monster()
 Monster::Monster(const Status i_status, const int& i_MonsterNum)
     :MonsterNum(0)
 {
-    this->monsetrStatus = i_status;
+    this->monsterStatus = i_status;
+    this->monsterInfo = this->monsterStatus;// 몬스터의 기본정보를 설정
+    Monsterlist[i_MonsterNum] = this->monsterInfo; // 몬스터 도감에 해당하는 번호에 몬스터 기본 정보 저장
     this->MonsterNum = i_MonsterNum;
-
-
-    Monsterlist[i_MonsterNum] = this -> monsetrStatus;
-
-    /*
-    vector<Status> Monsterattribute;
-    Monsterattribute.push_back(this->monsetrStatus);
-    Monsterlist[i_MonsterNum] = Monsterattribute;
-    */
    
 }
 
@@ -41,27 +34,44 @@ void Monster::setMonsterNum(const int num)
     this->MonsterNum = num;
 }
 
-
-
-void Monster::set_Nowhp(int i_hp)
-{   
-    this->monsetrStatus.setn_hp(i_hp);
-}
-
-Status Monster::get_Monsterstat(const int& num)
+int Monster::get_nhp()
 {
-    return Monsterlist[num]; //번호로 몬스터 스텟을 가져오기 위함.
+    return this->monsterStatus.get_nhp();
 }
+
+void Monster::set_nhp(int i_hp)
+{   
+    this->monsterStatus.set_nhp(i_hp);
+}
+
 
 Status Monster::get_Monsterstat()
-{
-    return monsetrStatus; 
+{   
+    return this->monsterStatus; //몬스터의 기본정보가 아닌 몬스터의 현재 정보
+
 }
 
-void Monster::attack(Character i_ch)
-{
-    int damage = i_ch.getn_hp() - (this->monsetrStatus.get_atk());// 데미지 캐릭터의 현재 hp - 몬스터의 공격력
-    i_ch.setn_hp(damage); // 데미지라는 변수로 캐릭터의 hp 바꿔준다.
-    this->monsetrStatus.setn_mp(this->monsetrStatus.getn_mp()-20); //몬스터 mp 20 감소 시켜준다.
+Status Monster::get_MonsterInfo(const int& num)
+{   
+    return Monsterlist[num]; 
+}
 
+void Monster::attack(Character &i_ch)
+{
+    int use_mp = 20;
+    int damage = i_ch.get_nhp() - (this->monsterStatus.get_atk());// 데미지 캐릭터의 현재 hp - 몬스터의 공격력
+    i_ch.set_nhp(damage); // 데미지라는 변수로 공격대상 캐릭터의 hp 바꿔준다.
+    this->monsterStatus.set_nmp(this->monsterStatus.get_nmp()-use_mp); //몬스터 mp 20 감소 시켜준다.
+
+}
+
+void Monster::reset()
+{
+    this->monsterStatus = monsterInfo; // 몬스터의 현재 정보를 몬스터가 가지고 있는 기본 정보로 재설정
+}
+
+void Monster::change(const int& num, Status st) //()
+{
+    Monsterlist[num] = st;
+    
 }

@@ -9,9 +9,10 @@ class Character; //식별자 오류 방지
 class Monster {
 private:
     static Status Monsterlist[99];
-    Status monsetrStatus;
+    Status monsterInfo; // 몬스터의 기본정보입니다.
+    Status monsterStatus; // 전투에 의해서 바뀌는 몬스터의 현재 정보입니다. 
     int MonsterNum;
-    //vector<Status> Monsterattribute; 
+    
 
 public:
 
@@ -19,10 +20,13 @@ public:
     Monster(const Status i_status, const int& MonsterNum);
     ~Monster();
     int getMonsterNum();
-    void setMonsterNum(int num);
-    void set_Nowhp(int n_hp);
-    Status get_Monsterstat(const int& num);
-    Status get_Monsterstat();
-    void attack(Character ch);
+    void setMonsterNum(int num); // 몬스터의 번호를 주면 몬스터의 기본정보 status 객체를 반환합니다. 
+    int get_nhp(); 
+    void set_nhp(int n_hp); 
+    Status get_Monsterstat(); // 몬스터의 기본정보가 아닌 현재 정보 반환
+    Status get_MonsterInfo(const int& num); // 번호에 해당하는 몬스터 기본 정보 반환
+    void attack(Character &ch); // 공격할 캐릭터의 스탯값을 바꿔줘야 하기때문에 참조값 사용
+    void reset(); // 몬스터 hp,mp 재설정
+    void change(const int& num, Status st); // 몬스터 기본 정보 변경
 
 };

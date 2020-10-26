@@ -18,7 +18,7 @@ Status::Status()
 Status::Status(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location)
 {
     this->max_HP = i_max_HP;
-    this->max_HP = i_max_MP;
+    this->max_MP = i_max_MP;
     this->now_HP = i_now_HP;
     this->now_MP = i_now_MP;
     this->atk = i_atk;
@@ -67,12 +67,12 @@ void Status::set_atk(int i_atk)
 {
     this->atk = i_atk;
 }
-void Status::setn_hp(int i_hp)
+void Status::set_nhp(int i_hp)
 {
     this->now_HP = i_hp;
 }
 
-void Status::setn_mp(int i_mp)
+void Status::set_nmp(int i_mp)
 {
     this->now_MP = i_mp;
 }
@@ -83,12 +83,22 @@ void Status::setn_mhp(int i_hp, int i_mp)
     this->now_MP = i_mp;
 }
 
-int Status::getn_hp()
+void Status::set_level(int i_level)
+{
+    this->level = i_level;
+}
+
+void Status::set_exp(int i_exp)
+{
+    this->exp = i_exp;
+}
+
+int Status::get_nhp()
 {
     return this->now_HP;
 }
 
-int Status::getn_mp()
+int Status::get_nmp()
 {
     return this->now_MP;
 }
@@ -96,4 +106,14 @@ int Status::getn_mp()
 int Status::get_atk()
 {
     return this->atk;
+}
+
+int Status::get_level()
+{
+    return this->level;
+}
+
+int Status::get_exp()
+{
+    return this->exp;
 }

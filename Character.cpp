@@ -32,13 +32,13 @@ void Character::set_atk(int i_atk)
     this->status.set_atk(i_atk);
 }
 
-int Character::getn_hp()
+int Character::get_nhp()
 {
-    return this->status.getn_hp();
+    return this->status.get_nhp();
 }
-void Character::setn_hp(int i_hp)
+void Character::set_nhp(int i_hp)
 {
-    this->status.setn_hp(i_hp);
+    this->status.set_nhp(i_hp);
 }
 
 
@@ -49,14 +49,20 @@ int Character::get_atk()
 
 
 
-void Character::attack(const int& i_monnum)
-{
-    Status Mon = Monster().get_Monsterstat(i_monnum);
-    this->status.setn_mp(this->status.getn_mp() - 20); // mp 20 소모
-    Mon.setn_hp(Mon.getn_hp() - this->get_atk());
-
-    //이후 배틀에서 전투 끝날때 해당 몬스터의 mp hp 재설정을 해주어야함
+void Character::attack(Monster& mon)
+{   
+    int use_mp = 20; 
+    int damage = mon.get_nhp() - (this->status.get_atk()); // 데미지라고 하지만 몬스터의 현재hp - 공격력 즉 데미지가 들어간 이후의 몬스터 hp라고 보는것이 적절합니다.
+    mon.set_nhp(damage);
+    this->status.set_nmp(this->status.get_nmp() - use_mp); //mp 소모량 20
 }
 
+void Character::check_level()
+{       
+    while(this->status.get_level()*100 < this->status.get_exp()){ // 레벨당 요구 경험치 100설정 레벌업 끝날때 까지 반복
+        this->status.set_exp(this->status.get_exp() - 100);
+        this->status.set_level(status.get_level() + 1);
+    }
+}
 
 //Inventory open
