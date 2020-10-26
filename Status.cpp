@@ -44,9 +44,8 @@ Status::~Status()
 
 }
 
-void Status::show()
-{
-    cout << max_HP << "," << max_MP << "," << now_HP << "," << now_MP << "," << atk << "," << exp << "," << level << endl;
+void Status::show(){
+    cout << this->max_HP << "," << this->max_MP << "," << this->now_HP << "," << this->now_MP << "," << this->atk << "," << this->exp << "," << this->level << "," << this->money << endl;
 }
 
 void Status::set_status(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location, int& i_money)
@@ -62,16 +61,7 @@ void Status::set_status(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_
     this->money = i_money;
 }
 
-void Status::set_atk(int i_atk){
-    this->atk = i_atk;
-}
-void Status::set_mhp(int i_hp){
-    this->max_HP = i_hp;
-}
 
-void Status::set_mmp(int i_mp){
-    this->max_MP = i_mp;
-}
 
 void Status::set_nhp(int i_hp){
     this->now_HP = i_hp;
@@ -85,7 +75,16 @@ void Status::setn_mhp(int i_hp, int i_mp){
     this->now_HP = i_hp;
     this->now_MP = i_mp;
 }
+void Status::set_mhp(int i_hp) {
+    this->max_HP = i_hp;
+}
 
+void Status::set_mmp(int i_mp) {
+    this->max_MP = i_mp;
+}
+void Status::set_atk(int i_atk) {
+    this->atk = i_atk;
+}
 void Status::set_level(int i_level){
     this->level = i_level;
 }
@@ -103,38 +102,30 @@ void Status::set_money(int i_money) {
 }
 
 ////get
+int Status::get_nhp() {
+    return this->now_HP;
+}
+int Status::get_nmp() {
+    return this->now_MP;
+}
 int Status::get_mhp(){
     return this->max_HP;
 }
-
 int Status::get_mmp(){
     return this->max_MP;
 }
-
-int Status::get_nhp(){
-    return this->now_HP;
-}
-
-int Status::get_nmp(){
-    return this->now_MP;
-}
-
 int Status::get_atk(){
     return this->atk;
 }
-
 int Status::get_level(){
     return this->level;
 }
-
 int Status::get_exp(){
     return this->exp;
 }
-
 int Status::get_location(){
     return this->location;
 }
-
 int Status::get_money() {
     return this->money;
 }

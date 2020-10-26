@@ -21,19 +21,41 @@ public:
     Monster(const Status i_status, const int& MonsterNum);
     ~Monster();
     
-    void setMonsterNum(int num); // 몬스터의 번호를 주면 몬스터의 기본정보 status 객체를 반환합니다. 
-    void set_nhp(int n_hp);
-    void set_money(int i_money);
-    
-    int get_money();
-    int getMonsterNum();
-    int get_nhp(); 
-    string get_name(const int& num);
+
+    void attack(Character& ch); // 공격할 캐릭터의 스탯값을 바꿔줘야 하기때문에 참조값 사용
+    void reset(); // 몬스터 hp,mp 재설정
+    void change(const int& num, Status st); // 몬스터 기본 정보 변경
+
 
     Status get_Monsterstat(); // 몬스터의 기본정보가 아닌 현재 정보 반환
     Status get_MonsterInfo(const int& num); // 번호에 해당하는 몬스터 기본 정보 반환
-    void attack(Character &ch); // 공격할 캐릭터의 스탯값을 바꿔줘야 하기때문에 참조값 사용
-    void reset(); // 몬스터 hp,mp 재설정
-    void change(const int& num, Status st); // 몬스터 기본 정보 변경
+    string get_name(const int& num);    
+    int getMonsterNum();
+
+    int get_nhp();
+    int get_nmp();
+    int get_mhp();
+    int get_mmp();
+    int get_atk();
+    int get_exp();
+    int get_level();
+    int get_location();
+    int get_money(); //돈의 실질적인 관리는 무조건 인벤토리에서
+
+    void setMonsterNum(int num);
+
+    void set_nhp(int i_hp);
+    void set_nmp(int i_mp);
+    void set_mhp(int i_hp);
+    void set_mmp(int i_mp);
+    void set_atk(int i_atk);
+    void set_exp(int i_exp);
+    void set_level(int i_level);
+    void set_location(int i_location);
+    void set_money(int i_money);
+
+
+
+
 
 };
