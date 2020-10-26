@@ -29,6 +29,14 @@ void Monster::set_nhp(int i_hp){
     this->monsterStatus.set_nhp(i_hp);
 }
 
+void Monster::set_money(int i_money) {
+    monsterStatus.set_money(i_money);
+}
+
+int Monster::get_money() {
+    return this->monsterStatus.get_money();
+}
+
 int Monster::get_nhp(){
     return this->monsterStatus.get_nhp();
 }

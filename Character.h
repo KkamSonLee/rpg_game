@@ -20,14 +20,16 @@ public:
     Status get_stat();
     int get_nhp();
     int get_atk();
-    
+    int get_money(); //돈의 실질적인 관리는 무조건 인벤토리에서
 
     void set_nhp(int i_hp);
-    void set_stat(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location);
+    void set_stat(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location,int& i_money);
     void set_atk(int i_atk);
+    void set_money(int i_money);
 
     void attack(Monster &mon); // 공격함수 공격할 몬스터의 정보를 바꿔줘야 하기 때문에 참조값 사용
     void check_level(); // 레벌업 검사 및 레벨 관련 정보만 변경해주는 함수 입니다. status 전체를 수정하지 않아도 됩니다.
+
     //Inventory.open();
 
 

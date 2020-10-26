@@ -23,7 +23,9 @@ public:
     
     void setMonsterNum(int num); // 몬스터의 번호를 주면 몬스터의 기본정보 status 객체를 반환합니다. 
     void set_nhp(int n_hp);
-
+    void set_money(int i_money);
+    
+    int get_money();
     int getMonsterNum();
     int get_nhp(); 
     string get_name(const int& num);

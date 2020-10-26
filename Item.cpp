@@ -1,16 +1,5 @@
 #include "Item.h"
 
-<<<<<<< HEAD
-const string Item::namelist[4] = {"목검", "장검", "HP포션", "MP포션"}; // 번호에 따른 아이템 이름들
-
-vector<vector<int>> itemlist;
-vector<int> itemlist1{1, 200, 200};
-vector<int> itemlist2{1, 400, 400};
-vector<int> itemlist3{0, 100, 100};
-vector<int> itemlist4{0, 100, 100};
-
-Item::Item() {
-=======
 const string Item::namelist[4] = { "목검", "장검", "HP포션", "MP포션" }; // 번호에 따른 아이템 이름들
 vector<vector<int>> itemlist;
 vector<int> itemlist1{ 1, 200, 200 };
@@ -21,23 +10,12 @@ vector<int> itemlist4{ 0, 100, 100 };
 Item::Item() 
 {
 
->>>>>>> 0bbdf8c872722ce0e9063095286bebb96ec75882
     itemlist.push_back(itemlist1);
     itemlist.push_back(itemlist2);
     itemlist.push_back(itemlist3);
     itemlist.push_back(itemlist4);
 }
-<<<<<<< HEAD
-Item::Item(int itemNum) {
-    this->itemNum = itemNum;
-    itemlist.push_back(itemlist1);
-    itemlist.push_back(itemlist2);
-    itemlist.push_back(itemlist3);
-    itemlist.push_back(itemlist4);
-}
-=======
 
->>>>>>> 0bbdf8c872722ce0e9063095286bebb96ec75882
 Item::~Item() {}
 
 int Item::get_itemNum() const
