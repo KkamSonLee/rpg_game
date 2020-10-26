@@ -18,7 +18,6 @@ private:
 
 public:
     Item();
-    Item(int itemNum);
     ~Item();
     int get_itemNum() const;
     vector<int> get_item(int i_num) const;
