@@ -1,6 +1,5 @@
 #pragma once
 #include<iostream>
-#include <vector>
 #include "Monster.h"
 #include "Status.h"
 
@@ -15,10 +14,11 @@ private:
 public:
     Character(const Status i_status);
     ~Character();
+
     void show_stat(); //sata 전체 출력
 
-    int get_nhp();
     Status get_stat();
+    int get_nhp();
     int get_atk();
     
 

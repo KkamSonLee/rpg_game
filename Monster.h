@@ -19,10 +19,14 @@ public:
     Monster();
     Monster(const Status i_status, const int& MonsterNum);
     ~Monster();
-    int getMonsterNum();
+    
     void setMonsterNum(int num); // 몬스터의 번호를 주면 몬스터의 기본정보 status 객체를 반환합니다. 
+    void set_nhp(int n_hp);
+
+    int getMonsterNum();
     int get_nhp(); 
-    void set_nhp(int n_hp); 
+    
+
     Status get_Monsterstat(); // 몬스터의 기본정보가 아닌 현재 정보 반환
     Status get_MonsterInfo(const int& num); // 번호에 해당하는 몬스터 기본 정보 반환
     void attack(Character &ch); // 공격할 캐릭터의 스탯값을 바꿔줘야 하기때문에 참조값 사용

@@ -46,7 +46,7 @@ void Status::show()
     cout << max_HP << "," << max_MP << "," << now_HP << "," << now_MP << "," << atk << "," << exp << "," << level << endl;
 }
 
-void Status::setstatus(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location)
+void Status::set_status(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location)
 {
     this->max_HP = i_max_HP;
     this->max_HP = i_max_MP;
@@ -58,62 +58,75 @@ void Status::setstatus(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_M
     this->location = i_location;
 }
 
-vector<int> Status::getstatus()
-{
-    return this->stat_list;
-}
-
-void Status::set_atk(int i_atk)
-{
+void Status::set_atk(int i_atk){
     this->atk = i_atk;
 }
-void Status::set_nhp(int i_hp)
-{
+void Status::set_mhp(int i_hp){
+    this->max_HP = i_hp;
+}
+
+void Status::set_mmp(int i_mp){
+    this->max_MP = i_mp;
+}
+
+void Status::set_nhp(int i_hp){
     this->now_HP = i_hp;
 }
 
-void Status::set_nmp(int i_mp)
-{
+void Status::set_nmp(int i_mp){
     this->now_MP = i_mp;
 }
 
-void Status::setn_mhp(int i_hp, int i_mp)
-{
+void Status::setn_mhp(int i_hp, int i_mp){
     this->now_HP = i_hp;
     this->now_MP = i_mp;
 }
 
-void Status::set_level(int i_level)
-{
+void Status::set_level(int i_level){
     this->level = i_level;
 }
 
-void Status::set_exp(int i_exp)
-{
+void Status::set_exp(int i_exp){
     this->exp = i_exp;
 }
 
-int Status::get_nhp()
-{
+void Status::set_location(int i_location) {
+    this->location = i_location;
+}
+
+////get
+int Status::get_mhp(){
+    return this->max_HP;
+}
+
+int Status::get_mmp(){
+    return this->max_MP;
+}
+
+int Status::get_nhp(){
     return this->now_HP;
 }
 
-int Status::get_nmp()
-{
+int Status::get_nmp(){
     return this->now_MP;
 }
 
-int Status::get_atk()
-{
+int Status::get_atk(){
     return this->atk;
 }
 
-int Status::get_level()
-{
+int Status::get_level(){
     return this->level;
 }
 
-int Status::get_exp()
-{
+int Status::get_exp(){
     return this->exp;
+}
+
+int Status::get_location(){
+    return this->location;
+}
+
+vector<int> Status::getstatus() {
+    return this->stat_list;
 }

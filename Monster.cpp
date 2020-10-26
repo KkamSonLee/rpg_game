@@ -24,40 +24,35 @@ Monster::~Monster()
 
 }
 
-int Monster::getMonsterNum()
-{
-    return this->MonsterNum;
-}
 
-void Monster::setMonsterNum(const int num)
-{
+
+void Monster::setMonsterNum(const int num){
     this->MonsterNum = num;
 }
 
-int Monster::get_nhp()
-{
-    return this->monsterStatus.get_nhp();
-}
-
-void Monster::set_nhp(int i_hp)
-{   
+void Monster::set_nhp(int i_hp){
     this->monsterStatus.set_nhp(i_hp);
 }
 
+int Monster::get_nhp(){
+    return this->monsterStatus.get_nhp();
+}
 
-Status Monster::get_Monsterstat()
-{   
+int Monster::getMonsterNum() {
+    return this->MonsterNum;
+}
+
+
+Status Monster::get_Monsterstat(){   
     return this->monsterStatus; //몬스터의 기본정보가 아닌 몬스터의 현재 정보
 
 }
 
-Status Monster::get_MonsterInfo(const int& num)
-{   
+Status Monster::get_MonsterInfo(const int& num){   
     return Monsterlist[num]; 
 }
 
-void Monster::attack(Character &i_ch)
-{
+void Monster::attack(Character &i_ch){
     int use_mp = 20;
     int damage = i_ch.get_nhp() - (this->monsterStatus.get_atk());// 데미지 캐릭터의 현재 hp - 몬스터의 공격력
     i_ch.set_nhp(damage); // 데미지라는 변수로 공격대상 캐릭터의 hp 바꿔준다.
@@ -65,13 +60,10 @@ void Monster::attack(Character &i_ch)
 
 }
 
-void Monster::reset()
-{
+void Monster::reset(){
     this->monsterStatus = monsterInfo; // 몬스터의 현재 정보를 몬스터가 가지고 있는 기본 정보로 재설정
 }
 
-void Monster::change(const int& num, Status st) //()
-{
+void Monster::change(const int& num, Status st){
     Monsterlist[num] = st;
-    
 }
