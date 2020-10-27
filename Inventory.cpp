@@ -1,25 +1,24 @@
-//
-// Created by ASUS on 2020-10-25.
-//
-
 #include "Inventory.h"
 
-Inventory::Inventory(Character& subCharacter) : character(subCharacter) {
-    money = 0;
+Inventory::Inventory(Character &subCharacter) : character(subCharacter) {
+    this->money = 0;
     openInv();
 }
+
 Inventory::~Inventory() {}
+
 void Inventory::printInvList() {
     int i = 1;
     for (vector<int>::iterator iter = slot.begin(); iter != slot.end(); iter++, i++) {
         cout << i << ". " << Item().get_itemName(*(iter)) << "\n";
     }
 }
+
 void Inventory::openInv() {
     cout << "now Money : " << money << "$\n";
     int choice;
-
-    while (true) {
+    bool loop = true;
+    while (loop) {
         item = Item();
         if (slot.empty() && money == 0) {
             cout << "inventory empty\n";
@@ -34,7 +33,7 @@ void Inventory::openInv() {
         if (choice == 0) {
             closeInv();
             break;
-        } else if (choice > 1) {
+        } else if (choice >= 1 && choice <= slot.size()) {
             if (choice == 1) {
                 cout << "already use equip\n";
             }
@@ -54,19 +53,19 @@ void Inventory::openInv() {
 }
 
 void Inventory::changeequip(int nowAtk, int choice) {
-    character.set_atk((character.get_atk() - nowAtk) + item.get_item(choice).at(1));
+    character.set_atk((character.get_atk() - nowAtk) + item.get_item(slot[choice]).at(1));
 }
 
 void Inventory::usepotion(int itemValue, int itemNum) {
     if (itemNum == 3) {
-        if (character.get_stat().get_mhp() > character.get_nhp() + itemValue) {
-            character.set_nhp(character.get_stat().get_mhp());
+        if (character.get_mhp() > character.get_nhp() + itemValue) {
+            character.set_nhp(character.get_mhp());
         } else {
             character.set_nhp(character.get_nhp() + itemValue);
         }
     } else if (itemNum == 4) {
-        if (character.get_stat().get_mmp() > character.get_nmp() + itemValue) {
-            character.set_nmp(character.get_stat().get_mhp());
+        if (character.get_mmp() > character.get_nmp() + itemValue) {
+            character.set_nmp(character.get_mmp());
         } else {
             character.set_nmp(character.get_nmp() + itemValue);
         }
@@ -83,15 +82,13 @@ void Inventory::closeInv() {
     cout << "return to game.\n" << "\n";
 }
 
-vector<int> Inventory::getSlot() {
-    return slot;
-}
 
 void Inventory::addSlot(int itemNum) {
     slot.push_back(itemNum);
 }
+
 void Inventory::addSlotArr(vector<int> itemArr) {
-    slot.assign(itemArr.begin(),itemArr.end());
+    slot.assign(itemArr.begin(), itemArr.end());
 }
 
 void Inventory::changeMoney(int money) {
@@ -100,4 +97,7 @@ void Inventory::changeMoney(int money) {
 
 int Inventory::getMoney() {
     return money;
+}
+vector<int> Inventory::getSlot() {
+    return slot;
 }
