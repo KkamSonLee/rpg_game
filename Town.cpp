@@ -1,9 +1,13 @@
 #include "Town.h"
 #include "Character.h"
 #include "Inventory.h"
+#include "Item.h"
 #include "Shop.h"
 #include "Status.h"
+#include "battle.h"
+#include "Monster.h"
 #include "character_Integrity_Check.h"
+#include "warningMessage.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -14,17 +18,19 @@ using namespace std;
 
 int max_slot = 10;//캐릭터 파일 최대 슬롯 10으로 설정
 
-Character* character;
-Status* charstat;
-Inventory inventory;
-Battle charbattle;
-Shop shop;
-character_Integrity_Check charcheck;
-
 Town::Town() {}
 Town::~Town() {}
 
 void Town::choice() {
+	Character* character;
+	Status* charstat;
+	Inventory* myinventory;
+	Item* charitem = new Item();
+	battle* charbattle = new battle();
+	Shop* myshop;
+	character_Integrity_Check* charcheck = new character_Integrity_Check();
+	warningMessage* warning = new warningMessage();
+
 	string select;
 	string mselect;
 	string nselect;
@@ -41,7 +47,8 @@ void Town::choice() {
 			save(i);
 		}
 		else {
-			cout << "캐릭터 파일의 최대 슬롯을 초과하였습니다." << endl;
+			warning.printWarning(6);
+			endl;
 			choice();
 		}
 	}
@@ -54,7 +61,8 @@ void Town::choice() {
 			load(j);
 		}
 		else {
-			cout << "캐릭터 파일의 최대 슬롯을 초과하였습니다." << endl;
+			warning.printWarning(6);//캐릭터 파일 최대 슬롯 초과 오류 메세지
+			endl;
 			choice();
 		}
 	}
@@ -71,7 +79,8 @@ void Town::choice() {
 		stat();
 	}
 	else {
-		cout << "문법에 맞지 않습니다." << endl;
+		warning.printWarning(0);//문법에 맞지 않는 오류메세지
+		endl;
 		choice();
 	}
 }
@@ -90,7 +99,7 @@ void Town::help() {
 	choice();
 }
 
-void Town::save(int snum) {
+void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐릭터 정보를 파일에 입력하고 save
 	string snumstr = to_string(snum);
 	string sstr = "character" + snumstr;
 	stringstream sss;
@@ -99,6 +108,8 @@ void Town::save(int snum) {
 	char savefilename[20];
 	strcpy(savefilename, sfilename.c_str());
 
+	vector<int> sitem;
+	sitem = myinventory.getSlot();
 	ofstream sfile(savefilename);
 
 	if (sfile.is_open()) {
@@ -120,9 +131,17 @@ void Town::save(int snum) {
 		sfile << "\t";
 		sfile << character.get_money();
 		sfile << "\t";
-
-		//sfile<<character.get_slot().. item 부분 추가예정
-
+		sfile << "/";
+		for (vector<int>::iterator iter = sitem.begin;iter != sitem.end();++iter) {
+			if (sitem.end() == ++iter) {
+				sfile << *iter;
+				sfile << "/";
+				break;
+			}
+			else {
+				sfile << *iter << "\t";
+			}
+		}
 		sfile.close();
 	}
 	
@@ -132,21 +151,26 @@ void Town::save(int snum) {
 		choice();
 	}
 	else {
-		//오류메세지 or 경고메세지 출력
+		warning.printWarning(4);//파일 저장 실패 오류 메세지
+		endl;
 		choice();
 	}
-	
 }
 
 void Town::quit() {
 	delete(charstat);
 	delete(character);
-
+	delete(myinventory);
+	delete(myshop);
+	delete(charitem);
+	delete(charbattle);
+	delete(charcheck);
+	delete(warning);
 	cout << "게임을 종료합니다." << endl;
 	exit(0);
 }
 
-void Town::load(int lnum) {
+void Town::load(int lnum) {//캐릭터 파일의 숫자를 인자로 받아 파일 읽어서 캐릭터 정보에 load
 	
 	string numstr = to_string(lnum);
 	string str = "character" + numstr;
@@ -156,7 +180,15 @@ void Town::load(int lnum) {
 	char charfilename[20];
 	strcpy(charfilename, filename.c_str());
 	
-	int islot[10];
+	int level;
+	int exp;
+	int mhp;
+	int mmp;
+	int nhp;
+	int nmp;
+	int atk;
+	int location;
+	int money;
 
 	charcheck.check(filename);
 	if (true) {
@@ -177,68 +209,63 @@ void Town::load(int lnum) {
 				file.getline(buffer, 100);
 
 				char* ptr = strtok(buffer, "\t");
-				int level = atoi(ptr);
+				level = atoi(ptr);
 				ptr = strtok(NULL, "\t");
-				int exp = atoi(ptr);
+				exp = atoi(ptr);
 				ptr = strtok(NULL, "\t");
-				int mhp = atoi(ptr);
+				mhp = atoi(ptr);
 				ptr = strtok(NULL, "\t");
-				int mmp = atoi(ptr);
+				mmp = atoi(ptr);
 				ptr = strtok(NULL, "\t");
-				int nhp = atoi(ptr);
+				nhp = atoi(ptr);
 				ptr = strtok(NULL, "\t");
-				int nmp = atoi(ptr);
+				nmp = atoi(ptr);
 				ptr = strtok(NULL, "\t");
-				int atk = atoi(ptr);
+				atk = atoi(ptr);
 				ptr = strtok(NULL, "\t");
-				int location = atoi(ptr);
+				location = atoi(ptr);
 				ptr = strtok(NULL, "\t");
-				int money = atoi(ptr);
-
-				/*
-				for (int i = 0;i < 10;i++) {
+				money = atoi(ptr);
+				ptr = strtok(NULL, "/");
+				while (ptr != "/") {
+					myinventory.addSlot(ptr);
 					ptr = strtok(NULL, "\t");
-					if (ptr != NULL) {
-						islot[i] = atoi(ptr);
-					}
-					else
-						break;
 				}
-				*/
 
 				charstat = new Status(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
 				character = new Character(charstat);
-				//character.setSlot(islot);
-
-				//item 부분 수정예정
-
 			}
 		}
-		
 		file.close();
 		cout << "Load가 완료되었습니다." << endl;
 		choice();
 	}
 	else {
-		
-		cout << "파일이 문법에 맞지 않습니다." << endl;
+		warning.printWarning(3);//불러오려는 파일 문법 오류 메세지
+		endl;
 		choice();
 	}
 }
 
 void Town::inventory() {
-	
-	inventory.openInv();
+	myinventory = new Inventory(character);
+	choice();
 }
 
-void Town::move(string place) {
+void Town::move(string place) {//monster를 어떻게 해야할지 몰라 일단 주석처리하였습니다
 	if (place == "dungeon") {
 		character.set_location(2);
-		charbattle.battle();
+		charbattle.Battle(character, inventory, /*monster*/, 2);
+		if (1) {
+			choice();
+		}
 	}
 	else if (place == "boss") {
 		character.set_location(3);
-		charbattle.battle();
+		charbattle.Battle(character, inventory, /*monster*/, 3);
+		if (1) {
+			choice();
+		}
 	}
 	else {//move town
 		character.set_location(1);
@@ -247,9 +274,8 @@ void Town::move(string place) {
 }
 
 void Town::shop() {
-	
-	Shop shop = Shop(
-	        .showShop();
+	myshop = new Shop(character, inventory);
+	choice();
 }
 
 void Town::stat() {
@@ -259,10 +285,17 @@ void Town::stat() {
 	cout << "exp : " << charstat.get_exp() << endl;
 	cout << "Atk : " << charstat.get_atk() << endl;
 	cout << "money : " << charstat.get_money() << "메소" << endl;
-	//cout << "item : ";
-	//item 부분 추가예정
-	
-	choice();
+	if (!myinventory.getSlot().empty()) {
+		cout << "item : ";
+		for (vector<int>::iterator iter = mtinventory.getSlot().begin();iter != myinventory.getSlot().end();iter++) {
+			cout << charitem().get_itemName(*(iter));
+		}
+		endl;
+		choice();
+	}
+	else {
+		choice();
+	}
 }
 
 bool is_digit(string str) {
