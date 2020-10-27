@@ -42,7 +42,7 @@ bool character_integrity_check::load_set(string s) {
 			return false;
 		}
 	}
-	for (int i = 7; i < list_size; i++) {
+	for (int i = 0; i < list_size-7; i++) {
 		try {
 			check_value_2[i] = stoi(check_list[i]);
 		}
