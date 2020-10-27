@@ -6,8 +6,7 @@
 
 int sellList[4] = {1, 2, 3, 4};
 
-Shop::Shop(Character myCharacter, Inventory myInventory) :
-        myCharacter(myCharacter), myInventory(myCharacter) {
+Shop::Shop(Character myCharacter, Inventory myInventory) :myInventory(myCharacter) {
     int index, sellCount;
     showShop();
     bool loop = true;

@@ -9,7 +9,7 @@ Inventory::Inventory(Character subCharacter) : character(subCharacter) {
     money = 0;
     openInv();
 }
-
+Inventory::~Inventory() {}
 void Inventory::openInv() {
     cout << "now Money : " << money << "$\n";
     int choice;

@@ -2,6 +2,8 @@
 #include "Monster.h"
 #include "Character.h"
 #include "Item.h"
+#include "Inventory.h"
+#include "Shop.h"
 #include <conio.h>
 
 int main() {
@@ -11,6 +13,7 @@ int main() {
     Status st(hp, hp, hp, hp, num, num, num, num, money); //money 포함
     Character ch(st);
     Monster mon(st, 1);
+
 
     ch.show_stat();// 스탯 정보 출력
 
