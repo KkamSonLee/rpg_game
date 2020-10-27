@@ -16,13 +16,16 @@ void Character::show_stat() {
 
 void Character::attack(Monster& mon) {
     int use_mp = 20;
+    if (this->get_nmp() < use_mp) {
+        cout << "MP가 부족합니다."
+    }
     int damage = mon.get_nhp() - (this->get_atk()); // 데미지라고 하지만 몬스터의 현재hp - 공격력 즉 데미지가 들어간 이후의 몬스터 hp라고 보는것이 적절합니다.
     mon.set_nhp(damage);
     this->set_nmp(this->get_nmp() - use_mp); //mp 소모량 20
 }
 
 void Character::check_level() {
-    while (this->get_level() * 100 < this->get_exp()) { // 레벨당 요구 경험치 100설정 레벌업 끝날때 까지 반복
+    while (100 < this->get_exp()) { // 레벨당 요구 경험치 100설정 레벌업 끝날때 까지 반복
         this->set_exp(this->get_exp() - 100);
         this->set_level(get_level() + 1);
     }

@@ -10,8 +10,7 @@ Monster::Monster(const Status i_status, const int& i_MonsterNum)
     :MonsterNum(0)
 {
     this->monsterStatus = i_status;
-    this->monsterInfo = this->monsterStatus;// 몬스터의 기본정보를 설정
-    Monsterlist[i_MonsterNum] = this->monsterInfo; // 몬스터 도감에 해당하는 번호에 몬스터 기본 정보 저장
+    Monsterlist[i_MonsterNum] = this->i_status; // 몬스터의 기본정보를 설정, 몬스터 도감에 해당하는 번호에 몬스터 기본 정보 저장
     this->MonsterNum = i_MonsterNum;
    
 }
@@ -22,14 +21,17 @@ Monster::~Monster(){
 
 void Monster::attack(Character& i_ch) {
     int use_mp = 20;
+    if (this->get_nmp() < use_mp) {
+        cout << "MP가 부족합니다."
+    }
     int damage = i_ch.get_nhp() - (this->get_atk());// 데미지 캐릭터의 현재 hp - 몬스터의 공격력
     i_ch.set_nhp(damage); // 데미지라는 변수로 공격대상 캐릭터의 hp 바꿔준다.
     this->set_nmp(this->get_nmp() - use_mp); //몬스터 mp 20 감소 시켜준다.
 
 }
 
-void Monster::reset() {
-    this->monsterStatus = monsterInfo; // 몬스터의 현재 정보를 몬스터가 가지고 있는 기본 정보로 재설정
+void Monster::reset(const int& num) {
+    this->monsterStatus = monsterlist[num]; // 몬스터의 현재 정보를 몬스터가 가지고 있는 기본 정보로 재설정
 }
 
 void Monster::change(const int& num, Status st) { // 몬스터 번호에 해당하는 기본정보객체 반환 

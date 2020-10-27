@@ -9,8 +9,8 @@ class Character
 {
 private:
     Status status;
-    //Inventory(money,slot);
-    //int slot[10]; 민호님과 얘기해본 결과 제가 아닌 민호님이 다루는게 더 좋을거 같다고 하셔서 삭제했습니다.
+
+
 public:
     Character(const Status i_status);
     ~Character();
