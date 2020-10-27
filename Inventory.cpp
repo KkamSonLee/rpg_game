@@ -1,31 +1,33 @@
 //
 // Created by ASUS on 2020-10-25.
 //
-#include "Inventory.h"
-#include <vector>
-#include <iostream>
 
-Inventory::Inventory(Character subCharacter) : character(subCharacter) {
+#include "Inventory.h"
+
+Inventory::Inventory(Character& subCharacter) : character(subCharacter) {
     money = 0;
     openInv();
 }
 Inventory::~Inventory() {}
+void Inventory::printInvList() {
+    int i = 1;
+    for (vector<int>::iterator iter = slot.begin(); iter != slot.end(); iter++, i++) {
+        cout << i << ". " << Item().get_itemName(*(iter)) << "\n";
+    }
+}
 void Inventory::openInv() {
     cout << "now Money : " << money << "$\n";
     int choice;
 
-    while (1) {
+    while (true) {
         item = Item();
         if (slot.empty() && money == 0) {
             cout << "inventory empty\n";
             closeInv();
             break;
         } else if (!slot.empty()) {
-            int i = 1;
             cout << "0. return\n";
-            for (vector<int>::iterator iter = slot.begin(); iter != slot.end(); iter++, i++) {
-                cout << i << ". " << Item().get_itemName(*(iter)) << "\n";
-            }
+            printInvList();
         }
         cout << "choice to use item\n";
         cin >> choice;
@@ -37,7 +39,7 @@ void Inventory::openInv() {
                 cout << "already use equip\n";
             }
             if (item.get_item(slot[choice]).at(0) == 1) {//itemType
-                changeequip(item.get_item(slot[0]).at(1), item.get_item(choice));
+                changeequip(item.get_item(slot[0]).at(1), choice);
                 int temp = slot.at(0);
                 slot.at(0) = slot.at(choice);
                 slot.at(choice) = temp;
@@ -51,8 +53,8 @@ void Inventory::openInv() {
     }
 }
 
-void Inventory::changeequip(int nowAtk, vector<int> item) {
-    character.set_atk((character.get_atk() - nowAtk) + item.at(1));
+void Inventory::changeequip(int nowAtk, int choice) {
+    character.set_atk((character.get_atk() - nowAtk) + item.get_item(choice).at(1));
 }
 
 void Inventory::usepotion(int itemValue, int itemNum) {
@@ -87,6 +89,9 @@ vector<int> Inventory::getSlot() {
 
 void Inventory::addSlot(int itemNum) {
     slot.push_back(itemNum);
+}
+void Inventory::addSlotArr(vector<int> itemArr) {
+    slot.assign(itemArr.begin(),itemArr.end());
 }
 
 void Inventory::changeMoney(int money) {
