@@ -6,7 +6,7 @@
 #include "Status.h"
 #include "battle.h"
 #include "Monster.h"
-#include "character_Integrity_Check.h"
+#include "character_integrity_check.h"
 #include "warningMessage.h"
 #include <iostream>
 #include <fstream>
@@ -22,7 +22,7 @@ Inventory* myinventory;
 Item* charitem = new Item();
 battle* charbattle = new battle();
 Shop* myshop;
-character_Integrity_Check* charcheck = new character_Integrity_Check();
+character_integrity_check* charcheck = new character_integrity_check();
 warningMessage* warning = new warningMessage();
 
 int max_slot = 10;//캐릭터 파일 최대 슬롯 10으로 설정
@@ -140,7 +140,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
 		sfile.close();
 	}
 
-	charcheck.check(sfilename);
+	charcheck.load_set(sfilename);
 	if (true) {
 		cout << "현재 데이터를 세이브합니다." << endl;
 		choice();
@@ -185,7 +185,7 @@ void Town::load(int lnum) {//캐릭터 파일의 숫자를 인자로 받아 파�
 	int location;
 	int money;
 
-	charcheck.check(filename);
+	charcheck.load_set(filename);
 	if (true) {
 		ifstream file(charfilename);
 		if (!file.is_open()) {
