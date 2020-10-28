@@ -55,6 +55,7 @@ void Inventory::openInv() {
 
 void Inventory::changeequip(int nowAtk, int choice) {
     character.set_atk((character.get_atk() - nowAtk) + item.get_item(slot[choice]).at(1));
+    cout << "hello world";
 }
 
 void Inventory::usepotion(int itemValue, int itemNum) {
