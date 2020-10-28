@@ -7,6 +7,7 @@
 #include "battle.h"
 #include "Monster.h"
 #include "character_integrity_check.h"
+#include "map_integrity_check.h"
 #include "warningMessage.h"
 #include <iostream>
 #include <fstream>
@@ -21,8 +22,11 @@ Status* charstat;
 Inventory* myinventory;
 Item* charitem = new Item();
 battle* charbattle = new battle();
+Monster* dungeonmonster;
+Monster* bossmonster;
 Shop* myshop;
 character_integrity_check* charcheck = new character_integrity_check();
+map_integrity_check* mapcheck = new map_integrity_check();
 warningMessage* warning = new warningMessage();
 
 int max_slot = 10;//캐릭터 파일 최대 슬롯 10으로 설정
@@ -47,7 +51,7 @@ void Town::choice() {
 			save(i);
 		}
 		else {
-			warning.printWarning(6);
+			warning.printWarning(0, 6);
 			cout << endl;
 			choice();
 		}
@@ -61,7 +65,7 @@ void Town::choice() {
 			load(j);
 		}
 		else {
-			warning.printWarning(6);//캐릭터 파일 최대 슬롯 초과 오류 메세지
+			warning.printWarning(0, 6);//캐릭터 파일 최대 슬롯 초과 오류 메세지
 			cout << endl;
 			choice();
 		}
@@ -79,7 +83,7 @@ void Town::choice() {
 		stat();
 	}
 	else {
-		warning.printWarning(0);//문법에 맞지 않는 오류메세지
+		warning.printWarning(0, 0);//문법에 맞지 않는 오류메세지
 		cout << endl;
 		choice();
 	}
@@ -146,7 +150,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
 		choice();
 	}
 	else {
-		warning.printWarning(4);//파일 저장 실패 오류 메세지
+		warning.printWarning(0, 4);//파일 저장 실패 오류 메세지
 		cout << endl;
 		choice();
 	}
@@ -236,7 +240,7 @@ void Town::load(int lnum) {//캐릭터 파일의 숫자를 인자로 받아 파�
 		choice();
 	}
 	else {
-		warning.printWarning(3);//불러오려는 파일 문법 오류 메세지
+		warning.printWarning(0, 3);//불러오려는 파일 문법 오류 메세지
 		cout << endl;
 		choice();
 	}
@@ -249,16 +253,52 @@ void Town::inventory() {
 
 void Town::move(string place) {//monster를 어떻게 해야할지 몰라 일단 주석처리하였습니다
 	if (place == "dungeon") {
-		character.set_location(2);
-		charbattle.Battle(character, inventory, /*monster*/, 2);
-		if (1) {
+		mapcheck.load_set(map2);
+		if (1 || 3) {
+			char mapinfo[100];
+			char mapinfo2[100];
+			ifstream mf;
+			mf.open(map2);
+			mf.getline(mapinfo, 100);
+			mf.getline(mapinfo2, 100);
+			char* mptr = strtok(mapinfo2, "\t");
+			mptr = strtok(NULL, "\t");
+			mptr = strtok(NULL, "\t");
+			dmonNum = atoi(mptr);
+			Monster dm;
+			dungeonmonster = new Monster(dm.get_MonsterInfo(dmonNum), dmonNum);
+			character.set_location(2);
+			charbattle.Battle(character, myinventory, dungeonmonster, 2);
+			if (1) {
+				choice();
+			}
+		}
+		else {
 			choice();
 		}
 	}
 	else if (place == "boss") {
-		character.set_location(3);
-		charbattle.Battle(character, inventory, /*monster*/, 3);
-		if (1) {
+		mapcheck.load_set(map3);
+		if (1 || 3) {
+			char bmapinfo[100];
+			char bmapinfo2[100];
+			ifstream bmf;
+			bmf.open(map3);
+			bmf.getline(bmapinfo, 100);
+			bmf.getline(bmapinfo2, 100);
+			char* bmptr = strtok(bmapinfo2, "\t");
+			bmptr = strtok(NULL, "\t");
+			bmptr = strtok(NULL, "\t");
+			bmonNum = atoi(bmptr);
+			Monster bm;
+			bossmonster = new Monster(bm.get_MonsterInfo(bmonNum), bmonNum);
+			character.set_location(3);
+			charbattle.Battle(character, myinventory, bossmonster, 3);
+			if (1) {
+				choice();
+			}
+		}
+		else {
 			choice();
 		}
 	}
@@ -269,7 +309,7 @@ void Town::move(string place) {//monster를 어떻게 해야할지 몰라 일단
 }
 
 void Town::shop() {
-	myshop = new Shop(character, inventory);
+	myshop = new Shop(character, myinventory);
 	choice();
 }
 
