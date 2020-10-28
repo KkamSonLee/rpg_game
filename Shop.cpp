@@ -5,8 +5,8 @@
 #include "Shop.h"
 
 int sellList[4] = {1, 2, 3, 4};
-
-Shop::Shop(Character& myCharacter, Inventory& myInventory) :myInventory(myCharacter) {
+vector<int> temp;
+Shop::Shop(Character& myCharacter, Inventory& myInventory):myInventory(myInventory), myCharacter(myCharacter){
     int index, sellCount;
 
     showShop();
@@ -19,9 +19,12 @@ Shop::Shop(Character& myCharacter, Inventory& myInventory) :myInventory(myCharac
             cout << "원하는 수량을 입력하세요 : ";
             cin >> sellCount;
             loop = buy(index, sellCount);
+            cout << "now money : " << myCharacter.get_money() << "\n";
         } else if (choice == "sell") {
             cin >> index;
             loop = sell(index);
+            cout << "now money : " << myCharacter.get_money() << "\n";
+            myInventory.printInvList();
         } else if (choice == "return") {
             loop = false;
         } else{
@@ -31,7 +34,7 @@ Shop::Shop(Character& myCharacter, Inventory& myInventory) :myInventory(myCharac
 }
 
 void Shop::showShop() {
-    vector<int> temp = myInventory.getSlot();
+    temp = myInventory.getSlot();
 
     cout << "------sell List------\n";
     for (int j = 1; j <= (sizeof(sellList) / sizeof(int)); j++) {
@@ -61,7 +64,7 @@ bool Shop::buy(int index, int buyCount) {
 }
 
 bool Shop::sell(int sellItemNumber) {
-    if (sellItemNumber > myInventory.getSlot().size() || sellItemNumber < 0) {
+    if (sellItemNumber > temp.size() || sellItemNumber < 0) {
         cout << "not vaild\n";
         return false;
     } else {

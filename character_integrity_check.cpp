@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <string.h>
 #include <vector>
 
 using namespace std;
@@ -34,7 +35,7 @@ bool character_integrity_check::load_set(string s) {
 	if (list_size < 7 || list_size >14) {
 		return false;
 	}
-	for (int i = 0; i < size(check_value_1); i++) {
+	for (int i = 0; i < sizeof(check_value_1)/sizeof(int); i++) {
 		try {
 			check_value_1[i] = stoi(check_list[i]);
 		}
@@ -50,7 +51,7 @@ bool character_integrity_check::load_set(string s) {
 			return false;
 		}
 	}
-	for (int i = 0; i < size(check_value_1); i++) {
+	for (int i = 0; i < sizeof(check_value_1)/sizeof(int); i++) {
 		if (i == 1 || i == 4 || i == 5) {
 			if (check_value_1[i] < 0) {
 				check_value_1[i] = 0;
@@ -72,17 +73,17 @@ bool character_integrity_check::load_set(string s) {
 		check_value_1[5] = check_value_1[3];
 	}
 
-	for (int i = (list_size-7); i < size(check_value_2); i++)
+	for (int i = (list_size-7); i < sizeof(check_value_2)/sizeof(int); i++)
 		check_value_2[i] = 0;
 
 	ofstream sfile(s);
 
 	if (sfile.is_open()) {
-		for (int i = 0; i < size(check_value_1); i++) {
+		for (int i = 0; i < sizeof(check_value_1)/sizeof(int); i++) {
 			sfile << check_value_1[i];
 			sfile << "\t";
 		}
-		for (int i = 0; i < size(check_value_2); i++) {
+		for (int i = 0; i < sizeof(check_value_2)/sizeof(int); i++) {
 			sfile << check_value_2[i];
 			sfile << "\t";
 		}

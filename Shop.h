@@ -11,7 +11,8 @@ using namespace std;
 class Shop {
 private:
     string choice;  //buy, sell의 명령어를 받는 부분입니다.
-    Inventory myInventory;
+    Inventory& myInventory;
+    Character& myCharacter;
 public:
     Shop(Character& myCharacter, Inventory& myInventory);
     void showShop();

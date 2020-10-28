@@ -2,7 +2,6 @@
 
 Inventory::Inventory(Character &subCharacter) : character(subCharacter) {
     this->money = character.get_money();
-    openInv();
     item = Item();
 }
 

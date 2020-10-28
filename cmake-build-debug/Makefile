@@ -196,6 +196,60 @@ Inventory.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Inventory.cpp.s
 .PHONY : Inventory.cpp.s
 
+Item.obj: Item.cpp.obj
+
+.PHONY : Item.obj
+
+# target to build an object file
+Item.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Item.cpp.obj
+.PHONY : Item.cpp.obj
+
+Item.i: Item.cpp.i
+
+.PHONY : Item.i
+
+# target to preprocess a source file
+Item.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Item.cpp.i
+.PHONY : Item.cpp.i
+
+Item.s: Item.cpp.s
+
+.PHONY : Item.s
+
+# target to generate assembly for a file
+Item.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Item.cpp.s
+.PHONY : Item.cpp.s
+
+Monster.obj: Monster.cpp.obj
+
+.PHONY : Monster.obj
+
+# target to build an object file
+Monster.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Monster.cpp.obj
+.PHONY : Monster.cpp.obj
+
+Monster.i: Monster.cpp.i
+
+.PHONY : Monster.i
+
+# target to preprocess a source file
+Monster.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Monster.cpp.i
+.PHONY : Monster.cpp.i
+
+Monster.s: Monster.cpp.s
+
+.PHONY : Monster.s
+
+# target to generate assembly for a file
+Monster.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Monster.cpp.s
+.PHONY : Monster.cpp.s
+
 Shop.obj: Shop.cpp.obj
 
 .PHONY : Shop.obj
@@ -222,6 +276,33 @@ Shop.s: Shop.cpp.s
 Shop.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Shop.cpp.s
 .PHONY : Shop.cpp.s
+
+Status.obj: Status.cpp.obj
+
+.PHONY : Status.obj
+
+# target to build an object file
+Status.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Status.cpp.obj
+.PHONY : Status.cpp.obj
+
+Status.i: Status.cpp.i
+
+.PHONY : Status.i
+
+# target to preprocess a source file
+Status.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Status.cpp.i
+.PHONY : Status.cpp.i
+
+Status.s: Status.cpp.s
+
+.PHONY : Status.s
+
+# target to generate assembly for a file
+Status.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Status.cpp.s
+.PHONY : Status.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -265,9 +346,18 @@ help:
 	@echo ... Inventory.obj
 	@echo ... Inventory.i
 	@echo ... Inventory.s
+	@echo ... Item.obj
+	@echo ... Item.i
+	@echo ... Item.s
+	@echo ... Monster.obj
+	@echo ... Monster.i
+	@echo ... Monster.s
 	@echo ... Shop.obj
 	@echo ... Shop.i
 	@echo ... Shop.s
+	@echo ... Status.obj
+	@echo ... Status.i
+	@echo ... Status.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

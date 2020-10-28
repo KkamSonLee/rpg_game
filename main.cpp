@@ -1,16 +1,28 @@
 #include "Status.h"
 #include "Monster.h"
 #include "Character.h"
+#include "Item.h"
+#include "Inventory.h"
+#include "Shop.h"
 #include <conio.h>
+//battle.cpp battle.h character_integrity_check.cpp character_integrity_check.h map_integrity_check.cpp map_integrity_check.h warningMessage.cpp warningMessage.h Town.cpp Town.h
 int main() {
     int use_mp = 20;
     int num = 1;
     int hp = 3;
     int mp = 100;
     int money = 4000;
+    vector<int> invList;
+    invList.push_back(1);
+    invList.push_back(2);
+    invList.push_back(3);
+    invList.push_back(4);
     Status st(hp, mp, hp, mp, num, num, num, num, money); //money 포함
     Character ch(st);
     Monster mon(st, 1);
+    Inventory inv(ch);
+    inv.addSlotArr(invList);
+    inv.openInv();
     ch.show_stat();// 스탯 정보 출력
 
     ch.attack(mon, mp);
@@ -29,6 +41,7 @@ int main() {
     mon.set_money(2000);
     cout << mon.get_money() << endl;
 
+    Shop shop(ch, inv);
     return 0;
 
 }

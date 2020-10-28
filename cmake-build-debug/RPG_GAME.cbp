@@ -92,10 +92,28 @@
 		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h">
 			<Option target="RPG_GAME"/>
 		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Item.cpp">
+			<Option target="RPG_GAME"/>
+		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Item.h">
+			<Option target="RPG_GAME"/>
+		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.cpp">
+			<Option target="RPG_GAME"/>
+		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.h">
+			<Option target="RPG_GAME"/>
+		</Unit>
 		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.cpp">
 			<Option target="RPG_GAME"/>
 		</Unit>
 		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h">
+			<Option target="RPG_GAME"/>
+		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Status.cpp">
+			<Option target="RPG_GAME"/>
+		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h">
 			<Option target="RPG_GAME"/>
 		</Unit>
 		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/main.cpp">

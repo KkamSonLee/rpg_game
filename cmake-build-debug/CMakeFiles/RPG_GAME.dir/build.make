@@ -128,12 +128,54 @@ CMakeFiles/RPG_GAME.dir/Character.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RPG_GAME.dir/Character.cpp.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ASUS\CLionProjects\RPG_GAME\Character.cpp -o CMakeFiles\RPG_GAME.dir\Character.cpp.s
 
+CMakeFiles/RPG_GAME.dir/Monster.cpp.obj: CMakeFiles/RPG_GAME.dir/flags.make
+CMakeFiles/RPG_GAME.dir/Monster.cpp.obj: ../Monster.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ASUS\CLionProjects\RPG_GAME\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RPG_GAME.dir/Monster.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\RPG_GAME.dir\Monster.cpp.obj -c C:\Users\ASUS\CLionProjects\RPG_GAME\Monster.cpp
+
+CMakeFiles/RPG_GAME.dir/Monster.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RPG_GAME.dir/Monster.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ASUS\CLionProjects\RPG_GAME\Monster.cpp > CMakeFiles\RPG_GAME.dir\Monster.cpp.i
+
+CMakeFiles/RPG_GAME.dir/Monster.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RPG_GAME.dir/Monster.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ASUS\CLionProjects\RPG_GAME\Monster.cpp -o CMakeFiles\RPG_GAME.dir\Monster.cpp.s
+
+CMakeFiles/RPG_GAME.dir/Status.cpp.obj: CMakeFiles/RPG_GAME.dir/flags.make
+CMakeFiles/RPG_GAME.dir/Status.cpp.obj: ../Status.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ASUS\CLionProjects\RPG_GAME\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RPG_GAME.dir/Status.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\RPG_GAME.dir\Status.cpp.obj -c C:\Users\ASUS\CLionProjects\RPG_GAME\Status.cpp
+
+CMakeFiles/RPG_GAME.dir/Status.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RPG_GAME.dir/Status.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ASUS\CLionProjects\RPG_GAME\Status.cpp > CMakeFiles\RPG_GAME.dir\Status.cpp.i
+
+CMakeFiles/RPG_GAME.dir/Status.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RPG_GAME.dir/Status.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ASUS\CLionProjects\RPG_GAME\Status.cpp -o CMakeFiles\RPG_GAME.dir\Status.cpp.s
+
+CMakeFiles/RPG_GAME.dir/Item.cpp.obj: CMakeFiles/RPG_GAME.dir/flags.make
+CMakeFiles/RPG_GAME.dir/Item.cpp.obj: ../Item.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ASUS\CLionProjects\RPG_GAME\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/RPG_GAME.dir/Item.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\RPG_GAME.dir\Item.cpp.obj -c C:\Users\ASUS\CLionProjects\RPG_GAME\Item.cpp
+
+CMakeFiles/RPG_GAME.dir/Item.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RPG_GAME.dir/Item.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ASUS\CLionProjects\RPG_GAME\Item.cpp > CMakeFiles\RPG_GAME.dir\Item.cpp.i
+
+CMakeFiles/RPG_GAME.dir/Item.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RPG_GAME.dir/Item.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ASUS\CLionProjects\RPG_GAME\Item.cpp -o CMakeFiles\RPG_GAME.dir\Item.cpp.s
+
 # Object files for target RPG_GAME
 RPG_GAME_OBJECTS = \
 "CMakeFiles/RPG_GAME.dir/main.cpp.obj" \
 "CMakeFiles/RPG_GAME.dir/Shop.cpp.obj" \
 "CMakeFiles/RPG_GAME.dir/Inventory.cpp.obj" \
-"CMakeFiles/RPG_GAME.dir/Character.cpp.obj"
+"CMakeFiles/RPG_GAME.dir/Character.cpp.obj" \
+"CMakeFiles/RPG_GAME.dir/Monster.cpp.obj" \
+"CMakeFiles/RPG_GAME.dir/Status.cpp.obj" \
+"CMakeFiles/RPG_GAME.dir/Item.cpp.obj"
 
 # External object files for target RPG_GAME
 RPG_GAME_EXTERNAL_OBJECTS =
@@ -142,11 +184,14 @@ RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/main.cpp.obj
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/Shop.cpp.obj
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/Inventory.cpp.obj
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/Character.cpp.obj
+RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/Monster.cpp.obj
+RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/Status.cpp.obj
+RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/Item.cpp.obj
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/build.make
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/linklibs.rsp
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/objects1.rsp
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ASUS\CLionProjects\RPG_GAME\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable RPG_GAME.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ASUS\CLionProjects\RPG_GAME\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable RPG_GAME.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\RPG_GAME.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
