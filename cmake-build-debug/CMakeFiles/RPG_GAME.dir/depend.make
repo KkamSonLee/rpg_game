@@ -22,10 +22,7 @@ CMakeFiles/RPG_GAME.dir/Shop.cpp.obj: ../Shop.h
 CMakeFiles/RPG_GAME.dir/Shop.cpp.obj: ../Status.h
 
 CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../Character.h
-CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../Inventory.h
-CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../Item.h
 CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../Monster.h
-CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../Shop.h
 CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../Status.h
 CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../main.cpp
 

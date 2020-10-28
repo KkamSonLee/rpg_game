@@ -1,9 +1,6 @@
 #include "Status.h"
 #include "Monster.h"
 #include "Character.h"
-#include "Item.h"
-#include "Inventory.h"
-#include "Shop.h"
 #include <conio.h>
 
 int main() {
