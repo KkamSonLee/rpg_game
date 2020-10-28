@@ -3,7 +3,11 @@
 Status Monster::Monsterlist[99]; // ������ �⺻�������� ����ֽ��ϴ�(���� ���� ���� ����)
 const string Monster::namelist[4] = { "목검", "장검", "HP포션", "MP포션" };
 Monster::Monster()
+<<<<<<< HEAD
     :MonsterNum(0){
+=======
+    : MonsterNum(0){
+>>>>>>> 300c9d1b6ca0d7e8a5f9179709b3eadc01788ba2
 }
 
 Monster::Monster(const Status& i_status, const int& i_MonsterNum)
