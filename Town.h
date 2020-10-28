@@ -13,7 +13,7 @@ public:
 	void quit();
 	void load(int);
 	void inventory();
-	void move(std::string);
+	void move(string);
 	void shop();
 	void stat();
 	bool is_digit(string);

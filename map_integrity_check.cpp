@@ -1,8 +1,4 @@
 #include "map_integrity_check.h"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
 
 using namespace std;
 #define MAP_NUM 10
@@ -13,10 +9,9 @@ enum {
 	ERROR,
 	WARNING
 };
-map_integrity_check::~map_integrity_check()
-{
-}
+map_integrity_check::map_integrity_check(){
 
+}
 map_integrity_check::~map_integrity_check()
 {
 }
