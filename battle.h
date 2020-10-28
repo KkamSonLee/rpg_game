@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "Character.h"
+#include "Inventory.h"
 
 using namespace std;
 

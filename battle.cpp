@@ -1,7 +1,5 @@
 #include "Status.h"
 #include "battle.h"
-#include "Character.h"
-#include "Inventory.h"
 #include "Monster.h"
 #include "Shop.h"
 #include "warningMessage.h"

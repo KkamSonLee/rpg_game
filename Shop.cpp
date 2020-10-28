@@ -44,7 +44,7 @@ void Shop::showShop() {
 
 bool Shop::buy(int index, int buyCount) {
     if (index >= (sizeof(sellList) / sizeof(int)) || index < 0) {
-        //WarningMessage.printWarning(3, "not valid index");
+        //WarningMessage.printWarning(0, "not valid index");
         return false;
     } else {
         if (myInventory.getSlot().size() + buyCount > 10) {

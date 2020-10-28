@@ -1,7 +1,7 @@
 #include "Inventory.h"
 
 Inventory::Inventory(Character &subCharacter) : character(subCharacter) {
-    this->money = 0;
+    this->money = character.get_money();
     openInv();
 }
 
@@ -15,7 +15,7 @@ void Inventory::printInvList() {
 }
 
 void Inventory::openInv() {
-    character.set_money(money);
+    money = character.get_money();
     cout << "now Money : " << money << "$\n";
     int choice;
     bool loop = true;
@@ -55,7 +55,6 @@ void Inventory::openInv() {
 
 void Inventory::changeequip(int nowAtk, int choice) {
     character.set_atk((character.get_atk() - nowAtk) + item.get_item(slot[choice]).at(1));
-    cout << "hello world";
 }
 
 void Inventory::usepotion(int itemValue, int itemNum) {
@@ -81,7 +80,7 @@ void Inventory::deleteSlot(int itemLocation) {
 }
 
 void Inventory::closeInv() {
-    cout << "return to game.\n" << "\n";
+    cout << "return to game.\n";
 }
 
 
@@ -94,12 +93,13 @@ void Inventory::addSlotArr(vector<int> itemArr) {
 }
 
 void Inventory::changeMoney(int money) {
-    this->money += money;
+    character.set_money(character.get_money() + money);
 }
 
 int Inventory::getMoney() {
-    return money;
+    return character.get_money();
 }
+
 vector<int> Inventory::getSlot() {
     return slot;
 }
