@@ -167,6 +167,45 @@ CMakeFiles/RPG_GAME.dir/Item.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RPG_GAME.dir/Item.cpp.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ASUS\CLionProjects\RPG_GAME\Item.cpp -o CMakeFiles\RPG_GAME.dir\Item.cpp.s
 
+CMakeFiles/RPG_GAME.dir/battle.cpp.obj: CMakeFiles/RPG_GAME.dir/flags.make
+CMakeFiles/RPG_GAME.dir/battle.cpp.obj: ../battle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ASUS\CLionProjects\RPG_GAME\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/RPG_GAME.dir/battle.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\RPG_GAME.dir\battle.cpp.obj -c C:\Users\ASUS\CLionProjects\RPG_GAME\battle.cpp
+
+CMakeFiles/RPG_GAME.dir/battle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RPG_GAME.dir/battle.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ASUS\CLionProjects\RPG_GAME\battle.cpp > CMakeFiles\RPG_GAME.dir\battle.cpp.i
+
+CMakeFiles/RPG_GAME.dir/battle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RPG_GAME.dir/battle.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ASUS\CLionProjects\RPG_GAME\battle.cpp -o CMakeFiles\RPG_GAME.dir\battle.cpp.s
+
+CMakeFiles/RPG_GAME.dir/warningMessage.cpp.obj: CMakeFiles/RPG_GAME.dir/flags.make
+CMakeFiles/RPG_GAME.dir/warningMessage.cpp.obj: ../warningMessage.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ASUS\CLionProjects\RPG_GAME\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/RPG_GAME.dir/warningMessage.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\RPG_GAME.dir\warningMessage.cpp.obj -c C:\Users\ASUS\CLionProjects\RPG_GAME\warningMessage.cpp
+
+CMakeFiles/RPG_GAME.dir/warningMessage.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RPG_GAME.dir/warningMessage.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ASUS\CLionProjects\RPG_GAME\warningMessage.cpp > CMakeFiles\RPG_GAME.dir\warningMessage.cpp.i
+
+CMakeFiles/RPG_GAME.dir/warningMessage.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RPG_GAME.dir/warningMessage.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ASUS\CLionProjects\RPG_GAME\warningMessage.cpp -o CMakeFiles\RPG_GAME.dir\warningMessage.cpp.s
+
+CMakeFiles/RPG_GAME.dir/Town.cpp.obj: CMakeFiles/RPG_GAME.dir/flags.make
+CMakeFiles/RPG_GAME.dir/Town.cpp.obj: ../Town.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ASUS\CLionProjects\RPG_GAME\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/RPG_GAME.dir/Town.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\RPG_GAME.dir\Town.cpp.obj -c C:\Users\ASUS\CLionProjects\RPG_GAME\Town.cpp
+
+CMakeFiles/RPG_GAME.dir/Town.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RPG_GAME.dir/Town.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ASUS\CLionProjects\RPG_GAME\Town.cpp > CMakeFiles\RPG_GAME.dir\Town.cpp.i
+
+CMakeFiles/RPG_GAME.dir/Town.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RPG_GAME.dir/Town.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ASUS\CLionProjects\RPG_GAME\Town.cpp -o CMakeFiles\RPG_GAME.dir\Town.cpp.s
+
 # Object files for target RPG_GAME
 RPG_GAME_OBJECTS = \
 "CMakeFiles/RPG_GAME.dir/main.cpp.obj" \
@@ -175,7 +214,10 @@ RPG_GAME_OBJECTS = \
 "CMakeFiles/RPG_GAME.dir/Character.cpp.obj" \
 "CMakeFiles/RPG_GAME.dir/Monster.cpp.obj" \
 "CMakeFiles/RPG_GAME.dir/Status.cpp.obj" \
-"CMakeFiles/RPG_GAME.dir/Item.cpp.obj"
+"CMakeFiles/RPG_GAME.dir/Item.cpp.obj" \
+"CMakeFiles/RPG_GAME.dir/battle.cpp.obj" \
+"CMakeFiles/RPG_GAME.dir/warningMessage.cpp.obj" \
+"CMakeFiles/RPG_GAME.dir/Town.cpp.obj"
 
 # External object files for target RPG_GAME
 RPG_GAME_EXTERNAL_OBJECTS =
@@ -187,11 +229,14 @@ RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/Character.cpp.obj
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/Monster.cpp.obj
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/Status.cpp.obj
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/Item.cpp.obj
+RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/battle.cpp.obj
+RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/warningMessage.cpp.obj
+RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/Town.cpp.obj
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/build.make
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/linklibs.rsp
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/objects1.rsp
 RPG_GAME.exe: CMakeFiles/RPG_GAME.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ASUS\CLionProjects\RPG_GAME\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable RPG_GAME.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ASUS\CLionProjects\RPG_GAME\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable RPG_GAME.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\RPG_GAME.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

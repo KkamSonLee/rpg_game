@@ -116,7 +116,25 @@
 		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h">
 			<Option target="RPG_GAME"/>
 		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Town.cpp">
+			<Option target="RPG_GAME"/>
+		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Town.h">
+			<Option target="RPG_GAME"/>
+		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/battle.cpp">
+			<Option target="RPG_GAME"/>
+		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/battle.h">
+			<Option target="RPG_GAME"/>
+		</Unit>
 		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/main.cpp">
+			<Option target="RPG_GAME"/>
+		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/warningMessage.cpp">
+			<Option target="RPG_GAME"/>
+		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/warningMessage.h">
 			<Option target="RPG_GAME"/>
 		</Unit>
 		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/CMakeLists.txt">

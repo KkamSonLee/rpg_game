@@ -3,9 +3,10 @@
 //
 #pragma once
 #include <iostream>
-#include "Inventory.h"
 #include "Character.h"
 #include "Item.h"
+#include "Inventory.h"
+
 using namespace std;
 
 class Shop {

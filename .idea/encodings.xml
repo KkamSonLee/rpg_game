@@ -5,6 +5,9 @@
     <file url="file://$PROJECT_DIR$/Inventory.cpp" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/Inventory.h" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/Item.cpp" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/Monster.h" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/Status.cpp" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/battle.cpp" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/main.cpp" charset="x-windows-949" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

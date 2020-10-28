@@ -1,16 +1,16 @@
 #include "Monster.h"
 
-Status Monster::Monsterlist[99]; // ¸ó½ºÅÍÀÇ ±âº»Á¤º¸µéÀ» ´ã°íÀÖ½À´Ï´Ù(¸ó½ºÅÍ µµ°¨ °°Àº °³³ä)
-const string Monster::namelist[4] = { "½½¶óÀÓ", "ÁÖÈ²¹ö¼¸", "¸®º»µÅÁö", "½ºÅÒÇÁ" };
+Status Monster::Monsterlist[99]; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½Ï´ï¿½(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+const string Monster::namelist[4] = { "ëª©ê²€", "ìž¥ê²€", "HPí¬ì…˜", "MPí¬ì…˜" };
 Monster::Monster()
-    :Status(), MonsterNum(0){
+    :MonsterNum(0){
 }
 
 Monster::Monster(const Status& i_status, const int& i_MonsterNum)
     :MonsterNum(0)
 {
     this->monsterStatus = i_status;
-    Monsterlist[i_MonsterNum] = i_status; // ¸ó½ºÅÍÀÇ ±âº»Á¤º¸¸¦ ¼³Á¤, ¸ó½ºÅÍ µµ°¨¿¡ ÇØ´çÇÏ´Â ¹øÈ£¿¡ ¸ó½ºÅÍ ±âº» Á¤º¸ ÀúÀå
+    Monsterlist[i_MonsterNum] = i_status; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     this->MonsterNum = i_MonsterNum;
    
 }
@@ -22,30 +22,30 @@ Monster::~Monster(){
 void Monster::attack(Character& i_ch , int i_mp) {
     int use_mp = i_mp;
     if (this->get_nmp() < i_mp) {
-        cout << "MP°¡ ºÎÁ·ÇÕ´Ï´Ù." << endl;
+        cout << "MPï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½." << endl;
     }
-    int damage = i_ch.get_nhp() - (this->get_atk());// µ¥¹ÌÁö Ä³¸¯ÅÍÀÇ ÇöÀç hp - ¸ó½ºÅÍÀÇ °ø°Ý·Â
-    i_ch.set_nhp(damage); // µ¥¹ÌÁö¶ó´Â º¯¼ö·Î °ø°Ý´ë»ó Ä³¸¯ÅÍÀÇ hp ¹Ù²ãÁØ´Ù.
-    this->set_nmp(this->get_nmp() - i_mp); //¸ó½ºÅÍ mp¸¦ ¸Å°³º¯¼ö ¹Þ´Â ¸¸Å­ °¨¼Ò ½ÃÄÑÁØ´Ù.
+    int damage = i_ch.get_nhp() - (this->get_atk());// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ hp - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý·ï¿½
+    i_ch.set_nhp(damage); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ hp ï¿½Ù²ï¿½ï¿½Ø´ï¿½.
+    this->set_nmp(this->get_nmp() - i_mp); //ï¿½ï¿½ï¿½ï¿½ mpï¿½ï¿½ ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
 
 }
 
 void Monster::reset(const int& num) {
-    this->monsterStatus = Monsterlist[num]; // ¸ó½ºÅÍÀÇ ÇöÀç Á¤º¸¸¦ ¸ó½ºÅÍ°¡ °¡Áö°í ÀÖ´Â ±âº» Á¤º¸·Î Àç¼³Á¤
+    this->monsterStatus = Monsterlist[num]; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ç¼³ï¿½ï¿½
 }
 
-void Monster::change(const int& num, Status st) { // ¸ó½ºÅÍ ¹øÈ£¿¡ ÇØ´çÇÏ´Â ±âº»Á¤º¸°´Ã¼ ¹ÝÈ¯ 
+void Monster::change(const int& num, Status st) { // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ ï¿½ï¿½È¯ 
     Monsterlist[num] = st;
 }
 
 
 ///get
-string Monster::get_name(const int& num) {// ¸ó½ºÅÍ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¸é ÇØ´ç ¸ó½ºÅÍÀÇ ÀÌ¸§À» ¹ÝÈ¯ÇÕ´Ï´Ù. ´Ù¸¸ status¿¡¼­´Â ¸ó½ºÅÍ ÀÌ¸§ Á¤º¸¸¦ ÁÙ¼ö ¾ø±â ‹š¹®¿¡ ÄÚµå ³»ºÎ¿¡¼­ Á¤Àû¹è¿­À» ÅëÇØ¼­
-    // Á¤ÇÏ´Â ¹æ½ÄÀ» »ç¿ëÇß½À´Ï´Ù. 
-    return this->namelist[num - 1]; // ¹è¿­ÀÎµ¥ ÀÌ°Å´Â 0ÀÌ ºñ¿öÁ® ÀÖ´Â ¹è¿­ÀÌ ¾Æ´Ï±â ¶§¹®¿¡ 
+string Monster::get_name(const int& num) {// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¸ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Õ´Ï´ï¿½. ï¿½Ù¸ï¿½ statusï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½
+    // ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½. 
+    return this->namelist[num - 1]; // ï¿½è¿­ï¿½Îµï¿½ ï¿½Ì°Å´ï¿½ 0ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½Æ´Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 }
 Status Monster::get_Monsterstat() {
-    return this->monsterStatus; //¸ó½ºÅÍÀÇ ±âº»Á¤º¸°¡ ¾Æ´Ñ ¸ó½ºÅÍÀÇ ÇöÀç Á¤º¸
+    return this->monsterStatus; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 }
 Status Monster::get_MonsterInfo(const int& num) {
     return Monsterlist[num];
