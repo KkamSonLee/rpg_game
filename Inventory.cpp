@@ -3,6 +3,7 @@
 Inventory::Inventory(Character &subCharacter) : character(subCharacter) {
     this->money = character.get_money();
     openInv();
+    item = Item();
 }
 
 Inventory::~Inventory() {}
@@ -20,7 +21,6 @@ void Inventory::openInv() {
     int choice;
     bool loop = true;
     while (loop) {
-        item = Item();
         if (slot.empty() && money == 0) {
             cout << "inventory empty\n";
             closeInv();

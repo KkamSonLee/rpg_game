@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/ASUS/CLionProjects/RPG_GAME/Character.cpp
-Character.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
-
 C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
 iostream
 -
@@ -17,10 +13,6 @@ Monster.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.h
 Status.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
-
-C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.cpp
-Inventory.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
 
 C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
 item.h
@@ -51,10 +43,6 @@ Character.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
 Status.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
-
-C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.cpp
-Shop.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h
 
 C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h
 iostream
