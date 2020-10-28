@@ -19,7 +19,7 @@ private:
     vector<int>stat_list; //위의 속성들을 담아둘 벡터
 
 public:
-    Status(); // 회의때 논의
+    Status(); 
     Status(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location , int& i_money); // 객체
     ~Status();
 

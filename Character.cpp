@@ -31,6 +31,20 @@ void Character::check_level() {
     }
 }
 
+void Character::isdead() {
+
+    if (this->status.get_nhp() == 0) {
+        cout << "캐릭터의 현재 hp가 0 이하입니다." << endl;
+        cout << "마을로 돌아갑니다." << endl;
+        this->status.set_nhp(1);
+        Town.move("town");
+        //hp 조절(now_HP == 1) 타운으로 갑니다.
+    }
+    
+}
+    
+    
+
 ///get
 Status Character::get_stat(){
     return this->status;
