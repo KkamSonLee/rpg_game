@@ -22,7 +22,7 @@ Monster::~Monster(){
 void Monster::attack(Character& i_ch , const int& i_mp) {
     int use_mp = i_mp;
     if (this->get_nmp() < i_mp) {
-        cout << "MP가 부족합니다."
+        cout << "MP가 부족합니다." << endl;
     }
     int damage = i_ch.get_nhp() - (this->get_atk());// 데미지 캐릭터의 현재 hp - 몬스터의 공격력
     i_ch.set_nhp(damage); // 데미지라는 변수로 공격대상 캐릭터의 hp 바꿔준다.
@@ -53,7 +53,6 @@ Status Monster::get_MonsterInfo(const int& num) {
 int Monster::getMonsterNum() {
     return this->MonsterNum;
 }
-
 int Monster::get_nhp() {
     return this->monsterStatus.get_nhp();
 }
@@ -88,7 +87,6 @@ int Monster::get_money() {
 void Monster::setMonsterNum(const int num) {
     this->MonsterNum = num;
 }
-
 void Monster::set_nhp(int i_hp) {
     this->monsterStatus.set_nhp(i_hp);
 }
