@@ -163,7 +163,10 @@ void Town::quit() {
 	delete(myshop);
 	delete(charitem);
 	delete(charbattle);
+	delete(dungeonmonster);
+	delete(bossmonster);
 	delete(charcheck);
+	delete(mapcheck);
 	delete(warning);
 	cout << "게임을 종료합니다." << endl;
 	exit(0);
