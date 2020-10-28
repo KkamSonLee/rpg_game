@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -9,14 +8,13 @@
 
 using namespace std;
 
-
 character_integrity_check *charcheck = new character_integrity_check();
 map_integrity_check *mapcheck = new map_integrity_check();
 warningMessage *warning = new warningMessage();
 
-int max_slot = 10;//캐릭터 파일 최대 슬롯 10으로 설정
 
-Town::Town(Character& myCharacter):myCharacter(myCharacter){
+Town::Town(const Character& myCharacter):myCharacter(myCharacter){
+    int max_slot = 10;//캐릭터 파일 최대 슬롯 10으로 설정
     choice();
 }
 Town::~Town() {}

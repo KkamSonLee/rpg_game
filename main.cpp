@@ -1,19 +1,19 @@
 #include "Status.h"
 #include "Character.h"
 #include "Inventory.h"
-#include "Shop.h"
-#include <conio.h>
+#include "Monster.h"
 #include <sstream>
+#include <string>
+#include <cstring>
 
 
 Character load(int inum);
-Inventory* myInventory;
 //battle.cpp battle.h warningMessage.cpp warningMessage.h Town.cpp Town.h character_integrity_check.cpp character_integrity_check.h map_integrity_check.cpp map_integrity_check.h
-character_integrity_check charcheck;
+//character_integrity_check charcheck;
 int main() {
     int select = 1;
-    Character ch(load(select));
-    Town mytown(ch);
+
+    //Town mytown(ch);
     int use_mp = 20;
     int num = 1;
     int hp = 3;
@@ -26,15 +26,22 @@ int main() {
     invList.push_back(4);
     Status st(hp, mp, hp, mp, num, num, num, num, money); //money 포함
     Monster mon(st, 1);
+    Character ch(st);
+
+    Inventory inventory(ch);
+    inventory.addSlot(1);
+    inventory.addSlot(2);
+    inventory.addSlot(3);
+    inventory.addSlot(4);
     ch.show_stat();// 스탯 정보 출력
 
-    ch.attack(mon, mp);
+    /*ch.attack(mon, mp);
     cout << mon.get_nhp() << endl; //// hp = 3 , atk = 1 이기때문에 공격을 한번 한다면 hp 2가 되어야 할 것 입니다.
 
     ch.attack(mon, mp);
     mon.attack(ch, mp);
     mon.attack(ch, mp);
-    // 캐릭터와 몬스터의 status가 똑같고 mp 소모량도 20이기 때문에 
+    */// 캐릭터와 몬스터의 status가 똑같고 mp 소모량도 20이기 때문에
     //캐릭터와 몬스터의 hp mp는 두번 공격했을 때 1 -37이 나와야 합니다. 
     cout << mon.get_nhp() << "," << mon.get_nmp() << endl;
     cout << ch.get_nhp() << "," <<ch.get_nmp()<<endl;
@@ -43,12 +50,12 @@ int main() {
     cout << mon.get_money() << endl;
     mon.set_money(2000);
     cout << mon.get_money() << endl;
-
+    inventory.openInv();
     //Shop shop(ch, inv);
     return 0;
 
 }
-
+/*
 Character load(int inum){
     string numstr = to_string(inum);
     string str = "character" + numstr;
@@ -114,20 +121,21 @@ Character load(int inum){
                 money = atoi(ptr);
                 ptr = strtok(NULL, "/");
                 while (ptr != "/") {
-                    myInventory->addSlot(atoi(ptr));
+//                    myInventory->addSlot(atoi(ptr));
                     ptr = strtok(NULL, "\t");
                 }
 
                 stat.set_status(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
             }
         }
+        Character ch(stat);
         file.close();
         cout << "Load가 완료되었습니다." << endl;
-        Character ch(stat);
         return ch;
     } else {
         //warning->printWarning(0, 3);//불러오려는 파일 문법 오류 메세지
         cout << endl;
         //return Character(Status());
     }
-}
+    return Character();
+}*/

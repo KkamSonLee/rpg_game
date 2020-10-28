@@ -6,15 +6,15 @@
 #include "Inventory.h"
 #include "Monster.h"
 #include "Shop.h"
+#include "warningMessage.h"
+#include "Status.h"
 
 using namespace std;
 
-class battle
-{
+class battle{
 public:
-	int Battle(Character& myCharacter, Inventory& myInventory, Monster& nowMonster, int map_num); //ÀüÅõ¿¡ ÀÓÇÏ´Â ÇÔ¼ö
-	void show_Stats(Character& myCharacter, Monster& nowMonster); //½ºÅÈ º¸¿©ÁÖ´Â ÇÔ¼ö
-	void save_character(Character& myCharacter, Inventory& myInventory); //Ä³¸¯ÅÍ Á¤º¸¸¦ ÀúÀåÇÏ´Â ÇÔ¼ö
-	int attack_situation(Character& myCharacter, Inventory& myInventory, Monster& nowMonster, int map_num); //attack ½ÇÇà ½ÃÀÇ »óÈ²À» ³ªÅ¸³½ ÇÔ¼ö
+	int Battle(Character& myCharacter, Inventory& myInventory, Monster& nowMonster, int map_num); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
+	void show_Stats(Character& myCharacter, Monster& nowMonster); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ô¼ï¿½
+	void save_character(Character& myCharacter, Inventory& myInventory); //Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
+	int attack_situation(Character& myCharacter, Inventory& myInventory, Monster& nowMonster, int map_num); //attack ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È²ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½Ô¼ï¿½
 };
-

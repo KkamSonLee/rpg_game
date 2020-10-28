@@ -4,7 +4,7 @@
 #include "Character.h"
 #include "Status.h"
 
-//class Character; //식별자 오류 방지
+class Character; //식별자 오류 방지
 
 class Monster {
 private:

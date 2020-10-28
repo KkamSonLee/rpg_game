@@ -56,7 +56,7 @@ bool Shop::buy(int index, int buyCount) {
         } else {
             for (int i = 1; i <= buyCount; i++) {
                 myInventory.addSlot(index);
-                myInventory.changeMoney(-(myInventory.item.get_item(sellList[index]).at(2)));
+                myInventory.changeMoney(-(myInventory.item.get_item(sellList[index])[2]));
             }
             return true;
         }
@@ -68,7 +68,7 @@ bool Shop::sell(int sellItemNumber) {
         cout << "not vaild\n";
         return false;
     } else {
-        myInventory.changeMoney(myInventory.item.get_item(myInventory.getSlot().at(sellItemNumber)).at(2));
+        myInventory.changeMoney(myInventory.item.get_item(myInventory.getSlot().at(sellItemNumber))[2]);
         myInventory.deleteSlot(sellItemNumber);
         return true;
     }

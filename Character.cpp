@@ -1,10 +1,10 @@
 
 #include "Character.h"
 
-Character::Character(Status& i_status)
+Character::Character(const Status& i_status)
 {
     this->status = i_status;
-    //this->status.set_money(ï¿½Îºï¿½ï¿½ä¸®.get.money())ï¿½ï¿½ ï¿½ï¿½ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ù¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+    //this->status.set_money(ÀÎº¥Åä¸®.get.money())·Î µ·ºÎºÐÀº µû·Î ¹Ù²Ù¾î Áà¾ßÇÔ
 }
 
 Character::~Character()
@@ -14,40 +14,22 @@ void Character::show_stat() {
     this->status.show();
 }
 
-void Character::attack(Monster& mon, int i_mp) {
+void Character::attack(Monster& mon, const int& i_mp) {
     int use_mp = i_mp;
     if (this->get_nmp() < i_mp) {
-        cout << "MPï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½." << endl;
+        cout << "MP°¡ ºÎÁ·ÇÕ´Ï´Ù." << endl;
     }
-    int damage = mon.get_nhp() - (this->get_atk()); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½hp - ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ hpï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
+    int damage = mon.get_nhp() - (this->get_atk()); // µ¥¹ÌÁö¶ó°í ÇÏÁö¸¸ ¸ó½ºÅÍÀÇ ÇöÀçhp - °ø°Ý·Â Áï µ¥¹ÌÁö°¡ µé¾î°£ ÀÌÈÄÀÇ ¸ó½ºÅÍ hp¶ó°í º¸´Â°ÍÀÌ ÀûÀýÇÕ´Ï´Ù.
     mon.set_nhp(damage);
-    this->set_nmp(this->get_nmp() - i_mp); //mp ï¿½Ò¸ï¿½ 20
+    this->set_nmp(this->get_nmp() - i_mp); //mp ¼Ò¸ð·® 20
 }
 
 void Character::check_level() {
-    while (100 < this->get_exp()) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ä±¸ ï¿½ï¿½ï¿½ï¿½Ä¡ 100ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ýºï¿½
+    while (100 < this->get_exp()) { // ·¹º§´ç ¿ä±¸ °æÇèÄ¡ 100¼³Á¤ ·¹¹ú¾÷ ³¡³¯¶§ ±îÁö ¹Ýº¹
         this->set_exp(this->get_exp() - 100);
         this->set_level(get_level() + 1);
     }
 }
-
-void Character::isdead() {
-
-    if (this->status.get_nhp() == 0) {
-        cout << "Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ hpï¿½ï¿½ 0 ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½." << endl;
-        cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½Ï´ï¿½." << endl;
-        this->status.set_nhp(1);
-        //Town.move("town");
-<<<<<<< HEAD
-        //hp ï¿½ï¿½ï¿½ï¿½(now_HP == 1) Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½.
-=======
-        //hp Á¶Àý(now_HP == 1) Å¸¿îÀ¸·Î °©´Ï´Ù.
->>>>>>> 300c9d1b6ca0d7e8a5f9179709b3eadc01788ba2
-    }
-    
-}
-    
-    
 
 ///get
 Status Character::get_stat(){
@@ -64,7 +46,7 @@ int Character::get_mhp() {
 }
 int Character::get_mmp(){
     return this->status.get_mmp();
- }
+}
 int Character::get_atk() {
     return this->status.get_atk();
 }
@@ -79,7 +61,7 @@ int Character::get_location() {
 }
 
 int Character::get_money() {
-    return this->status.get_money(); 
+    return this->status.get_money();
 }
 
 
