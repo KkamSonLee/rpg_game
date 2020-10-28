@@ -16,7 +16,7 @@ public:
     ~Character();
 
     void show_stat(); //sata 전체 출력
-    void attack(Monster& mon); // 공격함수 공격할 몬스터의 정보를 바꿔줘야 하기 때문에 참조값 사용
+    void attack(Monster& mon, const int& i_mp); // 공격함수 공격할 몬스터의 정보를 바꿔줘야 하기 때문에 참조값 사용
     void check_level(); // 레벌업 검사 및 레벨 관련 정보만 변경해주는 함수 입니다. status 전체를 수정하지 않아도 됩니다.
     
     Status get_stat();

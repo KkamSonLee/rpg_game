@@ -19,14 +19,14 @@ Monster::~Monster(){
 }
 
 
-void Monster::attack(Character& i_ch) {
-    int use_mp = 20;
-    if (this->get_nmp() < use_mp) {
+void Monster::attack(Character& i_ch , const int& i_mp) {
+    int use_mp = i_mp;
+    if (this->get_nmp() < i_mp) {
         cout << "MP가 부족합니다."
     }
     int damage = i_ch.get_nhp() - (this->get_atk());// 데미지 캐릭터의 현재 hp - 몬스터의 공격력
     i_ch.set_nhp(damage); // 데미지라는 변수로 공격대상 캐릭터의 hp 바꿔준다.
-    this->set_nmp(this->get_nmp() - use_mp); //몬스터 mp 20 감소 시켜준다.
+    this->set_nmp(this->get_nmp() - i_mp); //몬스터 mp를 매개변수 받는 만큼 감소 시켜준다.
 
 }
 
@@ -42,7 +42,7 @@ void Monster::change(const int& num, Status st) { // 몬스터 번호에 해당하는 기본
 ///get
 string Monster::get_name(const int& num) {// 몬스터 번호를 입력하면 해당 몬스터의 이름을 반환합니다. 다만 status에서는 몬스터 이름 정보를 줄수 없기 떄문에 코드 내부에서 정적배열을 통해서
     // 정하는 방식을 사용했습니다. 
-    return this->namelist[num - 1];
+    return this->namelist[num - 1]; // 배열인데 이거는 0이 비워져 있는 배열이 아니기 때문에 
 }
 Status Monster::get_Monsterstat() {
     return this->monsterStatus; //몬스터의 기본정보가 아닌 몬스터의 현재 정보

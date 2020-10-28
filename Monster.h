@@ -21,7 +21,7 @@ public:
     ~Monster();
     
 
-    void attack(Character& ch); // 공격할 캐릭터의 스탯값을 바꿔줘야 하기때문에 참조값 사용
+    void attack(Character& ch, const int& mp); // 공격할 캐릭터의 스탯값을 바꿔줘야 하기때문에 참조값 사용
     void reset(const int& num); // 몬스터 hp,mp 재설정
     void change(const int& num, Status st); // 몬스터 기본 정보 변경 회의때 논의
 
@@ -36,10 +36,10 @@ public:
     int get_mhp();
     int get_mmp();
     int get_atk();
-    int get_exp();
+    int get_exp();// 몬스터가 줄 경험치
     int get_level();
     int get_location();
-    int get_money(); 
+    int get_money(); // 몬스터가 줄 돈
 
     void setMonsterNum(int num);
 
