@@ -9,13 +9,21 @@
 int main() {
     int num = 1;
     int hp = 3;
-    int mp = 100
+    int mp = 100;
     int money = 4000;
+    vector<int> inven;
+    inven.push_back(1);
+    inven.push_back(2);
+    inven.push_back(3);
+    inven.push_back(4);
     Status st(hp, mp, hp, mp, num, num, num, num, money); //money 포함
     Character ch(st);
     Monster mon(st, 1);
+    Inventory inv(ch);
+    inv.addSlotArr(inven);
+    inv.openInv();
 
-
+    Shop myshop(ch, inv);
     ch.show_stat();// 스탯 정보 출력
 
     ch.attack(mon, 10);

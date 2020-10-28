@@ -8,7 +8,7 @@ int sellList[4] = {1, 2, 3, 4};
 
 Shop::Shop(Character& myCharacter, Inventory& myInventory) :myInventory(myCharacter) {
     int index, sellCount;
-    myCharacter.set_money(myInventory.getMoney());
+
     showShop();
     bool loop = true;
     while(loop) {
