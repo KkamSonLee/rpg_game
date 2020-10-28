@@ -19,7 +19,7 @@ Monster::~Monster(){
 }
 
 
-void Monster::attack(Character& i_ch , const int& i_mp) {
+void Monster::attack(Character& i_ch , int i_mp) {
     int use_mp = i_mp;
     if (this->get_nmp() < i_mp) {
         cout << "MP가 부족합니다." << endl;

@@ -14,7 +14,7 @@ void Character::show_stat() {
     this->status.show();
 }
 
-void Character::attack(Monster& mon, const int& i_mp) {
+void Character::attack(Monster& mon, int i_mp) {
     int use_mp = i_mp;
     if (this->get_nmp() < i_mp) {
         cout << "MP가 부족합니다." << endl;
