@@ -62,7 +62,6 @@ int Character::get_location() {
 
 int Character::get_money() {
     return this->status.get_money(); 
-    //현재만 객체에서 받아오고 이후에는 인벤토리.getmoney로 해주어야 한다. 
 }
 
 
@@ -97,7 +96,6 @@ void Character::set_location(int i_location) {
 }
 void Character::set_money(int i_money) {
     this->status.set_money(i_money);
-    //이후에 인벤토리랑 연관 시켜줘야 한다. 
 }
 
 
