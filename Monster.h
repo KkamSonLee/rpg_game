@@ -21,7 +21,7 @@ public:
     ~Monster();
     
 
-    void attack(Character& ch); // 공격할 캐릭터의 스탯값을 바꿔줘야 하기때문에 참조값 사용
+    void attack(Character& ch, const int& mp); // 공격할 캐릭터의 스탯값을 바꿔줘야 하기때문에 참조값 사용
     void reset(const int& num); // 몬스터 hp,mp 재설정
     void change(const int& num, Status st); // 몬스터 기본 정보 변경 회의때 논의
 

@@ -19,14 +19,14 @@ Monster::~Monster(){
 }
 
 
-void Monster::attack(Character& i_ch) {
-    int use_mp = 20;
-    if (this->get_nmp() < use_mp) {
+void Monster::attack(Character& i_ch , const int& i_mp) {
+    int use_mp = i_mp;
+    if (this->get_nmp() < i_mp) {
         cout << "MP가 부족합니다."
     }
     int damage = i_ch.get_nhp() - (this->get_atk());// 데미지 캐릭터의 현재 hp - 몬스터의 공격력
     i_ch.set_nhp(damage); // 데미지라는 변수로 공격대상 캐릭터의 hp 바꿔준다.
-    this->set_nmp(this->get_nmp() - use_mp); //몬스터 mp 20 감소 시켜준다.
+    this->set_nmp(this->get_nmp() - i_mp); //몬스터 mp를 매개변수 받는 만큼 감소 시켜준다.
 
 }
 
