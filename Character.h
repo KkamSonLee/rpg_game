@@ -12,7 +12,7 @@ private:
 
 
 public:
-    Character(const Status i_status);
+    Character(const Status& i_status);
     ~Character();
 
     void show_stat(); //sata 전체 출력

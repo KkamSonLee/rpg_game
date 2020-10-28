@@ -6,11 +6,11 @@ Monster::Monster()
     :MonsterNum(0){
 }
 
-Monster::Monster(const Status i_status, const int& i_MonsterNum)
+Monster::Monster(const Status& i_status, const int& i_MonsterNum)
     :MonsterNum(0)
 {
     this->monsterStatus = i_status;
-    Monsterlist[i_MonsterNum] = this->i_status; // 몬스터의 기본정보를 설정, 몬스터 도감에 해당하는 번호에 몬스터 기본 정보 저장
+    Monsterlist[i_MonsterNum] = i_status; // 몬스터의 기본정보를 설정, 몬스터 도감에 해당하는 번호에 몬스터 기본 정보 저장
     this->MonsterNum = i_MonsterNum;
    
 }
@@ -31,7 +31,7 @@ void Monster::attack(Character& i_ch , const int& i_mp) {
 }
 
 void Monster::reset(const int& num) {
-    this->monsterStatus = monsterlist[num]; // 몬스터의 현재 정보를 몬스터가 가지고 있는 기본 정보로 재설정
+    this->monsterStatus = Monsterlist[num]; // 몬스터의 현재 정보를 몬스터가 가지고 있는 기본 정보로 재설정
 }
 
 void Monster::change(const int& num, Status st) { // 몬스터 번호에 해당하는 기본정보객체 반환 

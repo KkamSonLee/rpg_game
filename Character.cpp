@@ -1,7 +1,7 @@
 
 #include "Character.h"
 
-Character::Character(const Status i_status)
+Character::Character(const Status& i_status)
 {
     this->status = i_status;
     //this->status.set_money(인벤토리.get.money())로 돈부분은 따로 바꾸어 줘야함

@@ -20,7 +20,7 @@ private:
 
 public:
     Status(); // »∏¿«∂ß ≥Ì¿«
-    Status(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location , int i_money); // ∞¥√º
+    Status(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location , int& i_money); // ∞¥√º
     ~Status();
 
     void show();
