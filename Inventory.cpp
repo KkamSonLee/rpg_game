@@ -15,6 +15,7 @@ void Inventory::printInvList() {
 }
 
 void Inventory::openInv() {
+    character.set_money(money);
     cout << "now Money : " << money << "$\n";
     int choice;
     bool loop = true;

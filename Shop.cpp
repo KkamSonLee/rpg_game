@@ -8,6 +8,7 @@ int sellList[4] = {1, 2, 3, 4};
 
 Shop::Shop(Character& myCharacter, Inventory& myInventory) :myInventory(myCharacter) {
     int index, sellCount;
+    myCharacter.set_money(myInventory.getMoney());
     showShop();
     bool loop = true;
     while(loop) {
@@ -31,6 +32,7 @@ Shop::Shop(Character& myCharacter, Inventory& myInventory) :myInventory(myCharac
 
 void Shop::showShop() {
     vector<int> temp = myInventory.getSlot();
+
     cout << "------sell List------\n";
     for (int j = 1; j <= (sizeof(sellList) / sizeof(int)); j++) {
         cout << j << ". " << myInventory.item.get_itemName(sellList[j - 1]) << "\n";
@@ -61,7 +63,6 @@ bool Shop::buy(int index, int buyCount) {
 bool Shop::sell(int sellItemNumber) {
     if (sellItemNumber > myInventory.getSlot().size() || sellItemNumber < 0) {
         cout << "not vaild\n";
-
         return false;
     } else {
         myInventory.changeMoney(myInventory.item.get_item(myInventory.getSlot().at(sellItemNumber)).at(2));
