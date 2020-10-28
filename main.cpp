@@ -2,7 +2,6 @@
 #include "Monster.h"
 #include "Character.h"
 #include <conio.h>
-
 int main() {
     int num = 1;
     int hp = 3;
