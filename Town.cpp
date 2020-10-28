@@ -109,30 +109,25 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
 	strcpy(savefilename, sfilename.c_str());
 
 	vector<int> sitem;
+	vector<int> sstat;
 	sitem = myinventory.getSlot();
+	sstat = charstat.getstatus();
 	ofstream sfile(savefilename);
 
 	if (sfile.is_open()) {
-		sfile << character.get_level();
-		sfile << "\t";
-		sfile << character.get_exp();
-		sfile << "\t";
-		sfile << character.get_mhp();
-		sfile << "\t";
-		sfile << character.get_mmp();
-		sfile << "\t";
-		sfile << character.get_nhp();
-		sfile << "\t";
-		sfile << character.get_nmp();
-		sfile << "\t";
-		sfile << character.get_atk();
-		sfile << "\t";
-		sfile << character.get_location();
-		sfile << "\t";
-		sfile << character.get_money();
-		sfile << "\t";
-		sfile << "/";
-		for (vector<int>::iterator iter = sitem.begin;iter != sitem.end();++iter) {
+		for (vector<int>::iterator iter = sstat.begin();iter != sstat.end();++iter) {
+			if (sstat.end() == ++iter) {
+				sfile << *iter;
+				sfile << "\t";
+				sfile << "/";
+				break;
+			}
+			else {
+				sfile << *iter << "\t";
+			}
+		}
+		
+		for (vector<int>::iterator iter = sitem.begin();iter != sitem.end();++iter) {
 			if (sitem.end() == ++iter) {
 				sfile << *iter;
 				sfile << "/";
