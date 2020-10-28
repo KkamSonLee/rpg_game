@@ -42,7 +42,7 @@ void Monster::change(const int& num, Status st) { // 몬스터 번호에 해당하는 기본
 ///get
 string Monster::get_name(const int& num) {// 몬스터 번호를 입력하면 해당 몬스터의 이름을 반환합니다. 다만 status에서는 몬스터 이름 정보를 줄수 없기 떄문에 코드 내부에서 정적배열을 통해서
     // 정하는 방식을 사용했습니다. 
-    return this->namelist[num - 1];
+    return this->namelist[num - 1]; // 배열인데 이거는 0이 비워져 있는 배열이 아니기 때문에 
 }
 Status Monster::get_Monsterstat() {
     return this->monsterStatus; //몬스터의 기본정보가 아닌 몬스터의 현재 정보

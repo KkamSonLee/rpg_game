@@ -36,10 +36,10 @@ public:
     int get_mhp();
     int get_mmp();
     int get_atk();
-    int get_exp();
+    int get_exp();// 몬스터가 줄 경험치
     int get_level();
     int get_location();
-    int get_money(); 
+    int get_money(); // 몬스터가 줄 돈
 
     void setMonsterNum(int num);
 
