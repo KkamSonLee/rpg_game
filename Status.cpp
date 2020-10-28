@@ -129,7 +129,6 @@ int Status::get_location(){
 int Status::get_money() {
     return this->money;
 }
-
 vector<int> Status::getstatus() {
     return this->stat_list;
 }

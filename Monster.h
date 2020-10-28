@@ -16,7 +16,7 @@ private:
 
 public:
 
-    Monster(); // 회의때 논의
+    Monster();
     Monster(const Status& i_status, const int& MonsterNum);
     ~Monster();
     
