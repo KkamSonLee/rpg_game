@@ -16,21 +16,21 @@
 #include "windows.h"
 using namespace std;
 
+Character* character;
+Status* charstat;
+Inventory* myinventory;
+Item* charitem = new Item();
+battle* charbattle = new battle();
+Shop* myshop;
+character_Integrity_Check* charcheck = new character_Integrity_Check();
+warningMessage* warning = new warningMessage();
+
 int max_slot = 10;//캐릭터 파일 최대 슬롯 10으로 설정
 
 Town::Town() {}
 Town::~Town() {}
 
 void Town::choice() {
-	Character* character;
-	Status* charstat;
-	Inventory* myinventory;
-	Item* charitem = new Item();
-	battle* charbattle = new battle();
-	Shop* myshop;
-	character_Integrity_Check* charcheck = new character_Integrity_Check();
-	warningMessage* warning = new warningMessage();
-
 	string select;
 	string mselect;
 	string nselect;
@@ -38,49 +38,49 @@ void Town::choice() {
 	getline(cin, select);
 	istringstream ss(select);
 	ss >> mselect >> nselect;
-	if (mselect == "help"&&is_digit(nselect)==0) {
+	if (mselect == "help" && is_digit(nselect) == 0) {
 		help();
 	}
-	else if (mselect=="save"&&is_digit(nselect)==1) {
+	else if (mselect == "save" && is_digit(nselect) == 1) {
 		int i = std::stoi(nselect);
 		if (i <= max_slot) {
 			save(i);
 		}
 		else {
 			warning.printWarning(6);
-			endl;
+			cout << endl;
 			choice();
 		}
 	}
-	else if (mselect == "quit"&& is_digit(nselect) == 0) {
+	else if (mselect == "quit" && is_digit(nselect) == 0) {
 		quit();
 	}
-	else if (mselect == "load"&& is_digit(nselect) == 1) {
+	else if (mselect == "load" && is_digit(nselect) == 1) {
 		int j = std::stoi(nselect);
 		if (j <= max_slot) {
 			load(j);
 		}
 		else {
 			warning.printWarning(6);//캐릭터 파일 최대 슬롯 초과 오류 메세지
-			endl;
+			cout << endl;
 			choice();
 		}
 	}
-	else if (select == "inventory"&& is_digit(nselect) == 0) {
+	else if (select == "inventory" && is_digit(nselect) == 0) {
 		inventory();
 	}
-	else if (select == "move"&&(nselect=="dungeon"||nselect=="boss"||nselect=="town")) {
+	else if (select == "move" && (nselect == "dungeon" || nselect == "boss" || nselect == "town")) {
 		move(nselect);
 	}
-	else if (select == "shop"&& is_digit(nselect) == 0) {
+	else if (select == "shop" && is_digit(nselect) == 0) {
 		shop();
 	}
-	else if (select == "stat"&& is_digit(nselect) == 0) {
+	else if (select == "stat" && is_digit(nselect) == 0) {
 		stat();
 	}
 	else {
 		warning.printWarning(0);//문법에 맞지 않는 오류메세지
-		endl;
+		cout << endl;
 		choice();
 	}
 }
@@ -144,7 +144,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
 		}
 		sfile.close();
 	}
-	
+
 	charcheck.check(sfilename);
 	if (true) {
 		cout << "현재 데이터를 세이브합니다." << endl;
@@ -152,7 +152,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
 	}
 	else {
 		warning.printWarning(4);//파일 저장 실패 오류 메세지
-		endl;
+		cout << endl;
 		choice();
 	}
 }
@@ -171,7 +171,7 @@ void Town::quit() {
 }
 
 void Town::load(int lnum) {//캐릭터 파일의 숫자를 인자로 받아 파일 읽어서 캐릭터 정보에 load
-	
+
 	string numstr = to_string(lnum);
 	string str = "character" + numstr;
 	stringstream ss;
@@ -179,7 +179,7 @@ void Town::load(int lnum) {//캐릭터 파일의 숫자를 인자로 받아 파�
 	string filename = ss.str();
 	char charfilename[20];
 	strcpy(charfilename, filename.c_str());
-	
+
 	int level;
 	int exp;
 	int mhp;
@@ -242,7 +242,7 @@ void Town::load(int lnum) {//캐릭터 파일의 숫자를 인자로 받아 파�
 	}
 	else {
 		warning.printWarning(3);//불러오려는 파일 문법 오류 메세지
-		endl;
+		cout << endl;
 		choice();
 	}
 }
@@ -290,7 +290,7 @@ void Town::stat() {
 		for (vector<int>::iterator iter = mtinventory.getSlot().begin();iter != myinventory.getSlot().end();iter++) {
 			cout << charitem().get_itemName(*(iter));
 		}
-		endl;
+		cout << endl;
 		choice();
 	}
 	else {
