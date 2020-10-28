@@ -2,6 +2,10 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "Character.h"
+#include "Inventory.h"
+#include "Monster.h"
+#include "Shop.h"
 
 using namespace std;
 

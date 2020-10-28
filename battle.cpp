@@ -1,9 +1,5 @@
 #include "Status.h"
 #include "battle.h"
-#include "Character.h"
-#include "Inventory.h"
-#include "Monster.h"
-#include "Shop.h"
 #include "warningMessage.h"
 
 int battle::Battle(Character &myCharacter, Inventory &myInventory, Monster &nowMonster, int map_num) //전투에 임하는 함수
@@ -61,7 +57,7 @@ void battle::save_character(Character& myCharacter, Inventory& myInventory) //캐
 	vector<int> for_save_status; //스탯 저장을 위한 임시 벡터
 	vector<int> for_save_slot; //아이템 저장을 위한 임시 벡터
 	for_save_slot = myInventory.getSlot(); //아이템 slot의 정보를 넘겨준다
-	for_save_status = myCharacter.getstatus(); //스탯 저장을 위해 정보를 넘겨준다
+	for_save_status = myCharacter.get_stat().getstatus(); //스탯 저장을 위해 정보를 넘겨준다
 	ofstream fout; //파일 출력 객체 생성
 	fout.open("character.txt"); //character.txt라는 파일 열기(기존의 파일 내용은 삭제)
 	//캐릭터가 가지고 있는 모든 stat에 관한 정보를 형식에 맞게 txt 파일에 출력할 것입니다.
@@ -97,7 +93,7 @@ int battle::attack_situation(Character& myCharacter, Inventory& myInventory, Mon
 		myCharacter.attack(nowMonster, 20); //캐릭터가 몬스터 공격
 		if (nowMonster.get_nhp() > 0) //몬스터의 체력이 0 이상이라면
 		{
-			nowMonster.attack(myCharacter); //몬스터가 캐릭터 공격
+			nowMonster.attack(myCharacter, 0); //몬스터가 캐릭터 공격
 			if (myCharacter.get_nhp() <= 0) //캐릭터의 현재 hp가 0 이하라면
 			{
 				std::cout << "캐릭터의 현재 hp가 0 이하입니다.\n";
