@@ -1,5 +1,3 @@
-#include "Town.h"
-#include "Character.h"
 #include "Inventory.h"
 #include "Item.h"
 #include "Shop.h"
@@ -18,7 +16,7 @@
 using namespace std;
 
 Character* character;
-Status* charstat;
+Status* charstat = new Status();
 Inventory* myinventory;
 Item* charitem = new Item();
 battle* charbattle = new battle();
@@ -51,7 +49,7 @@ void Town::choice() {
 			save(i);
 		}
 		else {
-			warning.printWarning(0, 6);
+			warning->printWarning(0, 6);
 			cout << endl;
 			choice();
 		}
@@ -65,7 +63,7 @@ void Town::choice() {
 			load(j);
 		}
 		else {
-			warning.printWarning(0, 6);//캐릭터 파일 최대 슬롯 초과 오류 메세지
+			warning->printWarning(0, 6);//캐릭터 파일 최대 슬롯 초과 오류 메세지
 			cout << endl;
 			choice();
 		}
@@ -83,7 +81,7 @@ void Town::choice() {
 		stat();
 	}
 	else {
-		warning.printWarning(0, 0);//문법에 맞지 않는 오류메세지
+		warning->printWarning(0, 0);//문법에 맞지 않는 오류메세지
 		cout << endl;
 		choice();
 	}
@@ -114,8 +112,8 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
 
 	vector<int> sitem;
 	vector<int> sstat;
-	sitem = myinventory.getSlot();
-	sstat = charstat.getstatus();
+	sitem = myinventory->getSlot();
+	sstat = charstat->getstatus();
 	ofstream sfile(savefilename);
 
 	if (sfile.is_open()) {
@@ -130,7 +128,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
 				sfile << *iter << "\t";
 			}
 		}
-		
+
 		for (vector<int>::iterator iter = sitem.begin();iter != sitem.end();++iter) {
 			if (sitem.end() == ++iter) {
 				sfile << *iter;
@@ -144,13 +142,13 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
 		sfile.close();
 	}
 
-	charcheck.load_set(sfilename);
+	charcheck->load_set(sfilename);
 	if (true) {
 		cout << "현재 데이터를 세이브합니다." << endl;
 		choice();
 	}
 	else {
-		warning.printWarning(0, 4);//파일 저장 실패 오류 메세지
+		warning->printWarning(0, 4);//파일 저장 실패 오류 메세지
 		cout << endl;
 		choice();
 	}
@@ -192,7 +190,7 @@ void Town::load(int lnum) {//캐릭터 파일의 숫자를 인자로 받아 파�
 	int location;
 	int money;
 
-	charcheck.load_set(filename);
+	charcheck->load_set(filename);
 	if (true) {
 		ifstream file(charfilename);
 		if (!file.is_open()) {
@@ -202,8 +200,18 @@ void Town::load(int lnum) {//캐릭터 파일의 숫자를 인자로 받아 파�
 				newfile << basicstat;
 				newfile.close();
 			}
-			charstat = new Status(100, 50, 100, 50, 10, 0, 1, 0, 0);
-			character = new Character(charstat);
+			level = 1;
+			exp = 0;
+			mhp = 100;
+			mmp = 50;
+			nhp = 100;
+			nmp = 50;
+			atk = 10;
+			location = 0;
+			money = 0;
+
+			charstat->set_status(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
+			character->set_stat(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
 		}
 		else {
 			char buffer[100];
@@ -230,12 +238,12 @@ void Town::load(int lnum) {//캐릭터 파일의 숫자를 인자로 받아 파�
 				money = atoi(ptr);
 				ptr = strtok(NULL, "/");
 				while (ptr != "/") {
-					myinventory.addSlot(ptr);
+					myinventory->addSlot(atoi(ptr));
 					ptr = strtok(NULL, "\t");
 				}
 
-				charstat = new Status(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
-				character = new Character(charstat);
+				charstat->set_status(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
+				character->set_stat(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
 			}
 		}
 		file.close();
@@ -243,23 +251,25 @@ void Town::load(int lnum) {//캐릭터 파일의 숫자를 인자로 받아 파�
 		choice();
 	}
 	else {
-		warning.printWarning(0, 3);//불러오려는 파일 문법 오류 메세지
+		warning->printWarning(0, 3);//불러오려는 파일 문법 오류 메세지
 		cout << endl;
 		choice();
 	}
 }
 
 void Town::inventory() {
-	myinventory = new Inventory(character);
+	myinventory=new Inventory(character);
 	choice();
 }
 
-void Town::move(string place) {//monster를 어떻게 해야할지 몰라 일단 주석처리하였습니다
+void Town::move(string place) {
 	if (place == "dungeon") {
-		mapcheck.load_set(map2);
+		string map2 = "map2";
+		mapcheck->load_set(map2);
 		if (1 || 3) {
 			char mapinfo[100];
 			char mapinfo2[100];
+			int dmonNum;
 			ifstream mf;
 			mf.open(map2);
 			mf.getline(mapinfo, 100);
@@ -270,8 +280,8 @@ void Town::move(string place) {//monster를 어떻게 해야할지 몰라 일단
 			dmonNum = atoi(mptr);
 			Monster dm;
 			dungeonmonster = new Monster(dm.get_MonsterInfo(dmonNum), dmonNum);
-			character.set_location(2);
-			charbattle.Battle(character, myinventory, dungeonmonster, 2);
+			character->set_location(2);
+			charbattle->Battle(character, myinventory, dungeonmonster, 2);
 			if (1) {
 				choice();
 			}
@@ -281,10 +291,12 @@ void Town::move(string place) {//monster를 어떻게 해야할지 몰라 일단
 		}
 	}
 	else if (place == "boss") {
-		mapcheck.load_set(map3);
+		string map3="map3";
+		mapcheck->load_set(map3);
 		if (1 || 3) {
 			char bmapinfo[100];
 			char bmapinfo2[100];
+			int bmonNum;
 			ifstream bmf;
 			bmf.open(map3);
 			bmf.getline(bmapinfo, 100);
@@ -295,8 +307,8 @@ void Town::move(string place) {//monster를 어떻게 해야할지 몰라 일단
 			bmonNum = atoi(bmptr);
 			Monster bm;
 			bossmonster = new Monster(bm.get_MonsterInfo(bmonNum), bmonNum);
-			character.set_location(3);
-			charbattle.Battle(character, myinventory, bossmonster, 3);
+			character->set_location(3);
+			charbattle->Battle(character, myinventory, bossmonster, 3);
 			if (1) {
 				choice();
 			}
@@ -305,28 +317,29 @@ void Town::move(string place) {//monster를 어떻게 해야할지 몰라 일단
 			choice();
 		}
 	}
-	else {//move town
-		character.set_location(1);
+	else {
+		character->set_location(1);
 		choice();
 	}
+
 }
 
 void Town::shop() {
-	myshop = new Shop(character, myinventory);
+	myshop=new Shop(character, myinventory);
 	choice();
 }
 
 void Town::stat() {
-	cout << "level : " << charstat.get_level() << endl;
-	cout << "HP : " << charstat.get_nhp() << "/" << charstat.get_mhp() << endl;
-	cout << "MP : " << charstat.get_nmp() << "/" << charastat.get_mmp() << endl;
-	cout << "exp : " << charstat.get_exp() << endl;
-	cout << "Atk : " << charstat.get_atk() << endl;
-	cout << "money : " << charstat.get_money() << "메소" << endl;
-	if (!myinventory.getSlot().empty()) {
+	cout << "level : " << charstat->get_level() << endl;
+	cout << "HP : " << charstat->get_nhp() << "/" << charstat->get_mhp() << endl;
+	cout << "MP : " << charstat->get_nmp() << "/" << charstat->get_mmp() << endl;
+	cout << "exp : " << charstat->get_exp() << endl;
+	cout << "Atk : " << charstat->get_atk() << endl;
+	cout << "money : " << charstat->get_money() << "메소" << endl;
+	if (!myinventory->getSlot().empty()) {
 		cout << "item : ";
-		for (vector<int>::iterator iter = mtinventory.getSlot().begin();iter != myinventory.getSlot().end();iter++) {
-			cout << charitem().get_itemName(*(iter));
+		for (vector<int>::iterator iter = myinventory->getSlot().begin();iter != myinventory->getSlot().end();iter++) {
+			cout << charitem->get_itemName(*(iter));
 		}
 		cout << endl;
 		choice();
