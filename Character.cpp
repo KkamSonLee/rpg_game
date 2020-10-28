@@ -17,7 +17,7 @@ void Character::show_stat() {
 void Character::attack(Monster& mon, const int& i_mp) {
     int use_mp = i_mp;
     if (this->get_nmp() < i_mp) {
-        cout << "MP가 부족합니다." << ebdl;
+        cout << "MP가 부족합니다." << endl;
     }
     int damage = mon.get_nhp() - (this->get_atk()); // 데미지라고 하지만 몬스터의 현재hp - 공격력 즉 데미지가 들어간 이후의 몬스터 hp라고 보는것이 적절합니다.
     mon.set_nhp(damage);
