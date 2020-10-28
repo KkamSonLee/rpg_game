@@ -16,4 +16,5 @@ public:
 	void move(std::string);
 	void shop();
 	void stat();
+	bool is_digit(string);
 };
