@@ -28,7 +28,7 @@ public:
     int get_exp();
     int get_level();
     int get_location();
-    int get_money(); //돈의 실질적인 관리는 무조건 인벤토리에서
+    int get_money(); 
 
 
     void set_stat(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location, int& i_money);
