@@ -3,7 +3,7 @@
 Status Monster::Monsterlist[99]; // 몬스터의 기본정보들을 담고있습니다(몬스터 도감 같은 개념)
 const string Monster::namelist[4] = { "슬라임", "주황버섯", "리본돼지", "스텀프" };
 Monster::Monster()
-    :Status(), MonsterNum(0){
+    : MonsterNum(0){
 }
 
 Monster::Monster(const Status& i_status, const int& i_MonsterNum)
