@@ -304,6 +304,60 @@ Status.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Status.cpp.s
 .PHONY : Status.cpp.s
 
+Town.obj: Town.cpp.obj
+
+.PHONY : Town.obj
+
+# target to build an object file
+Town.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Town.cpp.obj
+.PHONY : Town.cpp.obj
+
+Town.i: Town.cpp.i
+
+.PHONY : Town.i
+
+# target to preprocess a source file
+Town.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Town.cpp.i
+.PHONY : Town.cpp.i
+
+Town.s: Town.cpp.s
+
+.PHONY : Town.s
+
+# target to generate assembly for a file
+Town.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Town.cpp.s
+.PHONY : Town.cpp.s
+
+character_integrity_check.obj: character_integrity_check.cpp.obj
+
+.PHONY : character_integrity_check.obj
+
+# target to build an object file
+character_integrity_check.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/character_integrity_check.cpp.obj
+.PHONY : character_integrity_check.cpp.obj
+
+character_integrity_check.i: character_integrity_check.cpp.i
+
+.PHONY : character_integrity_check.i
+
+# target to preprocess a source file
+character_integrity_check.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/character_integrity_check.cpp.i
+.PHONY : character_integrity_check.cpp.i
+
+character_integrity_check.s: character_integrity_check.cpp.s
+
+.PHONY : character_integrity_check.s
+
+# target to generate assembly for a file
+character_integrity_check.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/character_integrity_check.cpp.s
+.PHONY : character_integrity_check.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -330,6 +384,33 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+warningMessage.obj: warningMessage.cpp.obj
+
+.PHONY : warningMessage.obj
+
+# target to build an object file
+warningMessage.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/warningMessage.cpp.obj
+.PHONY : warningMessage.cpp.obj
+
+warningMessage.i: warningMessage.cpp.i
+
+.PHONY : warningMessage.i
+
+# target to preprocess a source file
+warningMessage.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/warningMessage.cpp.i
+.PHONY : warningMessage.cpp.i
+
+warningMessage.s: warningMessage.cpp.s
+
+.PHONY : warningMessage.s
+
+# target to generate assembly for a file
+warningMessage.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/warningMessage.cpp.s
+.PHONY : warningMessage.cpp.s
 
 # Help Target
 help:
@@ -358,9 +439,18 @@ help:
 	@echo ... Status.obj
 	@echo ... Status.i
 	@echo ... Status.s
+	@echo ... Town.obj
+	@echo ... Town.i
+	@echo ... Town.s
+	@echo ... character_integrity_check.obj
+	@echo ... character_integrity_check.i
+	@echo ... character_integrity_check.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... warningMessage.obj
+	@echo ... warningMessage.i
+	@echo ... warningMessage.s
 .PHONY : help
 
 

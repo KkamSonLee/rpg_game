@@ -9,17 +9,16 @@
 using namespace std;
 
 character_integrity_check *charcheck = new character_integrity_check();
-map_integrity_check *mapcheck = new map_integrity_check();
+//map_integrity_check *mapcheck = new map_integrity_check();
 warningMessage *warning = new warningMessage();
-
-
-Town::Town(const Character& myCharacter):myCharacter(myCharacter){
+Town::Town(Character& myCharacter):myCharacter(myCharacter), myInventory(myCharacter){
     int max_slot = 10;//캐릭터 파일 최대 슬롯 10으로 설정
+
     choice();
 }
 Town::~Town() {}
 
-void Town::choice() {
+void Town::choice() {/*
     string select;
     string mselect;
     string nselect;
@@ -52,7 +51,7 @@ void Town::choice() {
         warning->printWarning(0, 0);//문법에 맞지 않는 오류메세지
         cout << endl;
         choice();
-    }
+    }*/
 }
 
 void Town::help() {

@@ -12,6 +12,8 @@
     <file url="file://$PROJECT_DIR$/Status.h" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/battle.cpp" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/main.cpp" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/warningMessage.cpp" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/warningMessage.h" charset="x-windows-949" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

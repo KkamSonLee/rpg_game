@@ -36,10 +36,10 @@ void Inventory::openInv() {
             closeInv();
             break;
         } else if (choice >= 1 && choice <= slot.size()) {
-            int* tempvec = (item.get_item(slot.at(choice - 1)));
+            int *tempvec = (item.get_item(slot.at(choice - 1)));
             cout << *(tempvec) << "\n";
-            cout << *(tempvec+1) << "\n";
-            cout << *(tempvec+2) << "\n";
+            cout << *(tempvec + 1) << "\n";
+            cout << *(tempvec + 2) << "\n";
             if (choice == 1) {
                 cout << "already use equip\n";
             } else if (tempvec[0] == 1) {//itemType
@@ -56,7 +56,7 @@ void Inventory::openInv() {
 }
 
 void Inventory::changeequip(int nowAtk, int choice) {
-    character.set_atk((character.get_atk() - nowAtk) + (item.get_item(slot.at(choice-1))[1]));
+    character.set_atk((character.get_atk() - nowAtk) + (item.get_item(slot.at(choice - 1))[1]));
     int temp = slot.at(0);
     slot.at(0) = slot.at(choice - 1);
     slot.at(choice - 1) = temp;
@@ -106,4 +106,7 @@ int Inventory::getMoney() {
 
 vector<int> Inventory::getSlot() {
     return slot;
+}
+void Inventory::slotClear(){
+    slot.clear();
 }

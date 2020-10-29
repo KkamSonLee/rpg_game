@@ -51,7 +51,7 @@ void Status::show(){
 void Status::set_status(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location, int& i_money)
 {
     this->max_HP = i_max_HP;
-    this->max_HP = i_max_MP;
+    this->max_MP = i_max_MP;
     this->now_HP = i_now_HP;
     this->now_MP = i_now_MP;
     this->atk = i_atk;

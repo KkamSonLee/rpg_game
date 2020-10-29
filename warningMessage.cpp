@@ -25,6 +25,7 @@ int warningMessage::printWarning(int e_or_w, int warningNum)
 	{
 		return e_or_w; //오류 메시지임을 알려주는 정수(여기선 0)을 return 해준다
 	}
+	return 0;
 }
 
 string warningMessage::get_WarningMessage(int warningNum)

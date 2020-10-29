@@ -9,9 +9,9 @@ vector<int> temp;
 Shop::Shop(Character& myCharacter, Inventory& myInventory):myInventory(myInventory), myCharacter(myCharacter){
     int index, sellCount;
 
-    showShop();
     bool loop = true;
     while(loop) {
+        showShop();
         cout << "\n어떤 동작을 하시겠습니까?\n";
         cin >> choice;
         if (choice == "buy") {
@@ -24,7 +24,6 @@ Shop::Shop(Character& myCharacter, Inventory& myInventory):myInventory(myInvento
             cin >> index;
             loop = sell(index);
             cout << "now money : " << myCharacter.get_money() << "\n";
-            myInventory.printInvList();
         } else if (choice == "return") {
             loop = false;
         } else{
@@ -46,12 +45,13 @@ void Shop::showShop() {
 }
 
 bool Shop::buy(int index, int buyCount) {
+    warningMessage wm;
     if (index >= (sizeof(sellList) / sizeof(int)) || index < 0) {
-        //WarningMessage.printWarning(0, "not valid index");
+                wm.printWarning(0, 1);
         return false;
     } else {
         if (myInventory.getSlot().size() + buyCount > 10) {
-            //WarningMessage.printWarning(3, "not valid count");
+            wm.printWarning(3, 1);
             return false;
         } else {
             for (int i = 1; i <= buyCount; i++) {
@@ -64,12 +64,18 @@ bool Shop::buy(int index, int buyCount) {
 }
 
 bool Shop::sell(int sellItemNumber) {
-    if (sellItemNumber > temp.size() || sellItemNumber < 0) {
+    if (sellItemNumber > myInventory.getSlot().size() || sellItemNumber < 0) {
         cout << "not vaild\n";
         return false;
     } else {
-        myInventory.changeMoney(myInventory.item.get_item(myInventory.getSlot().at(sellItemNumber))[2]);
-        myInventory.deleteSlot(sellItemNumber);
+        cout << "slot size : " << myInventory.getSlot().size() << "\n";
+        myInventory.changeMoney(myInventory.item.get_item(myInventory.getSlot().at(sellItemNumber-1))[2]);
+        if(sellItemNumber==1&&myInventory.getSlot().size()==1){
+            myInventory.slotClear();
+        }else{
+            myInventory.deleteSlot(sellItemNumber);
+        }
+
         return true;
     }
 }

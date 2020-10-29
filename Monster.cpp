@@ -22,7 +22,7 @@ Monster::~Monster(){
 void Monster::attack(Character& i_ch , int i_mp) {
     int use_mp = i_mp;
     if (this->get_nmp() < i_mp) {
-        cout << "MP�� �����մϴ�." << endl;
+        cout << "MP가 모자랍니다." << endl;
     }
     int damage = i_ch.get_nhp() - (this->get_atk());// ������ ĳ������ ���� hp - ������ ���ݷ�
     i_ch.set_nhp(damage); // ��������� ������ ���ݴ�� ĳ������ hp �ٲ��ش�.
