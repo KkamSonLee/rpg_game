@@ -1,4 +1,8 @@
 #include "map_integrity_check.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
 
 using namespace std;
 #define MAP_NUM 10
@@ -9,19 +13,51 @@ enum {
 	ERROR,
 	WARNING
 };
-map_integrity_check::map_integrity_check(){
 
+
+map_integrity_check::map_integrity_check()
+{
 }
+
 map_integrity_check::~map_integrity_check()
 {
 }
 
+void map_integrity_check::save_change(string s, vector<int> val1, vector<int> val2)
+{
+	ofstream sfile(s);
+
+	if (sfile.is_open()) {
+		for (int i = 0; i < val1.size(); i++) {
+			if (val1[i] < 0) {
+				break;
+			}
+			sfile << val1[i];
+			sfile << "\t";
+
+		}
+		sfile << "\n";
+		for (int i = 0; i < val2.size(); i++) {
+			if (val2[i] < 0) {
+				break;
+			}
+			sfile << val2[i];
+			sfile << "\t";
+
+		}
+		sfile.close();
+
+	}
+}
+
+
 int map_integrity_check::load_set(string s)
 {
-	int check_value_1[10] = { -1, };
-	int check_value_2[9] = { -1, };
+	vector<int> check_value_1;
+	vector<int> check_value_2;
 	char datas_1[100];
 	char datas_2[100];
+	int Flag;
 	vector<string> check_list_1;
 	vector<string> check_list_2;
 
@@ -56,7 +92,7 @@ int map_integrity_check::load_set(string s)
 		return ERROR;
 	}
 
-	//¿À·ù ¹®ÀÚ Á¸ÀçÇÏ´ÂÁö Ã¼Å©
+	//ì˜¤ë¥˜ ë¬¸ì ì¡´ì¬í•˜ëŠ”ì§€ ì²´í¬
 	for (int i = 0; i < list_size_1; i++) {
 		try {
 			if (i >= 1) {
@@ -64,51 +100,64 @@ int map_integrity_check::load_set(string s)
 					return ERROR;
 				}
 			}
-			check_value_1[i] = stoi(check_list_1[i]);
+			check_value_1.push_back(stoi(check_list_1[i]));
 		}
 		catch (...) {
 			return ERROR;
 		}
 	}
-	//¿À·ù ¹®ÀÚ Á¸ÀçÇÏ´ÂÁö Ã¼Å©
+	//ì˜¤ë¥˜ ë¬¸ì ì¡´ì¬í•˜ëŠ”ì§€ ì²´í¬
 	for (int i = 0; i < list_size_2; i++) {
 		try {
-			check_value_2[i] = stoi(check_list_2[i]);
+			check_value_2.push_back(stoi(check_list_2[i]));
 		}
 		catch (...) {
 			return ERROR;
 		}
 	}
-	//Áßº¹ ¸Ê Á¸Àç
+	//ì¤‘ë³µ ë§µ ì¡´ì¬
+	int cnt = 0;
 	for (int i = 0; i < MAP_NUM; i++) {
 		if (check_value_1[0] == map_list[i]) {
+			cnt++;
+		}
+		if (cnt == 2) {
 			return ERROR;
 		}
 	}
-	//¾ÆÀÌÅÛ °³¼ö ¾È¸ÂÀ½
+	//ì•„ì´í…œ ê°œìˆ˜ ì•ˆë§ìŒ
 	if (check_value_2[3] != (list_size_2 - 4)) {
 		return ERROR;
 	}
-	//¸ÊÁ¾·ù°¡ 1,2,3 ¸ğµÎ ¾Æ´Ñ °æ¿ì
-	if ((check_value_2[1] != 1) && (check_value_2[1] != 1) && (check_value_2[1] != 1)) {
+	//ë§µì¢…ë¥˜ê°€ 1,2,3 ëª¨ë‘ ì•„ë‹Œ ê²½ìš°
+	if ((check_value_2[1] != 1) && (check_value_2[1] != 2) && (check_value_2[1] != 3)) {
 		return ERROR;
 	}
-	//·¦ Á¦ÇÑ ¿À·ù
+	//ë© ì œí•œ ì˜¤ë¥˜
 	if (check_value_2[0] <= 0) {
 		return ERROR;
 	}
-	//¸ó½ºÅÍ ¾ø´Â °æ¿ì
+	//ëª¬ìŠ¤í„° ì—†ëŠ” ê²½ìš°
 	if ((check_value_2[1] == 2) || (check_value_2[1] == 3) && (check_value_2[2] == 0)) {
 		return ERROR;
 	}
-	//¸¶À»¿¡ ¸ó½ºÅÍ Á¸Àç
+	//ë§ˆì„ì— ëª¬ìŠ¤í„° ì¡´ì¬
 	if (check_value_2[1] == 1 && check_value_2[2] != 0) {
+		check_value_2[2] = 0;
+
+		save_change(s, check_value_1, check_value_2);
+
 		return WARNING;
 	}
-	//´øÀü¿¡ ¾ÆÀÌÅÛ Á¸Àç
-	if ((check_value_2[1] == 2) || (check_value_2[1] == 3) && (check_value_2[3] != 0)) {
+	//ë˜ì „ì— ì•„ì´í…œ ì¡´ì¬
+	if (((check_value_2[1] == 2) || (check_value_2[1] == 3)) && (check_value_2[3] != 0)) {
+		check_value_2[3] = 0;
+
+		save_change(s, check_value_1, check_value_2);
+
 		return WARNING;
 	}
 
 	return SUCCESS;
 }
+
