@@ -2,6 +2,7 @@
 #include "Character.h"
 #include "Inventory.h"
 #include "Monster.h"
+#include "Shop.h"
 #include <sstream>
 #include <string>
 #include <cstring>
@@ -47,10 +48,15 @@ int main() {
     cout << ch.get_nhp() << "," <<ch.get_nmp()<<endl;
 
     cout << mon.get_name(3) << endl; // 이름 정보가 status에 없기 때문에 클래스내부에서 정하는 방식으로 설정해주었습니다.
-    cout << mon.get_money() << endl;
-    mon.set_money(2000);
-    cout << mon.get_money() << endl;
+    cout << "char : " << ch.get_money() << endl;
+    ch.set_money(2000);
+    cout << "char atk: " << ch.get_atk() << endl;
+    Shop shop(ch, inventory);
+    cout << "char : " << ch.get_money() << endl;
     inventory.openInv();
+    cout << "char atk: " << ch.get_atk() << endl;
+
+
     //Shop shop(ch, inv);
     return 0;
 

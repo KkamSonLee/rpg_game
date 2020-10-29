@@ -43,10 +43,8 @@ void Inventory::openInv() {
             if (choice == 1) {
                 cout << "already use equip\n";
             } else if (tempvec[0] == 1) {//itemType
-                changeequip(item.get_item(slot.at(choice - 1))[1], choice);
-                int temp = slot.at(0);
-                slot.at(0) = slot.at(choice - 1);
-                slot.at(choice - 1) = temp;
+                changeequip(item.get_item(slot.at(0))[1], choice);
+
             } else if (tempvec[0] == 0) {
                 usepotion(item.get_item(slot.at(choice - 1))[1], slot.at(choice - 1));
                 deleteSlot(choice);
@@ -58,7 +56,10 @@ void Inventory::openInv() {
 }
 
 void Inventory::changeequip(int nowAtk, int choice) {
-    character.set_atk((character.get_atk() - nowAtk) + item.get_item(slot.at(choice-1))[1]);
+    character.set_atk((character.get_atk() - nowAtk) + (item.get_item(slot.at(choice-1))[1]));
+    int temp = slot.at(0);
+    slot.at(0) = slot.at(choice - 1);
+    slot.at(choice - 1) = temp;
 }
 
 void Inventory::usepotion(int itemValue, int itemNum) {

@@ -12,7 +12,7 @@ class Inventory {
 private:
     int money;
     vector <int> slot;
-    Character character;
+    Character& character;
 public:
 
     Inventory(Character& subCharacter);   //character는 인벤토리를 가지고 있습니다.

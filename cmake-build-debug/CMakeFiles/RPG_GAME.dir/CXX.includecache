@@ -30,10 +30,6 @@ vector
 iostream
 -
 
-C:/Users/ASUS/CLionProjects/RPG_GAME/Item.cpp
-Item.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Item.h
-
 C:/Users/ASUS/CLionProjects/RPG_GAME/Item.h
 iostream
 -
@@ -52,39 +48,9 @@ C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
 Status.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
 
-C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.cpp
-Shop.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h
-
-C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h
-iostream
--
-Character.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
-Item.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Item.h
-Inventory.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
-
 C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
 iostream
 -
 vector
--
-
-C:/Users/ASUS/CLionProjects/RPG_GAME/main.cpp
-Status.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
-Character.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
-Inventory.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
-Monster.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.h
-sstream
--
-string
--
-cstring
 -
 

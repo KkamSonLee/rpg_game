@@ -8,11 +8,11 @@ class Monster; //식별자 오류 방지
 class Character
 {
 private:
-    Status status;
+    Status &status;
 
 
 public:
-    Character(const Status& i_status);
+    Character(Status& i_status);
     ~Character();
 
     void show_stat(); //sata 전체 출력
