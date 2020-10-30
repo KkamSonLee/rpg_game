@@ -8,12 +8,13 @@ Map::~Map()
 {
 }
 
-void Map::load_map(string s)
+Map Map::load_map(string s)
 {
 	map_integrity_check check;
 	vector<int> load_datas;
 	vector<int> temp_linked_map;
 	vector<int> temp_item_list;
+	warningMessage msg;
 	int Flag;
 	load_datas = check.load_set(s);
 	Flag = load_datas[0];
@@ -34,10 +35,15 @@ void Map::load_map(string s)
 			temp_item_list.push_back(load_datas[j]);
 		}
 		set_item_list(temp_item_list);
+		if (Flag == 2) {
+			msg.printWarning(1, 1);
+		}
+		return *this;
 	}
 	else                    //error
 	{
-		return;
+		msg.printWarning(0, 1);
+		return *this;
 	}
 }
 

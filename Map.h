@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "map_integrity_check.h"
+#include "warningMessage.h"
 
 using namespace std;
 
@@ -19,7 +20,7 @@ private:
 public:
 	Map();
 	~Map();
-	void load_map(string);
+	Map load_map(string);
 
 	void set_map_num(int);
 	void set_map_type(int);
