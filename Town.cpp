@@ -270,7 +270,7 @@ void Town::move(string place) {
             warningMessage bosswarn;
             *warning=bosswarn;
             myCharacter.set_location(3);
-            charbattle->Battle(character, myinventory, bossmonster, 3);
+            charbattle->Battle(character, myinventory, bossmonster, 3, bosswarn);
             if (1) {
                 choice();
             }
