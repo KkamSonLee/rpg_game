@@ -8,9 +8,9 @@
 
 using namespace std;
 
-character_integrity_check *charcheck = new character_integrity_check();
+character_integrity_check charcheck;
 //map_integrity_check *mapcheck = new map_integrity_check();
-warningMessage *warning = new warningMessage();
+warningMessage warning;
 
 Town::Town(Character &myCharacter, Inventory &myInventory) : myCharacter(myCharacter), myInventory(myInventory) {
 //battle *charbattle=new battle();
@@ -39,12 +39,13 @@ void Town::choice() {
             if (i <= max_slot) {
                 save(i);
             } else {
-                warning->printWarning(0, 6);
+                warning.printWarning(0, 6);
                 cout << endl;
 
             }
         } else if (mselect == "quit" && is_digit(nselect) == 0) {
             quit();
+            loop = false;
         } else if (select == "inventory" && is_digit(nselect) == 0) {
             inventory();
         } else if (select == "move" && (nselect == "dungeon" || nselect == "boss" || nselect == "town")) {
@@ -54,11 +55,8 @@ void Town::choice() {
         } else if (select == "stat" && is_digit(nselect) == 0) {
             stat();
         } else {
-            warning->printWarning(0, 0);//문법에 맞지 않는 오류메세지
-            cout << endl;
+            //warning.printWarning(0, 0);//문법에 맞지 않는 오류메세지
         }
-        ss.clear();
-        ss.str("");
     }
 }
 
@@ -114,11 +112,11 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
         sfile.close();
     }
 
-    charcheck->load_set(sfilename);
+    charcheck.load_set(sfilename);
     if (true) {
         cout << "현재 데이터를 세이브합니다." << endl;
     } else {
-        warning->printWarning(0, 4);//파일 저장 실패 오류 메세지
+        warning.printWarning(0, 4);//파일 저장 실패 오류 메세지
         cout << endl;
     }
 }

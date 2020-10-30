@@ -1,9 +1,9 @@
 #include "Monster.h"
 
 class Character;
-Status Monsterlist[3] = { Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) , Status(100, 20, 100, 20, 20, 50, 1, 2 , 100), Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) };
+Status Monsterlist[19] = { Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) , Status(100, 20, 100, 20, 20, 50, 1, 2 , 100), Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) };
 //우선은 같은 형식을 
-const string Monster::namelist[4] = { "목검", "장검", "HP포션", "MP포션" };
+string namelist[4] = { "목검", "장검", "HP포션", "MP포션" };
 Monster::Monster()
     : MonsterNum(0){
 }
