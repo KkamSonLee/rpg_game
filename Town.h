@@ -2,6 +2,7 @@
 #include <string>
 #include "Item.h"
 #include "Status.h"
+#include <cctype>
 #include "character_integrity_check.h"
 //#include "map_integrity_check.h"
 #include "warningMessage.h"
@@ -15,11 +16,11 @@ using namespace std;
 class Town
 {
 private:
-    Character myCharacter;
-	Inventory myInventory;
+    Character& myCharacter;
+	Inventory& myInventory;
 public:
 	int max_slot;
-	Town(Character& myCharacter);
+	Town(Character& myCharacter, Inventory& myInventory);
 	~Town();
 	void choice();
 	void help();

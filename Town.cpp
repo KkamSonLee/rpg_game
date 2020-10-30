@@ -11,47 +11,54 @@ using namespace std;
 character_integrity_check *charcheck = new character_integrity_check();
 //map_integrity_check *mapcheck = new map_integrity_check();
 warningMessage *warning = new warningMessage();
-Town::Town(Character& myCharacter):myCharacter(myCharacter), myInventory(myCharacter){
+
+Town::Town(Character &myCharacter, Inventory &myInventory) : myCharacter(myCharacter), myInventory(myInventory) {
     int max_slot = 10;//캐릭터 파일 최대 슬롯 10으로 설정
 
     choice();
 }
+
 Town::~Town() {}
 
-void Town::choice() {/*
-    string select;
-    string mselect;
-    string nselect;
-    cout << "Mainp>";
-    getline(cin, select);
-    istringstream ss(select);
-    ss >> mselect >> nselect;
-    if (mselect == "help" && is_digit(nselect) == 0) {
-        help();
-    } else if (mselect == "save" && is_digit(nselect) == 1) {
-        int i = std::stoi(nselect);
-        if (i <= max_slot) {
-            save(i);
+void Town::choice() {
+    bool loop = true;
+
+    while (loop) {
+        string select;
+        string mselect;
+        string nselect;
+        cout << "Mainp>\n";
+        getline(cin, select);
+        istringstream ss(select);
+        ss >> mselect >> nselect;
+        if (mselect == "help" && is_digit(nselect) == 0) {
+            help();
+        } else if (mselect == "save" && is_digit(nselect) == 1) {
+            int i = std::stoi(nselect);
+            if (i <= max_slot) {
+                save(i);
+            } else {
+                warning->printWarning(0, 6);
+                cout << endl;
+
+            }
+        } else if (mselect == "quit" && is_digit(nselect) == 0) {
+            quit();
+        } else if (select == "inventory" && is_digit(nselect) == 0) {
+            inventory();
+        } else if (select == "move" && (nselect == "dungeon" || nselect == "boss" || nselect == "town")) {
+            move(nselect);
+        } else if (select == "shop" && is_digit(nselect) == 0) {
+            shop();
+        } else if (select == "stat" && is_digit(nselect) == 0) {
+            stat();
         } else {
-            warning->printWarning(0, 6);
+            warning->printWarning(0, 0);//문법에 맞지 않는 오류메세지
             cout << endl;
-            choice();
         }
-    } else if (mselect == "quit" && is_digit(nselect) == 0) {
-        quit();
-    } else if (select == "inventory" && is_digit(nselect) == 0) {
-        inventory();
-    } else if (select == "move" && (nselect == "dungeon" || nselect == "boss" || nselect == "town")) {
-        move(nselect);
-    } else if (select == "shop" && is_digit(nselect) == 0) {
-        shop();
-    } else if (select == "stat" && is_digit(nselect) == 0) {
-        stat();
-    } else {
-        warning->printWarning(0, 0);//문법에 맞지 않는 오류메세지
-        cout << endl;
-        choice();
-    }*/
+        ss.clear();
+        ss.str("");
+    }
 }
 
 void Town::help() {
@@ -65,7 +72,6 @@ void Town::help() {
     cout << "shop : 상점" << endl;
     cout << "stat : 상태창" << endl;
 
-    choice();
 }
 
 void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐릭터 정보를 파일에 입력하고 save
@@ -110,11 +116,9 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
     charcheck->load_set(sfilename);
     if (true) {
         cout << "현재 데이터를 세이브합니다." << endl;
-        choice();
     } else {
         warning->printWarning(0, 4);//파일 저장 실패 오류 메세지
         cout << endl;
-        choice();
     }
 }
 
@@ -133,100 +137,13 @@ void Town::quit() {
     cout << "게임을 종료합니다." << endl;*/
     exit(0);
 }
-/*
-void Town::load(Character &character, Status &charstat, Inventory &myInventory,
-                int inum) {//캐릭터 파일의 숫자를 인자로 받아 파일 읽어서 캐릭터 정보에 load
-
-    string numstr = to_string(inum);
-    string str = "character" + numstr;
-    stringstream ss;
-    ss << str << ".txt";
-    string filename = ss.str();
-    char charfilename[20];
-    strcpy(charfilename, filename.c_str());
-
-    int level;
-    int exp;
-    int mhp;
-    int mmp;
-    int nhp;
-    int nmp;
-    int atk;
-    int location;
-    int money;
-
-    charcheck->load_set(filename);
-    if (true) {
-        ifstream file(charfilename);
-        if (!file.is_open()) {
-            string basicstat = "1\t0\t100\t50\t100\t50\t10\t0\t0";
-            ofstream newfile(charfilename);
-            if (newfile.is_open()) {
-                newfile << basicstat;
-                newfile.close();
-            }
-            level = 1;
-            exp = 0;
-            mhp = 100;
-            mmp = 50;
-            nhp = 100;
-            nmp = 50;
-            atk = 10;
-            location = 0;
-            money = 0;
-
-            charstat.set_status(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
-            character.set_stat(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
-        } else {
-            char buffer[100];
-            while (!file.eof()) {
-                file.getline(buffer, 100);
-
-                char *ptr = strtok(buffer, "\t");
-                level = atoi(ptr);
-                ptr = strtok(NULL, "\t");
-                exp = atoi(ptr);
-                ptr = strtok(NULL, "\t");
-                mhp = atoi(ptr);
-                ptr = strtok(NULL, "\t");
-                mmp = atoi(ptr);
-                ptr = strtok(NULL, "\t");
-                nhp = atoi(ptr);
-                ptr = strtok(NULL, "\t");
-                nmp = atoi(ptr);
-                ptr = strtok(NULL, "\t");
-                atk = atoi(ptr);
-                ptr = strtok(NULL, "\t");
-                location = atoi(ptr);
-                ptr = strtok(NULL, "\t");
-                money = atoi(ptr);
-                ptr = strtok(NULL, "/");
-                while (ptr != "/") {
-                    myinventory.addSlot(atoi(ptr));
-                    ptr = strtok(NULL, "\t");
-                }
-
-                charstat.set_status(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
-                character.set_stat(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
-            }
-        }
-        file.close();
-        cout << "Load가 완료되었습니다." << endl;
-        choice();
-    } else {
-        warning->printWarning(0, 3);//불러오려는 파일 문법 오류 메세지
-        cout << endl;
-        choice();
-    }
-}*/
 
 void Town::inventory() {
     myInventory.openInv();
-    choice();
 }
 
-void Town::move(string place) {
-    /*if (place == "dungeon") {
+void Town::move(string place) {/*
+    if (place == "dungeon") {
         string map2 = "map2";
         mapcheck->load_set(map2);
         if (1 || 3) {
@@ -245,11 +162,6 @@ void Town::move(string place) {
             dungeonmonster = new Monster(dm.get_MonsterInfo(dmonNum), dmonNum);
             character->set_location(2);
             charbattle.Battle(character, myinventory, dungeonmonster, 2);
-            if (1) {
-                choice();
-            }
-        } else {
-            choice();
         }
     } else if (place == "boss") {
         string map3 = "map3";
@@ -270,22 +182,16 @@ void Town::move(string place) {
             bossmonster = new Monster(bm.get_MonsterInfo(bmonNum), bmonNum);
             character->set_location(3);
             charbattle->Battle(character, myinventory, bossmonster, 3);
-            if (1) {
-                choice();
-            }
-        } else {
-            choice();
+
         }
     } else {
         myCharacter.set_location(1);
-        choice();
     }
 */
 }
 
 void Town::shop() {
     Shop shop(myCharacter, myInventory);
-    choice();
 }
 
 void Town::stat() {
@@ -296,9 +202,8 @@ void Town::stat() {
     cout << "Atk : " << myCharacter.get_atk() << endl;
     cout << "money : " << myCharacter.get_money() << "메소" << endl;
     myInventory.printInvList();
-    choice();
 }
 
-bool is_digit(string str) {
-    return atoi(str.c_str()) != 0 || str.compare("0") == 0;
+bool Town::is_digit(string str) {
+    return (atoi(str.c_str()) != 0) || (str.compare("0") == 0);
 }

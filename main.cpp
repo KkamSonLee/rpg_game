@@ -37,13 +37,13 @@ int main() {
     Monster mon(monstat, 1);
     load(1);
     Character ch(stat);
-    Town myTown(ch);
-
     Inventory inventory(ch);
     inventory.addSlot(1);
     inventory.addSlot(2);
     inventory.addSlot(3);
     inventory.addSlot(4);
+    Town myTown(ch, inventory);
+
     ch.show_stat();// 스탯 정보 출력
 
     //ch.attack(mon, mp);
