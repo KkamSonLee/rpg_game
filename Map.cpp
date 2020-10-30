@@ -8,7 +8,7 @@ Map::~Map()
 {
 }
 
-void Map::load_map(string s)
+Map Map::load_map(string s)
 {
 	map_integrity_check check;
 	vector<int> load_datas;
@@ -38,11 +38,12 @@ void Map::load_map(string s)
 		if (Flag == 2) {
 			msg.printWarning(1, 1);
 		}
+		return *this;
 	}
 	else                    //error
 	{
 		msg.printWarning(0, 1);
-		return;
+		return *this;
 	}
 }
 
