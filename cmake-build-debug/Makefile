@@ -412,6 +412,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+map_integrity_check.obj: map_integrity_check.cpp.obj
+
+.PHONY : map_integrity_check.obj
+
+# target to build an object file
+map_integrity_check.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/map_integrity_check.cpp.obj
+.PHONY : map_integrity_check.cpp.obj
+
+map_integrity_check.i: map_integrity_check.cpp.i
+
+.PHONY : map_integrity_check.i
+
+# target to preprocess a source file
+map_integrity_check.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/map_integrity_check.cpp.i
+.PHONY : map_integrity_check.cpp.i
+
+map_integrity_check.s: map_integrity_check.cpp.s
+
+.PHONY : map_integrity_check.s
+
+# target to generate assembly for a file
+map_integrity_check.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/map_integrity_check.cpp.s
+.PHONY : map_integrity_check.cpp.s
+
 warningMessage.obj: warningMessage.cpp.obj
 
 .PHONY : warningMessage.obj
@@ -478,6 +505,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... map_integrity_check.obj
+	@echo ... map_integrity_check.i
+	@echo ... map_integrity_check.s
 	@echo ... warningMessage.obj
 	@echo ... warningMessage.i
 	@echo ... warningMessage.s

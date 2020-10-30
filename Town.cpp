@@ -147,8 +147,28 @@ void Town::inventory() {
 }
 
 void Town::move() {
+    Map admin[4];
+    string mapName[4] = {"town", "dungeon", "boss", "myhouse"};
+    admin[0].load_map("map1.txt");
+    admin[1].load_map("map2.txt");
+    admin[2].load_map("map3.txt");
+    admin[3].load_map("map4.txt");
 
-    if (place == "dungeon") {
+    cout << "where";
+    vector<int> linked_mapList = admin[0].get_linked_map();
+    vector<int> linked_mapList2 = admin[1].get_linked_map();
+    vector<int> linked_mapList3 = admin[2].get_linked_map();
+    vector<int> linked_mapList4 = admin[3].get_linked_map();
+    int type[4];
+    type[0] = admin[0].get_map_type();
+    type[1] = admin[1].get_map_type();
+    type[2] = admin[2].get_map_type();
+    type[3] = admin[3].get_map_type();
+    cout << type[0] << type[1] << type[2] << type[3];
+    for (vector<int>::iterator iter = linked_mapList.begin(); iter != linked_mapList.end(); iter++) {
+        cout << mapName[type[(*iter) - 1] - 1] << "  ";
+    }
+    /*if (place == "dungeon") {
         string map2 = "map2";
         mapcheck->load_set(map2);
         if (1 || 3) {
@@ -208,7 +228,7 @@ void Town::move() {
         }
     } else {
         myCharacter.set_location(1);
-    }
+    }*/
 }
 
 void Town::shop() {

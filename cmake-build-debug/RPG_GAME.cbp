@@ -137,6 +137,12 @@
 		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/main.cpp">
 			<Option target="RPG_GAME"/>
 		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/map_integrity_check.cpp">
+			<Option target="RPG_GAME"/>
+		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/map_integrity_check.h">
+			<Option target="RPG_GAME"/>
+		</Unit>
 		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/warningMessage.cpp">
 			<Option target="RPG_GAME"/>
 		</Unit>

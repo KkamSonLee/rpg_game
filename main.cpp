@@ -3,13 +3,12 @@
 #include "Inventory.h"
 #include "Monster.h"
 #include "Town.h"
-//#include "character_integrity_check.h"
-#include "Shop.h"
 #include "Map.h"
+#include "character_integrity_check.h"
+#include "Shop.h"
 #include <sstream>
 #include <string>
 #include <cstring>
-
 
 Status stat;
 vector<int> invList;
@@ -24,10 +23,7 @@ int main() {
     Inventory inventory(ch);
     inventory.addSlotArr(invList);
     Town myTown(ch, inventory);
-    mapAdmin.push_back(Map().load_map("map1.txt"));
-    mapAdmin.push_back(Map().load_map("map2.txt"));
-    mapAdmin.push_back(Map().load_map("map3.txt"));
-
+    //mapAdmin.push_back(Map().load_map("map1.txt"));
     return 0;
 }
 
