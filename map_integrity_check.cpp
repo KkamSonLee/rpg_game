@@ -144,7 +144,7 @@ vector<int> map_integrity_check::load_set(string s)
 		return result;
 	}
 	//몬스터 없는 경우
-	if ((check_value_2[1] == 2) || (check_value_2[1] == 3) && (check_value_2[2] == 0)) {
+	if (((check_value_2[1] == 2) || (check_value_2[1] == 3)) && (check_value_2[2] == 0)) {
 		result.push_back(ERROR);
 		return result;
 	}
