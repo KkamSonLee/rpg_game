@@ -1,7 +1,7 @@
 #include "Monster.h"
 
 class Character;
-Status Monster::Monsterlist[99] = { Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) , Status(100, 20, 100, 20, 20, 50, 1, 2 , 100), Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) }; 
+Status Monsterlist[3] = { Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) , Status(100, 20, 100, 20, 20, 50, 1, 2 , 100), Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) };
 //우선은 같은 형식을 
 const string Monster::namelist[4] = { "목검", "장검", "HP포션", "MP포션" };
 Monster::Monster()
@@ -11,7 +11,7 @@ Monster::Monster()
 Monster::Monster(const int& i_MonsterNum) // 번호만 주도록 변경
     :MonsterNum(0)
 {
-    this->monsterStatus = Monsterlist[i_MonsterNum - 1]; // 해당하는 배열에 담긴 status를 몬스터 객체에 넣어준다. 
+    this->monsterStatus = Monsterlist[i_MonsterNum - 1]; // 해당하는 배열에 담긴 status를 몬스터 객체에 넣어준다.
     this->MonsterNum = i_MonsterNum;
    
 }

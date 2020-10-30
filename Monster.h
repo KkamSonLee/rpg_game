@@ -8,7 +8,7 @@ class Character; //식별자 오류 방지
 
 class Monster {
 private:
-    static Status Monsterlist[99]; //몬스터 기본정보들을 저장하는 배열입니다.
+    static int Monsterlist[3][19]; //몬스터 기본정보들을 저장하는 배열입니다.
     const static string namelist[4]; // 몬스터의 이름을 저장하는 배열입니다. 
     Status monsterStatus; // 전투에 의해서 바뀌는 몬스터의 현재 정보입니다. 
     int MonsterNum;

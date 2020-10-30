@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/ASUS/CLionProjects/RPG_GAME/Character.cpp
+Character.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
+
 C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
 iostream
 -
@@ -13,6 +17,10 @@ Monster.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.h
 Status.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
+
+C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.cpp
+Inventory.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
 
 C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
 item.h
@@ -34,6 +42,10 @@ string
 vector
 -
 
+C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.cpp
+Monster.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.h
+
 C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.h
 iostream
 -
@@ -43,6 +55,10 @@ Character.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
 Status.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
+
+C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.cpp
+Shop.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h
 
 C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h
 iostream
@@ -103,6 +119,30 @@ iostream
 -
 fstream
 -
+
+C:/Users/ASUS/CLionProjects/RPG_GAME/main.cpp
+Status.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
+Character.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
+Inventory.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
+Monster.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.h
+Town.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Town.h
+Shop.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h
+sstream
+-
+string
+-
+cstring
+-
+
+C:/Users/ASUS/CLionProjects/RPG_GAME/warningMessage.cpp
+warningMessage.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/warningMessage.h
 
 C:/Users/ASUS/CLionProjects/RPG_GAME/warningMessage.h
 iostream
