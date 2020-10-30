@@ -33,7 +33,7 @@ int main() {
     invList.push_back(3);
     invList.push_back(4);
     Status charstat(mp, mp, mp, mp, atkc, mp, hp, mp, money);
-    Status monstat(num, num, num, num, atkb, num, num, num, money); //money Æ÷ÇÔ
+    Status monstat(num, num, num, num, atkb, num, num, num, money); //money í¬í•¨
     Monster mon(monstat, 1);
     load(1);
     Character ch(stat);
@@ -44,20 +44,20 @@ int main() {
     inventory.addSlot(2);
     inventory.addSlot(3);
     inventory.addSlot(4);
-    ch.show_stat();// ½ºÅÈ Á¤º¸ Ãâ·Â
+    ch.show_stat();// ìŠ¤íƒ¯ ì •ë³´ ì¶œë ¥
 
     //ch.attack(mon, mp);
-    cout << mon.get_nhp() << endl; //// hp = 3 , atk = 1 ÀÌ±â¶§¹®¿¡ °ø°İÀ» ÇÑ¹ø ÇÑ´Ù¸é hp 2°¡ µÇ¾î¾ß ÇÒ °Í ÀÔ´Ï´Ù.
+    cout << mon.get_nhp() << endl; //// hp = 3 , atk = 1 ì´ê¸°ë•Œë¬¸ì— ê³µê²©ì„ í•œë²ˆ í•œë‹¤ë©´ hp 2ê°€ ë˜ì–´ì•¼ í•  ê²ƒ ì…ë‹ˆë‹¤.
 
     ch.attack(mon, use_mp);
     mon.attack(ch, use_mp);
     mon.attack(ch, use_mp);
-    // Ä³¸¯ÅÍ¿Í ¸ó½ºÅÍÀÇ status°¡ ¶È°°°í mp ¼Ò¸ğ·®µµ 20ÀÌ±â ¶§¹®¿¡
-    //Ä³¸¯ÅÍ¿Í ¸ó½ºÅÍÀÇ hp mp´Â µÎ¹ø °ø°İÇßÀ» ¶§ 1 -37ÀÌ ³ª¿Í¾ß ÇÕ´Ï´Ù. 
+    // ìºë¦­í„°ì™€ ëª¬ìŠ¤í„°ì˜ statusê°€ ë˜‘ê°™ê³  mp ì†Œëª¨ëŸ‰ë„ 20ì´ê¸° ë•Œë¬¸ì—
+    //ìºë¦­í„°ì™€ ëª¬ìŠ¤í„°ì˜ hp mpëŠ” ë‘ë²ˆ ê³µê²©í–ˆì„ ë•Œ 1 -37ì´ ë‚˜ì™€ì•¼ í•©ë‹ˆë‹¤. 
     cout << mon.get_nhp() << "," << mon.get_nmp() << endl;
     cout << ch.get_nhp() << "," << ch.get_nmp() << endl;
 
-    cout << mon.get_name(1) << endl; // ÀÌ¸§ Á¤º¸°¡ status¿¡ ¾ø±â ¶§¹®¿¡ Å¬·¡½º³»ºÎ¿¡¼­ Á¤ÇÏ´Â ¹æ½ÄÀ¸·Î ¼³Á¤ÇØÁÖ¾ú½À´Ï´Ù.
+    cout << mon.get_name(1) << endl; // ì´ë¦„ ì •ë³´ê°€ statusì— ì—†ê¸° ë•Œë¬¸ì— í´ë˜ìŠ¤ë‚´ë¶€ì—ì„œ ì •í•˜ëŠ” ë°©ì‹ìœ¼ë¡œ ì„¤ì •í•´ì£¼ì—ˆìŠµë‹ˆë‹¤.
     cout << "char : " << ch.get_money() << endl;
     ch.set_money(2000);
     cout << "char atk: " << ch.get_atk() << endl;
@@ -138,11 +138,11 @@ void load(int inum) {
             location = atoi(ptr);
             ptr = strtok(NULL, "\t");
             money = atoi(ptr);
-            //ptr = strtok(NULL, "/");
-            /*while (ptr != "/") {
-                    myInventory->addSlot(atoi(ptr));
+            
+            /*ptr = strtok(NULL, "\t");
+            while (ptr != NULL) {
+                myinventory.addSlot(atoi(ptr));
                 ptr = strtok(NULL, "\t");
-                cout << ptr << endl;
             }*/
 
             stat.set_status(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
@@ -151,6 +151,6 @@ void load(int inum) {
     }
     stat.show();
     cout << "Load complete" << endl;
-    //warning->printWarning(0, 3);//ºÒ·¯¿À·Á´Â ÆÄÀÏ ¹®¹ı ¿À·ù ¸Ş¼¼Áö
+    //warning->printWarning(0, 3);//ë¶ˆëŸ¬ì˜¤ë ¤ëŠ” íŒŒì¼ ë¬¸ë²• ì˜¤ë¥˜ ë©”ì„¸ì§€
     //return Character(Status());
 }

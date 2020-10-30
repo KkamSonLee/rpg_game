@@ -11,6 +11,7 @@ using namespace std;
 character_integrity_check *charcheck = new character_integrity_check();
 //map_integrity_check *mapcheck = new map_integrity_check();
 warningMessage *warning = new warningMessage();
+//battle *charbattle=new battle();
 Town::Town(Character& myCharacter):myCharacter(myCharacter), myInventory(myCharacter){
     int max_slot = 10;//캐릭터 파일 최대 슬롯 10으로 설정
 
@@ -39,13 +40,13 @@ void Town::choice() {/*
         }
     } else if (mselect == "quit" && is_digit(nselect) == 0) {
         quit();
-    } else if (select == "inventory" && is_digit(nselect) == 0) {
+    } else if (mselect == "inventory" && is_digit(nselect) == 0) {
         inventory();
-    } else if (select == "move" && (nselect == "dungeon" || nselect == "boss" || nselect == "town")) {
+    } else if (mselect == "move" && (nselect == "dungeon" || nselect == "boss" || nselect == "town")) {
         move(nselect);
-    } else if (select == "shop" && is_digit(nselect) == 0) {
+    } else if (mselect == "shop" && is_digit(nselect) == 0) {
         shop();
-    } else if (select == "stat" && is_digit(nselect) == 0) {
+    } else if (mselect == "stat" && is_digit(nselect) == 0) {
         stat();
     } else {
         warning->printWarning(0, 0);//문법에 맞지 않는 오류메세지
@@ -88,7 +89,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
             if (sstat.end() == ++iter) {
                 sfile << *iter;
                 sfile << "\t";
-                sfile << "/";
+                //sfile << "/";
                 break;
             } else {
                 sfile << *iter << "\t";
@@ -98,7 +99,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
         for (vector<int>::iterator iter = sitem.begin(); iter != sitem.end(); ++iter) {
             if (sitem.end() == ++iter) {
                 sfile << *iter;
-                sfile << "/";
+                //sfile << "/";
                 break;
             } else {
                 sfile << *iter << "\t";
@@ -119,11 +120,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
 }
 
 void Town::quit() {
-    /*delete (charstat);
-    delete (character);
-    delete (myinventory);
-    delete (myshop);
-    delete (charitem);
+    /*
     delete (charbattle);
     delete (dungeonmonster);
     delete (bossmonster);
@@ -243,8 +240,10 @@ void Town::move(string place) {
             dmonNum = atoi(mptr);
             Monster dm;
             dungeonmonster = new Monster(dm.get_MonsterInfo(dmonNum), dmonNum);
-            character->set_location(2);
-            charbattle.Battle(character, myinventory, dungeonmonster, 2);
+            warningMessage dunwarn;
+            *warning=dunwarn;
+            myCharacter.set_location(2);
+            charbattle->Battle(character, myinventory, dungeonmonster, 2, dunwarn);
             if (1) {
                 choice();
             }
@@ -268,8 +267,10 @@ void Town::move(string place) {
             bmonNum = atoi(bmptr);
             Monster bm;
             bossmonster = new Monster(bm.get_MonsterInfo(bmonNum), bmonNum);
-            character->set_location(3);
-            charbattle->Battle(character, myinventory, bossmonster, 3);
+            warningMessage bosswarn;
+            *warning=bosswarn;
+            myCharacter.set_location(3);
+            charbattle->Battle(character, myinventory, bossmonster, 3, bosswarn);
             if (1) {
                 choice();
             }
@@ -299,6 +300,6 @@ void Town::stat() {
     choice();
 }
 
-bool is_digit(string str) {
+bool Town::is_digit(string str) {
     return atoi(str.c_str()) != 0 || str.compare("0") == 0;
 }
