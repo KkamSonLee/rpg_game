@@ -108,9 +108,9 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
         sfile << myCharacter.get_money();
         sfile << "\t";
 
-        for (vector<int>::iterator iter = sitem.begin(); iter != sitem.end(); ++iter) {
-            if (sitem.end() == ++iter) {
-                sfile << *iter;
+        for (vector<int>::iterator iter = sitem.begin(); iter != sitem.end(); iter++) {
+            if (sitem.end() == iter+1) {
+                sfile << *(++iter);
                 break;
             }
             else {

@@ -81,7 +81,6 @@ void Inventory::deleteSlot(int itemLocation) {
     vector<int>::iterator iter = slot.begin();
     iter += (itemLocation - 1);
     slot.erase(iter);
-    slot.resize(slot.size()-1);
 }
 
 void Inventory::closeInv() {
