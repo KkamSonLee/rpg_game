@@ -4,6 +4,7 @@
 #include "Status.h"
 #include <cctype>
 #include "character_integrity_check.h"
+#include "Map.h"
 //#include "map_integrity_check.h"
 #include "warningMessage.h"
 #include "Character.h"
@@ -27,7 +28,7 @@ public:
 	void save(int);
 	void quit();
 	void inventory();
-	void move(string);
+	void move();
 	void shop();
 	void stat();
 	bool is_digit(string);

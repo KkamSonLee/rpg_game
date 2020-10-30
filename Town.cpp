@@ -8,9 +8,9 @@
 
 using namespace std;
 
-character_integrity_check* charcheck;
+character_integrity_check *charcheck;
 //map_integrity_check *mapcheck = new map_integrity_check();
-warningMessage* warning;
+warningMessage *warning;
 
 Town::Town(Character &myCharacter, Inventory &myInventory) : myCharacter(myCharacter), myInventory(myInventory) {
 //battle *charbattle=new battle();
@@ -46,13 +46,13 @@ void Town::choice() {
         } else if (mselect == "quit" && is_digit(nselect) == 0) {
             quit();
             loop = false;
-        } else if (select == "inventory" && is_digit(nselect) == 0) {
+        } else if (mselect == "inventory" && is_digit(nselect) == 0) {
             inventory();
-        } else if (select == "move" && (nselect == "dungeon" || nselect == "boss" || nselect == "town")) {
-            move(nselect);
-        } else if (select == "shop" && is_digit(nselect) == 0) {
+        } else if (mselect == "move" && is_digit(nselect) == 0) {
+            move();
+        } else if (mselect == "shop" && is_digit(nselect) == 0) {
             shop();
-        } else if (select == "stat" && is_digit(nselect) == 0) {
+        } else if (mselect == "stat" && is_digit(nselect) == 0) {
             stat();
         } else {
             //warning.printWarning(0, 0);//문법에 맞지 않는 오류메세지
@@ -109,11 +109,10 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
         sfile << "\t";
 
         for (vector<int>::iterator iter = sitem.begin(); iter != sitem.end(); iter++) {
-            if (sitem.end() == iter+1) {
+            if (sitem.end() == iter + 1) {
                 sfile << *(++iter);
                 break;
-            }
-            else {
+            } else {
                 sfile << *iter << "\t";
             }
         }
@@ -124,8 +123,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
     if (true) {
         cout << "현재 데이터를 세이브합니다." << endl;
         choice();
-    }
-    else {
+    } else {
         warning->printWarning(0, 4);//파일 저장 실패 오류 메세지
         cout << endl;
         choice();
@@ -148,7 +146,8 @@ void Town::inventory() {
     myInventory.openInv();
 }
 
-void Town::move(string place) {/*
+void Town::move() {
+
     if (place == "dungeon") {
         string map2 = "map2";
         mapcheck->load_set(map2);
@@ -166,12 +165,10 @@ void Town::move(string place) {/*
             dmonNum = atoi(mptr);
             Monster dm;
             dungeonmonster = new Monster(dm.get_MonsterInfo(dmonNum), dmonNum);
-<<<<<<< HEAD
             character->set_location(2);
             charbattle.Battle(character, myinventory, dungeonmonster, 2);
-=======
             warningMessage dunwarn;
-            *warning=dunwarn;
+            *warning = dunwarn;
             myCharacter.set_location(2);
             charbattle->Battle(character, myinventory, dungeonmonster, 2, dunwarn);
             if (1) {
@@ -179,7 +176,6 @@ void Town::move(string place) {/*
             }
         } else {
             choice();
->>>>>>> 3e1624f49232b8b508a0b849e0b9db38056204c4
         }
     } else if (place == "boss") {
         string map3 = "map3";
@@ -198,13 +194,10 @@ void Town::move(string place) {/*
             bmonNum = atoi(bmptr);
             Monster bm;
             bossmonster = new Monster(bm.get_MonsterInfo(bmonNum), bmonNum);
-<<<<<<< HEAD
             character->set_location(3);
             charbattle->Battle(character, myinventory, bossmonster, 3);
-
-=======
             warningMessage bosswarn;
-            *warning=bosswarn;
+            *warning = bosswarn;
             myCharacter.set_location(3);
             charbattle->Battle(character, myinventory, bossmonster, 3, bosswarn);
             if (1) {
@@ -212,12 +205,10 @@ void Town::move(string place) {/*
             }
         } else {
             choice();
->>>>>>> 3e1624f49232b8b508a0b849e0b9db38056204c4
         }
     } else {
         myCharacter.set_location(1);
     }
-*/
 }
 
 void Town::shop() {

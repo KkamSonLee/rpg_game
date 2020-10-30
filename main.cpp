@@ -5,6 +5,7 @@
 #include "Town.h"
 //#include "character_integrity_check.h"
 #include "Shop.h"
+#include "Map.h"
 #include <sstream>
 #include <string>
 #include <cstring>
@@ -12,58 +13,22 @@
 
 Status stat;
 vector<int> invList;
-
+vector<Map> mapAdmin;
 void load(int inum);
 
-//battle.cpp battle.h warningMessage.cpp warningMessage.h Town.cpp Town.h character_integrity_check.cpp character_integrity_check.h map_integrity_check.cpp map_integrity_check.h
-//character_integrity_check charcheck;
 
 int main() {
-    int select = 1;
-
-    //Town mytown(ch);
-    int use_mp = 20;
-    int num = 100;
-    int atkc = 10;
-    int atkb = 10;
-    int hp = 100;
-    int mp = 100;
-    int money = 4000;
-    Status charstat(mp, mp, mp, mp, atkc, mp, hp, mp, money);
-    Status monstat(num, num, num, num, atkb, num, num, num, money); //money 포함
     Monster mon(1);
     load(1);
     Character ch(stat);
     Inventory inventory(ch);
     inventory.addSlotArr(invList);
     Town myTown(ch, inventory);
+    mapAdmin.push_back(Map().load_map("map1.txt"));
+    mapAdmin.push_back(Map().load_map("map2.txt"));
+    mapAdmin.push_back(Map().load_map("map3.txt"));
 
-    ch.show_stat();// 스탯 정보 출력
-
-    //ch.attack(mon, mp);
-    cout << mon.get_nhp() << endl; //// hp = 3 , atk = 1 이기때문에 공격을 한번 한다면 hp 2가 되어야 할 것 입니다.
-
-    ch.attack(mon, use_mp);
-    mon.attack(ch, use_mp);
-    mon.attack(ch, use_mp);
-    // 캐릭터와 몬스터의 status가 똑같고 mp 소모량도 20이기 때문에
-    //캐릭터와 몬스터의 hp mp는 두번 공격했을 때 1 -37이 나와야 합니다.
-    cout << mon.get_nhp() << "," << mon.get_nmp() << endl;
-    cout << ch.get_nhp() << "," << ch.get_nmp() << endl;
-
-    cout << mon.get_name(1) << endl; // 이름 정보가 status에 없기 때문에 클래스내부에서 정하는 방식으로 설정해주었습니다.
-    cout << "char : " << ch.get_money() << endl;
-    ch.set_money(2000);
-    cout << "char atk: " << ch.get_atk() << endl;
-    Shop shop(ch, inventory);
-    cout << "char : " << ch.get_money() << endl;
-    inventory.openInv();
-    cout << "char atk: " << ch.get_atk() << endl;
-
-
-    //Shop shop(ch, inv);
     return 0;
-
 }
 
 void load(int inum) {

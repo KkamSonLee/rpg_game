@@ -98,6 +98,12 @@
 		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Item.h">
 			<Option target="RPG_GAME"/>
 		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Map.cpp">
+			<Option target="RPG_GAME"/>
+		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Map.h">
+			<Option target="RPG_GAME"/>
+		</Unit>
 		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.cpp">
 			<Option target="RPG_GAME"/>
 		</Unit>

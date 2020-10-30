@@ -223,6 +223,33 @@ Item.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Item.cpp.s
 .PHONY : Item.cpp.s
 
+Map.obj: Map.cpp.obj
+
+.PHONY : Map.obj
+
+# target to build an object file
+Map.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Map.cpp.obj
+.PHONY : Map.cpp.obj
+
+Map.i: Map.cpp.i
+
+.PHONY : Map.i
+
+# target to preprocess a source file
+Map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Map.cpp.i
+.PHONY : Map.cpp.i
+
+Map.s: Map.cpp.s
+
+.PHONY : Map.s
+
+# target to generate assembly for a file
+Map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Map.cpp.s
+.PHONY : Map.cpp.s
+
 Monster.obj: Monster.cpp.obj
 
 .PHONY : Monster.obj
@@ -430,6 +457,9 @@ help:
 	@echo ... Item.obj
 	@echo ... Item.i
 	@echo ... Item.s
+	@echo ... Map.obj
+	@echo ... Map.i
+	@echo ... Map.s
 	@echo ... Monster.obj
 	@echo ... Monster.i
 	@echo ... Monster.s
