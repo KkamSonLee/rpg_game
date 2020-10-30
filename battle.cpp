@@ -8,7 +8,6 @@ int battle::Battle(Character &myCharacter, Inventory &myInventory, Monster &nowM
 	{
 		show_Stats(myCharacter, nowMonster); //스탯 표시
 		getline(cin, input_order);
-		
 		if (input_order == "attack") //attack 6글자를 정확하게 입력한 경우
 		{
 			int check;

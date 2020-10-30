@@ -4,8 +4,7 @@ class Character;
 Status Monsterlist[19] = { Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) , Status(100, 20, 100, 20, 20, 50, 1, 2 , 100), Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) };
 //우선은 같은 형식을 
 string namelist[4] = { "목검", "장검", "HP포션", "MP포션" };
-Monster::Monster()
-    : MonsterNum(0){
+Monster::Monster(): MonsterNum(0){
 }
 
 Monster::Monster(const int& i_MonsterNum) // 번호만 주도록 변경
