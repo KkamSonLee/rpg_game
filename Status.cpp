@@ -1,22 +1,8 @@
 
 #include "Status.h"
 
-Status::Status()
-{
-    this->max_HP = 0;
-    this->max_HP = 0;
-    this->max_MP = 0;
-    this->now_HP = 0;
-    this->now_MP = 0;
-    this->atk = 0;
-    this->exp = 0;
-    this->level = 1;
-    this->location = 0;
-    this->money = 0;
-    // 기획서상 level은 1이상의 숫자 나머지는 0이상의 숫자
-}
 
-
+Status::Status() {}
 Status::Status(int i_max_HP, int i_max_MP, int i_now_HP, int i_now_MP, int i_atk, int i_exp, int i_level, int i_location, int i_money) {
     this->max_HP = i_max_HP;
     this->max_MP = i_max_MP;

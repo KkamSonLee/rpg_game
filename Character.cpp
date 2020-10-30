@@ -65,7 +65,7 @@ int Character::get_money() {
 
 
 ///set
-void Character::set_stat(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location, int& i_money) {
+void Character::set_stat(int i_max_HP, int i_max_MP, int i_now_HP, int i_now_MP, int i_atk, int i_exp, int i_level, int i_location, int i_money) {
     this->status.set_status(i_max_HP, i_max_MP, i_now_HP, i_now_MP, i_atk, i_exp, i_level, i_location, i_money);
 }
 void Character::set_nhp(int i_hp){

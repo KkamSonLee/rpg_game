@@ -16,7 +16,6 @@ Town::Town(Character &myCharacter, Inventory &myInventory) : myCharacter(myChara
 //battle *charbattle=new battle();
     int max_slot = 10;//캐릭터 파일 최대 슬롯 10으로 설정
 
-    choice();
 }
 
 Town::~Town() {}
@@ -109,12 +108,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
         sfile << "\t";
 
         for (vector<int>::iterator iter = sitem.begin(); iter != sitem.end(); iter++) {
-            if (sitem.end() == iter + 1) {
-                sfile << *(++iter);
-                break;
-            } else {
                 sfile << *iter << "\t";
-            }
         }
         sfile.close();
     }

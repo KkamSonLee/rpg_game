@@ -1,3 +1,4 @@
+#pragma once
 #include "warningMessage.h"
 
 warningMessage::warningMessage()
@@ -23,7 +24,7 @@ int warningMessage::printWarning(int e_or_w, int warningNum)
 	}
 	if (e_or_w == 0) //오류 메시지인 경우(그냥 넘기고 다음 과정을 실행하면 안되는 경우)
 	{
-		return e_or_w; //오류 메시지임을 알려주는 정수(여기선 0)을 return 해준다
+	    exit(0);
 	}
 	return 0;
 }

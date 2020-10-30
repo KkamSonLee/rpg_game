@@ -15,6 +15,5 @@ class battle{
 public:
 	int Battle(Character& myCharacter, Inventory& myInventory, Monster& nowMonster, int map_num, warningMessage& wMessage); 
 	void show_Stats(Character& myCharacter, Monster& nowMonster); 
-	void save_character(Character& myCharacter, Inventory& myInventory, warningMessage &wMessage); 
-	int attack_situation(Character& myCharacter, Inventory& myInventory, Monster& nowMonster, int map_num, warningMessage &wMessage); 
+	int attack_situation(Character& myCharacter, Inventory& myInventory, Monster& nowMonster, int map_num, warningMessage &wMessage);
 };

@@ -14,40 +14,45 @@
 Status stat;
 vector<int> invList;
 vector<Map> mapAdmin;
-
 void load(int inum);
 
 
 int main() {
+    warningMessage warning;
     mapAdmin.push_back(Map().load_map("map1.txt"));
     mapAdmin.push_back(Map().load_map("map2.txt"));
     mapAdmin.push_back(Map().load_map("map3.txt"));
     mapAdmin.push_back(Map().load_map("map4.txt"));
-    Monster mon(1);
-    load(1);
+    int fileNum;
+    cout << "1~5 insert : ";
+    cin  >> fileNum;
+    if(1<=fileNum&&fileNum<=5){
+        load(fileNum);
+    }else{
+        warning.printWarning(0,1);
+    }
     Character ch(stat);
     Inventory inventory(ch);
     inventory.addSlotArr(invList);
     bool loop = true;
+    Town myTown(ch, inventory);
+    cin.clear();
     while (loop) {
-
         if (mapAdmin[ch.get_location() - 1].get_map_type() == 1) {
-            Town myTown(ch, inventory);
-            cout << "what?";
+            myTown.choice();
         } else {
             Monster myMonster(mapAdmin[ch.get_location() - 1].get_monster_num());
+            myMonster.setStat(myMonster.getMonsterNum());
             battle doBattle;
-            warningMessage warning;
             if (mapAdmin[ch.get_location() - 1].get_map_type() == 2) {
-                cout << "dun!!";
-                if(doBattle.Battle(ch, inventory, myMonster, 2, warning)){
+                if (doBattle.Battle(ch, inventory, myMonster, 2, warning)) {
                     ch.set_location(1);
                 }
             } else if (mapAdmin[ch.get_location() - 1].get_map_type() == 3) {
-                cout << "boss!!";
-                if(doBattle.Battle(ch, inventory, myMonster, 3, warning)){
+                if (doBattle.Battle(ch, inventory, myMonster, 3, warning)) {
                     ch.set_location(1);
                 }
+                myTown.save(fileNum);
             }
         }
     }
@@ -56,6 +61,7 @@ int main() {
 }
 
 void load(int inum) {
+
     string numstr = to_string(inum);
     string str = "character" + numstr;
     stringstream ss;
@@ -88,7 +94,7 @@ void load(int inum) {
         nhp = 100;
         nmp = 50;
         atk = 10;
-        location = 0;
+        location = 1;
         money = 0;
 
         stat.set_status(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
@@ -128,7 +134,6 @@ void load(int inum) {
         }
     }
     stat.show();
-    cout << "Load complete" << endl;
     //warning->printWarning(0, 3);//불러오려는 파일 문법 오류 메세지
     //return Character(Status());
 }
