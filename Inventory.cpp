@@ -34,6 +34,7 @@ void Inventory::openInv() {
         cin >> choice;
         if (choice == 0) {
             closeInv();
+            cin.ignore();
             break;
         } else if (choice >= 1 && choice <= slot.size()) {
             int *tempvec = (item.get_item(slot.at(choice - 1)));
@@ -49,8 +50,6 @@ void Inventory::openInv() {
                 usepotion(item.get_item(slot.at(choice - 1))[1], slot.at(choice - 1));
                 deleteSlot(choice);
             }
-        } else {
-            continue;
         }
     }
 }
@@ -64,13 +63,13 @@ void Inventory::changeequip(int nowAtk, int choice) {
 
 void Inventory::usepotion(int itemValue, int itemNum) {
     if (itemNum == 3) {
-        if (character.get_mhp() > character.get_nhp() + itemValue) {
+        if (character.get_mhp() <= character.get_nhp() + itemValue) {
             character.set_nhp(character.get_mhp());
         } else {
             character.set_nhp(character.get_nhp() + itemValue);
         }
     } else if (itemNum == 4) {
-        if (character.get_mmp() > character.get_nmp() + itemValue) {
+        if (character.get_mmp() <= character.get_nmp() + itemValue) {
             character.set_nmp(character.get_mmp());
         } else {
             character.set_nmp(character.get_nmp() + itemValue);
@@ -82,6 +81,7 @@ void Inventory::deleteSlot(int itemLocation) {
     vector<int>::iterator iter = slot.begin();
     iter += (itemLocation - 1);
     slot.erase(iter);
+    slot.resize(slot.size()-1);
 }
 
 void Inventory::closeInv() {
@@ -107,6 +107,6 @@ int Inventory::getMoney() {
 vector<int> Inventory::getSlot() {
     return slot;
 }
-void Inventory::slotClear(){
+void Inventory::slotClear() {
     slot.clear();
 }

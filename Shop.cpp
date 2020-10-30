@@ -6,11 +6,12 @@
 
 int sellList[4] = {1, 2, 3, 4};
 vector<int> temp;
-Shop::Shop(Character& myCharacter, Inventory& myInventory):myInventory(myInventory), myCharacter(myCharacter){
+
+Shop::Shop(Character &myCharacter, Inventory &myInventory) : myInventory(myInventory), myCharacter(myCharacter) {
     int index, sellCount;
 
     bool loop = true;
-    while(loop) {
+    while (loop) {
         showShop();
         cout << "\n어떤 동작을 하시겠습니까?\n";
         cin >> choice;
@@ -25,8 +26,9 @@ Shop::Shop(Character& myCharacter, Inventory& myInventory):myInventory(myInvento
             loop = sell(index);
             cout << "now money : " << myCharacter.get_money() << "\n";
         } else if (choice == "return") {
+            cin.ignore();
             loop = false;
-        } else{
+        } else {
             loop = false;
         }
     }
@@ -46,12 +48,23 @@ void Shop::showShop() {
 
 bool Shop::buy(int index, int buyCount) {
     warningMessage wm;
-    if (index >= (sizeof(sellList) / sizeof(int)) || index < 0) {
-                wm.printWarning(0, 1);
+    if (index > (sizeof(sellList) / sizeof(int))) {
+        //wm.printWarning(0, 1);
+        cout << "error\n";
+        cin.ignore();
+        return false;
+    } else if (index <= 0) {
+        cout << "out of range\n";
+        cin.ignore();
+        return false;
+    } else if (myCharacter.get_money() < (myInventory.item.get_item(sellList[index-1])[2]) * buyCount) {
+        cout << "not enough money\n";
+        cin.ignore();
         return false;
     } else {
         if (myInventory.getSlot().size() + buyCount > 10) {
             wm.printWarning(3, 1);
+            cin.ignore();
             return false;
         } else {
             for (int i = 1; i <= buyCount; i++) {
@@ -63,16 +76,18 @@ bool Shop::buy(int index, int buyCount) {
     }
 }
 
+
 bool Shop::sell(int sellItemNumber) {
     if (sellItemNumber > myInventory.getSlot().size() || sellItemNumber < 0) {
         cout << "not vaild\n";
+        cin.ignore();
         return false;
     } else {
         cout << "slot size : " << myInventory.getSlot().size() << "\n";
-        myInventory.changeMoney(myInventory.item.get_item(myInventory.getSlot().at(sellItemNumber-1))[2]);
-        if(sellItemNumber==1&&myInventory.getSlot().size()==1){
+        myInventory.changeMoney(myInventory.item.get_item(myInventory.getSlot().at(sellItemNumber - 1))[2]);
+        if (sellItemNumber == 1 && myInventory.getSlot().size() == 1) {
             myInventory.slotClear();
-        }else{
+        } else {
             myInventory.deleteSlot(sellItemNumber);
         }
 

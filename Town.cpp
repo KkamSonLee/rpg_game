@@ -8,9 +8,9 @@
 
 using namespace std;
 
-character_integrity_check charcheck;
+character_integrity_check* charcheck;
 //map_integrity_check *mapcheck = new map_integrity_check();
-warningMessage warning;
+warningMessage* warning;
 
 Town::Town(Character &myCharacter, Inventory &myInventory) : myCharacter(myCharacter), myInventory(myInventory) {
 //battle *charbattle=new battle();
@@ -39,7 +39,7 @@ void Town::choice() {
             if (i <= max_slot) {
                 save(i);
             } else {
-                warning.printWarning(0, 6);
+                warning->printWarning(0, 6);
                 cout << endl;
 
             }
@@ -83,9 +83,9 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
     strcpy(savefilename, sfilename.c_str());
 
     vector<int> sitem;
-   
+
     sitem = myInventory.getSlot();
-    
+
     ofstream sfile(savefilename);
 
     if (sfile.is_open()) {
@@ -111,7 +111,6 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
         for (vector<int>::iterator iter = sitem.begin(); iter != sitem.end(); ++iter) {
             if (sitem.end() == ++iter) {
                 sfile << *iter;
-                //sfile << "/";
                 break;
             }
             else {

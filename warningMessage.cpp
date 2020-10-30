@@ -3,7 +3,7 @@
 warningMessage::warningMessage()
 {
 	//오류 메시지의 번호는 앞에서부터 0~8까지입니다.(현재 이 상태에서는..)
-	Message_List.push_back("문법 규칙에 어긋납니다.\n");
+    Message_List.push_back("문법 규칙에 어긋납니다.\n");
 	Message_List.push_back("잘못된 형식입니다. 다시 입력하세요.\n"); //의미 규칙에 어긋나는 것도 여기에 포함될 것입니다.
 	Message_List.push_back("파일이 유효하지 않습니다. 이전 화면으로 돌아갑니다.\n"); //유효성 검사할 때 사용할 것 같습니다.
 	Message_List.push_back("불러오려는 파일의 형식이 문법에 맞지 않습니다.\n");
@@ -26,6 +26,7 @@ int warningMessage::printWarning(int e_or_w, int warningNum)
 	{
 		return e_or_w; //오류 메시지임을 알려주는 정수(여기선 0)을 return 해준다
 	}
+	return 0;
 }
 
 string warningMessage::get_WarningMessage(int warningNum)

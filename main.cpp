@@ -11,6 +11,8 @@
 
 
 Status stat;
+vector<int> invList;
+
 void load(int inum);
 
 //battle.cpp battle.h warningMessage.cpp warningMessage.h Town.cpp Town.h character_integrity_check.cpp character_integrity_check.h map_integrity_check.cpp map_integrity_check.h
@@ -27,21 +29,13 @@ int main() {
     int hp = 100;
     int mp = 100;
     int money = 4000;
-    vector<int> invList;
-    invList.push_back(1);
-    invList.push_back(2);
-    invList.push_back(3);
-    invList.push_back(4);
     Status charstat(mp, mp, mp, mp, atkc, mp, hp, mp, money);
     Status monstat(num, num, num, num, atkb, num, num, num, money); //money 포함
     Monster mon(1);
     load(1);
     Character ch(stat);
     Inventory inventory(ch);
-    inventory.addSlot(1);
-    inventory.addSlot(2);
-    inventory.addSlot(3);
-    inventory.addSlot(4);
+    inventory.addSlotArr(invList);
     Town myTown(ch, inventory);
 
     ch.show_stat();// 스탯 정보 출력
@@ -116,18 +110,13 @@ void load(int inum) {
             file.getline(buffer, 100);
 
             char *ptr = strtok(buffer, "\t");
-            cout << ptr << endl;
             level = atoi(ptr);
-            cout << level << "<- level \n";
             ptr = strtok(NULL, "\t");
             exp = atoi(ptr);
-            cout << exp << "<- exp \n";
             ptr = strtok(NULL, "\t");
             mhp = atoi(ptr);
-            cout << mhp << "<- mhp \n";
             ptr = strtok(NULL, "\t");
             mmp = atoi(ptr);
-            cout << mmp << "<- mmp \n";
             ptr = strtok(NULL, "\t");
             nhp = atoi(ptr);
             ptr = strtok(NULL, "\t");
@@ -138,13 +127,13 @@ void load(int inum) {
             location = atoi(ptr);
             ptr = strtok(NULL, "\t");
             money = atoi(ptr);
-            //ptr = strtok(NULL, "/");
-            /*while (ptr != "/") {
-                    myInventory->addSlot(atoi(ptr));
+            ptr = strtok(NULL, "\t");
+            while (ptr != NULL) {
+                if(!atoi(ptr)==0){
+                    invList.push_back(atoi(ptr));
+                }
                 ptr = strtok(NULL, "\t");
-                cout << ptr << endl;
-            }*/
-
+            }
             stat.set_status(mhp, mmp, nhp, nmp, atk, exp, level, location, money);
             file.close();
         }
