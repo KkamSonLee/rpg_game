@@ -11,13 +11,9 @@ using namespace std;
 character_integrity_check *charcheck = new character_integrity_check();
 //map_integrity_check *mapcheck = new map_integrity_check();
 warningMessage *warning = new warningMessage();
-<<<<<<< HEAD
 
 Town::Town(Character &myCharacter, Inventory &myInventory) : myCharacter(myCharacter), myInventory(myInventory) {
-=======
 //battle *charbattle=new battle();
-Town::Town(Character& myCharacter):myCharacter(myCharacter), myInventory(myCharacter){
->>>>>>> 3e1624f49232b8b508a0b849e0b9db38056204c4
     int max_slot = 10;//캐릭터 파일 최대 슬롯 10으로 설정
 
     choice();
@@ -230,9 +226,5 @@ void Town::stat() {
 }
 
 bool Town::is_digit(string str) {
-<<<<<<< HEAD
     return (atoi(str.c_str()) != 0) || (str.compare("0") == 0);
-=======
-    return atoi(str.c_str()) != 0 || str.compare("0") == 0;
->>>>>>> 3e1624f49232b8b508a0b849e0b9db38056204c4
 }
