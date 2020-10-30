@@ -7,7 +7,7 @@
 int sellList[4] = {1, 2, 3, 4};
 vector<int> temp;
 
-Shop::Shop(Character &myCharacter, Inventory &myInventory) : myInventory(myCharacter), myCharacter(myCharacter) {
+Shop::Shop(Character &myCharacter, Inventory &myInventory) : myInventory(myInventory), myCharacter(myCharacter) {
     int index, sellCount;
 
     bool loop = true;
