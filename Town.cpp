@@ -88,7 +88,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
             if (sstat.end() == ++iter) {
                 sfile << *iter;
                 sfile << "\t";
-                sfile << "/";
+                //sfile << "/";
                 break;
             } else {
                 sfile << *iter << "\t";
@@ -98,7 +98,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
         for (vector<int>::iterator iter = sitem.begin(); iter != sitem.end(); ++iter) {
             if (sitem.end() == ++iter) {
                 sfile << *iter;
-                sfile << "/";
+                //sfile << "/";
                 break;
             } else {
                 sfile << *iter << "\t";
