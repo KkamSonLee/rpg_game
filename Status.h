@@ -20,12 +20,12 @@ private:
 
 public:
     Status();
-    Status(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location , int& i_money); // °´Ã¼
+    Status(int i_max_HP, int i_max_MP, int i_now_HP, int i_now_MP, int i_atk, int i_exp, int i_level, int i_location, int i_money); // °´Ã¼
     ~Status();
 
     void show();
 
-    void set_status(int& i_max_HP, int& i_max_MP, int& i_now_HP, int& i_now_MP, int& i_atk, int& i_exp, int& i_level, int& i_location,int& i_money);
+    void set_status(int i_max_HP, int i_max_MP, int i_now_HP, int i_now_MP, int i_atk, int i_exp, int i_level, int i_location, int i_money);
     void set_atk(int i_atk);
     void set_mhp(int i_hp);
     void set_mmp(int i_mp);
