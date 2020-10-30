@@ -61,27 +61,9 @@ void Town::choice() {
             warning->printWarning(0, 0);//문법에 맞지 않는 오류메세지
             cout << endl;
         }
-<<<<<<< HEAD
         ss.clear();
         ss.str("");
     }
-=======
-    } else if (mselect == "quit" && is_digit(nselect) == 0) {
-        quit();
-    } else if (mselect == "inventory" && is_digit(nselect) == 0) {
-        inventory();
-    } else if (mselect == "move" && (nselect == "dungeon" || nselect == "boss" || nselect == "town")) {
-        move(nselect);
-    } else if (mselect == "shop" && is_digit(nselect) == 0) {
-        shop();
-    } else if (mselect == "stat" && is_digit(nselect) == 0) {
-        stat();
-    } else {
-        warning->printWarning(0, 0);//문법에 맞지 않는 오류메세지
-        cout << endl;
-        choice();
-    }*/
->>>>>>> 3e1624f49232b8b508a0b849e0b9db38056204c4
 }
 
 void Town::help() {
