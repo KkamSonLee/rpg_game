@@ -3,13 +3,14 @@
 class Character;
 Status Monsterlist[19] = { Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) , Status(100, 20, 100, 20, 20, 50, 1, 2 , 100), Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) };
 //우선은 같은 형식을 
-string namelist[4] = { "목검", "장검", "HP포션", "MP포션" };
+string namelist[4] = { "pig", "slime", "bee", "dog" };
 Monster::Monster(): MonsterNum(0){
 }
 
-Monster::Monster(const int& i_MonsterNum) // 번호만 주도록 변경
+Monster::Monster(int i_MonsterNum) // 번호만 주도록 변경
     :MonsterNum(0)
 {
+    cout<< "init!!\n";
     this->monsterStatus = Monsterlist[i_MonsterNum - 1]; // 해당하는 배열에 담긴 status를 몬스터 객체에 넣어준다.
     this->MonsterNum = i_MonsterNum;
    
@@ -26,24 +27,24 @@ void Monster::attack(Character& i_ch , int i_mp) {
 
 }
 
-void Monster::reset(const int& num) {
+void Monster::reset(int num) {
     this->monsterStatus = Monsterlist[num-1]; // ������ ���� ������ ���Ͱ� ������ �ִ� �⺻ ������ �缳��
 }
 
-void Monster::change(const int& num, Status st) { // ���� ��ȣ�� �ش��ϴ� �⺻������ü ��ȯ 
+void Monster::change(int num, Status st) { // ���� ��ȣ�� �ش��ϴ� �⺻������ü ��ȯ
     Monsterlist[num] = st;
 }
 
 
 ///get
-string Monster::get_name(const int& num) {// ���� ��ȣ�� �Է��ϸ� �ش� ������ �̸��� ��ȯ�մϴ�. �ٸ� status������ ���� �̸� ������ �ټ� ���� ������ �ڵ� ���ο��� �����迭�� ���ؼ�
+string Monster::get_name(int num) {// ���� ��ȣ�� �Է��ϸ� �ش� ������ �̸��� ��ȯ�մϴ�. �ٸ� status������ ���� �̸� ������ �ټ� ���� ������ �ڵ� ���ο��� �����迭�� ���ؼ�
     // ���ϴ� ����� ����߽��ϴ�. 
     return this->namelist[num - 1]; // �迭�ε� �̰Ŵ� 0�� ����� �ִ� �迭�� �ƴϱ� ������ 
 }
 Status Monster::get_Monsterstat() {
     return this->monsterStatus; //������ �⺻������ �ƴ� ������ ���� ����
 }
-Status Monster::get_MonsterInfo(const int& num) {
+Status Monster::get_MonsterInfo(int num) {
     return Monsterlist[num];
 }
 int Monster::getMonsterNum() {
@@ -80,7 +81,7 @@ int Monster::get_money() {
 
 
 ///set
-void Monster::setMonsterNum(const int num) {
+void Monster::setMonsterNum(int num) {
     this->MonsterNum = num;
 }
 void Monster::set_nhp(int i_hp) {

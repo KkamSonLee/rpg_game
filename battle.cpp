@@ -1,6 +1,6 @@
 #include "battle.h"
 
-int battle::Battle(Character &myCharacter, Inventory &myInventory, Monster &nowMonster, int map_num, warningMessage &wMessage) //전투에 임하는 함수
+int battle::Battle(Character &myCharacter, Inventory &myInventory, Monster &nowMonster, int map_num, warningMessage &wMessage)
 {
 	string input_order; //입력받은 명령어를 저장하는 string형 변수
 	//몬스터 번호는 1부터 최대 몬스터 번호까지의 값이다.

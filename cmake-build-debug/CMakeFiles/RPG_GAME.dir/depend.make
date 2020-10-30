@@ -51,6 +51,16 @@ CMakeFiles/RPG_GAME.dir/Town.cpp.obj: ../character_integrity_check.h
 CMakeFiles/RPG_GAME.dir/Town.cpp.obj: ../map_integrity_check.h
 CMakeFiles/RPG_GAME.dir/Town.cpp.obj: ../warningMessage.h
 
+CMakeFiles/RPG_GAME.dir/battle.cpp.obj: ../Character.h
+CMakeFiles/RPG_GAME.dir/battle.cpp.obj: ../Inventory.h
+CMakeFiles/RPG_GAME.dir/battle.cpp.obj: ../Item.h
+CMakeFiles/RPG_GAME.dir/battle.cpp.obj: ../Monster.h
+CMakeFiles/RPG_GAME.dir/battle.cpp.obj: ../Shop.h
+CMakeFiles/RPG_GAME.dir/battle.cpp.obj: ../Status.h
+CMakeFiles/RPG_GAME.dir/battle.cpp.obj: ../battle.cpp
+CMakeFiles/RPG_GAME.dir/battle.cpp.obj: ../battle.h
+CMakeFiles/RPG_GAME.dir/battle.cpp.obj: ../warningMessage.h
+
 CMakeFiles/RPG_GAME.dir/character_integrity_check.cpp.obj: ../character_integrity_check.cpp
 CMakeFiles/RPG_GAME.dir/character_integrity_check.cpp.obj: ../character_integrity_check.h
 
@@ -62,6 +72,7 @@ CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../Monster.h
 CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../Shop.h
 CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../Status.h
 CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../Town.h
+CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../battle.h
 CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../character_integrity_check.h
 CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../map_integrity_check.h

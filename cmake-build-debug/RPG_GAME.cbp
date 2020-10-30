@@ -128,6 +128,12 @@
 		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/Town.h">
 			<Option target="RPG_GAME"/>
 		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/battle.cpp">
+			<Option target="RPG_GAME"/>
+		</Unit>
+		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/battle.h">
+			<Option target="RPG_GAME"/>
+		</Unit>
 		<Unit filename="C:/Users/ASUS/CLionProjects/RPG_GAME/character_integrity_check.cpp">
 			<Option target="RPG_GAME"/>
 		</Unit>

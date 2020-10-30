@@ -6,6 +6,7 @@
 #include "Map.h"
 #include "character_integrity_check.h"
 #include "Shop.h"
+#include "battle.h"
 #include <sstream>
 #include <string>
 #include <cstring>
@@ -13,17 +14,44 @@
 Status stat;
 vector<int> invList;
 vector<Map> mapAdmin;
+
 void load(int inum);
 
 
 int main() {
+    mapAdmin.push_back(Map().load_map("map1.txt"));
+    mapAdmin.push_back(Map().load_map("map2.txt"));
+    mapAdmin.push_back(Map().load_map("map3.txt"));
+    mapAdmin.push_back(Map().load_map("map4.txt"));
     Monster mon(1);
     load(1);
     Character ch(stat);
     Inventory inventory(ch);
     inventory.addSlotArr(invList);
-    Town myTown(ch, inventory);
-    //mapAdmin.push_back(Map().load_map("map1.txt"));
+    bool loop = true;
+    while (loop) {
+
+        if (mapAdmin[ch.get_location() - 1].get_map_type() == 1) {
+            Town myTown(ch, inventory);
+            cout << "what?";
+        } else {
+            Monster myMonster(mapAdmin[ch.get_location() - 1].get_monster_num());
+            battle doBattle;
+            warningMessage warning;
+            if (mapAdmin[ch.get_location() - 1].get_map_type() == 2) {
+                cout << "dun!!";
+                if(doBattle.Battle(ch, inventory, myMonster, 2, warning)){
+                    ch.set_location(1);
+                }
+            } else if (mapAdmin[ch.get_location() - 1].get_map_type() == 3) {
+                cout << "boss!!";
+                if(doBattle.Battle(ch, inventory, myMonster, 3, warning)){
+                    ch.set_location(1);
+                }
+            }
+        }
+    }
+
     return 0;
 }
 
@@ -90,7 +118,7 @@ void load(int inum) {
             money = atoi(ptr);
             ptr = strtok(NULL, "\t");
             while (ptr != NULL) {
-                if(!atoi(ptr)==0){
+                if (!atoi(ptr) == 0) {
                     invList.push_back(atoi(ptr));
                 }
                 ptr = strtok(NULL, "\t");

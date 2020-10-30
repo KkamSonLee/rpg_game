@@ -28,7 +28,7 @@ public:
 	void save(int);
 	void quit();
 	void inventory();
-	void move();
+	bool move();
 	void shop();
 	void stat();
 	bool is_digit(string);

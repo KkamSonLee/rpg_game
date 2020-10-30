@@ -49,7 +49,7 @@ void Town::choice() {
         } else if (mselect == "inventory" && is_digit(nselect) == 0) {
             inventory();
         } else if (mselect == "move" && is_digit(nselect) == 0) {
-            move();
+            loop = move();
         } else if (mselect == "shop" && is_digit(nselect) == 0) {
             shop();
         } else if (mselect == "stat" && is_digit(nselect) == 0) {
@@ -146,7 +146,7 @@ void Town::inventory() {
     myInventory.openInv();
 }
 
-void Town::move() {
+bool Town::move() {
     Map admin[4];
     string mapName[4] = {"town", "dungeon", "boss", "myhouse"};
     admin[0].load_map("map1.txt");
@@ -154,81 +154,90 @@ void Town::move() {
     admin[2].load_map("map3.txt");
     admin[3].load_map("map4.txt");
 
-    cout << "where";
-    vector<int> linked_mapList = admin[0].get_linked_map();
-    vector<int> linked_mapList2 = admin[1].get_linked_map();
-    vector<int> linked_mapList3 = admin[2].get_linked_map();
-    vector<int> linked_mapList4 = admin[3].get_linked_map();
+    vector<int> linked_mapList = admin[myCharacter.get_location()].get_linked_map();
+
     int type[4];
     type[0] = admin[0].get_map_type();
     type[1] = admin[1].get_map_type();
     type[2] = admin[2].get_map_type();
     type[3] = admin[3].get_map_type();
-    cout << type[0] << type[1] << type[2] << type[3];
+    bool is = false;
+    int moveto;
+
     for (vector<int>::iterator iter = linked_mapList.begin(); iter != linked_mapList.end(); iter++) {
-        cout << mapName[type[(*iter) - 1] - 1] << "  ";
+        //if(moveto == mapName[type[(*iter) - 1] - 1]){
+        // is = true;
+        // }
+        cout << admin[(*iter) - 1].get_map_num() << "." << mapName[type[(*iter) - 1] - 1] << " ";
     }
-    /*if (place == "dungeon") {
-        string map2 = "map2";
-        mapcheck->load_set(map2);
-        if (1 || 3) {
-            char mapinfo[100];
-            char mapinfo2[100];
-            int dmonNum;
-            ifstream mf;
-            mf.open(map2);
-            mf.getline(mapinfo, 100);
-            mf.getline(mapinfo2, 100);
-            char *mptr = strtok(mapinfo2, "\t");
-            mptr = strtok(NULL, "\t");
-            mptr = strtok(NULL, "\t");
-            dmonNum = atoi(mptr);
-            Monster dm;
-            dungeonmonster = new Monster(dm.get_MonsterInfo(dmonNum), dmonNum);
-            character->set_location(2);
-            charbattle.Battle(character, myinventory, dungeonmonster, 2);
-            warningMessage dunwarn;
-            *warning = dunwarn;
-            myCharacter.set_location(2);
-            charbattle->Battle(character, myinventory, dungeonmonster, 2, dunwarn);
-            if (1) {
-                choice();
-            }
-        } else {
-            choice();
-        }
-    } else if (place == "boss") {
-        string map3 = "map3";
-        mapcheck->load_set(map3);
-        if (1 || 3) {
-            char bmapinfo[100];
-            char bmapinfo2[100];
-            int bmonNum;
-            ifstream bmf;
-            bmf.open(map3);
-            bmf.getline(bmapinfo, 100);
-            bmf.getline(bmapinfo2, 100);
-            char *bmptr = strtok(bmapinfo2, "\t");
-            bmptr = strtok(NULL, "\t");
-            bmptr = strtok(NULL, "\t");
-            bmonNum = atoi(bmptr);
-            Monster bm;
-            bossmonster = new Monster(bm.get_MonsterInfo(bmonNum), bmonNum);
-            character->set_location(3);
-            charbattle->Battle(character, myinventory, bossmonster, 3);
-            warningMessage bosswarn;
-            *warning = bosswarn;
-            myCharacter.set_location(3);
-            charbattle->Battle(character, myinventory, bossmonster, 3, bosswarn);
-            if (1) {
-                choice();
-            }
-        } else {
+
+    cout << "insert : ";
+    cin >> moveto;
+    myCharacter.set_location(moveto);
+    cout << myCharacter.get_location();
+    return false;
+    if (is) {
+    }
+    /*string map2 = "map2";
+    mapcheck->load_set(map2);
+    if (1 || 3) {
+        char mapinfo[100];
+        char mapinfo2[100];
+        int dmonNum;
+        ifstream mf;
+        mf.open(map2);
+        mf.getline(mapinfo, 100);
+        mf.getline(mapinfo2, 100);
+        char *mptr = strtok(mapinfo2, "\t");
+        mptr = strtok(NULL, "\t");
+        mptr = strtok(NULL, "\t");
+        dmonNum = atoi(mptr);
+        Monster dm;
+        dungeonmonster = new Monster(dm.get_MonsterInfo(dmonNum), dmonNum);
+        character->set_location(2);
+        charbattle.Battle(character, myinventory, dungeonmonster, 2);
+        warningMessage dunwarn;
+        *warning = dunwarn;
+        myCharacter.set_location(2);
+        charbattle->Battle(character, myinventory, dungeonmonster, 2, dunwarn);
+        if (1) {
             choice();
         }
     } else {
-        myCharacter.set_location(1);
-    }*/
+        choice();
+    }
+} else if (place == "boss") {
+    string map3 = "map3";
+    mapcheck->load_set(map3);
+    if (1 || 3) {
+        char bmapinfo[100];
+        char bmapinfo2[100];
+        int bmonNum;
+        ifstream bmf;
+        bmf.open(map3);
+        bmf.getline(bmapinfo, 100);
+        bmf.getline(bmapinfo2, 100);
+        char *bmptr = strtok(bmapinfo2, "\t");
+        bmptr = strtok(NULL, "\t");
+        bmptr = strtok(NULL, "\t");
+        bmonNum = atoi(bmptr);
+        Monster bm;
+        bossmonster = new Monster(bm.get_MonsterInfo(bmonNum), bmonNum);
+        character->set_location(3);
+        charbattle->Battle(character, myinventory, bossmonster, 3);
+        warningMessage bosswarn;
+        *warning = bosswarn;
+        myCharacter.set_location(3);
+        charbattle->Battle(character, myinventory, bossmonster, 3, bosswarn);
+        if (1) {
+            choice();
+        }
+    } else {
+        choice();
+    }
+} else {
+    myCharacter.set_location(1);
+}*/
 }
 
 void Town::shop() {
