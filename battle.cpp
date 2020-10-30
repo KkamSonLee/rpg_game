@@ -69,7 +69,6 @@ void battle::save_character(Character& myCharacter, Inventory& myInventory, warn
 	{
 		fout << *iter << '\t';
 	}
-	fout << "/";
 	
 	//캐릭터가 가지고 있는 모든 아이템을 형식에 맞게 txt 파일에 출력할 것입니다.
 	for (auto iter = for_save_slot.begin(); iter != for_save_slot.end(); iter++)
@@ -77,7 +76,6 @@ void battle::save_character(Character& myCharacter, Inventory& myInventory, warn
 		if (for_save_slot.end() == ++iter) //마지막 출력인 경우
 		{
 			fout << *iter;
-			fout << "/";
 			break;
 		}
 		else //일반 출력인 경우
