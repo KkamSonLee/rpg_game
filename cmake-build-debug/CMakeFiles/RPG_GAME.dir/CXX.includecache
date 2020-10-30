@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/ASUS/CLionProjects/RPG_GAME/Character.cpp
-Character.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
-
 C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
 iostream
 -
@@ -17,12 +13,6 @@ Monster.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.h
 Status.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
-Town.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Town.h
-
-C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.cpp
-Inventory.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
 
 C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
 item.h
@@ -44,10 +34,6 @@ string
 vector
 -
 
-C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.cpp
-Monster.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.h
-
 C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.h
 iostream
 -
@@ -58,10 +44,6 @@ C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
 Status.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
 
-C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.cpp
-Shop.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h
-
 C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h
 iostream
 -
@@ -71,6 +53,8 @@ Item.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Item.h
 Inventory.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
+warningMessage.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/warningMessage.h
 
 C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
 iostream
@@ -101,36 +85,16 @@ Item.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Item.h
 Status.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
+cctype
+-
 character_integrity_check.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/character_integrity_check.h
-map_integrity_check.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/map_integrity_check.h
 warningMessage.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/warningMessage.h
-Character.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
-
-C:/Users/ASUS/CLionProjects/RPG_GAME/battle.cpp
-Status.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
-battle.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/battle.h
-warningMessage.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/warningMessage.h
-
-C:/Users/ASUS/CLionProjects/RPG_GAME/battle.h
-iostream
--
-string
--
-fstream
--
 Character.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
 Inventory.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
-Monster.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.h
 Shop.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h
 
@@ -138,32 +102,6 @@ C:/Users/ASUS/CLionProjects/RPG_GAME/character_integrity_check.h
 iostream
 -
 fstream
--
-
-C:/Users/ASUS/CLionProjects/RPG_GAME/main.cpp
-Status.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
-Character.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
-Inventory.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
-Shop.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h
-conio.h
--
-sstream
--
-
-C:/Users/ASUS/CLionProjects/RPG_GAME/map_integrity_check.h
-iostream
--
-fstream
--
-string
--
-string.h
--
-vector
 -
 
 C:/Users/ASUS/CLionProjects/RPG_GAME/warningMessage.h

@@ -6,15 +6,15 @@
 #include "Inventory.h"
 #include "Monster.h"
 #include "Shop.h"
+#include "warningMessage.h"
+#include "Status.h"
 
 using namespace std;
 
-class battle
-{
+class battle{
 public:
-	int Battle(Character& myCharacter, Inventory& myInventory, Monster& nowMonster, int map_num); //전투에 임하는 함수
-	void show_Stats(Character& myCharacter, Monster& nowMonster); //스탯 보여주는 함수
-	void save_character(Character& myCharacter, Inventory& myInventory); //캐릭터 정보를 저장하는 함수
-	int attack_situation(Character& myCharacter, Inventory& myInventory, Monster& nowMonster, int map_num); //attack 실행 시의 상황을 나타낸 함수
+	int Battle(Character& myCharacter, Inventory& myInventory, Monster& nowMonster, int map_num, warningMessage& wMessage); 
+	void show_Stats(Character& myCharacter, Monster& nowMonster); 
+	void save_character(Character& myCharacter, Inventory& myInventory, warningMessage &wMessage); 
+	int attack_situation(Character& myCharacter, Inventory& myInventory, Monster& nowMonster, int map_num, warningMessage &wMessage); 
 };
-

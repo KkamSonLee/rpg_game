@@ -1,136 +1,141 @@
-#include "Status.h"
 #include "battle.h"
-#include "warningMessage.h"
 
-int battle::Battle(Character &myCharacter, Inventory &myInventory, Monster &nowMonster, int map_num) //ÀüÅõ¿¡ ÀÓÇÏ´Â ÇÔ¼ö
+int battle::Battle(Character &myCharacter, Inventory &myInventory, Monster &nowMonster, int map_num, warningMessage &wMessage) //ì „íˆ¬ì— ì„í•˜ëŠ” í•¨ìˆ˜
 {
-	string input_order; //ÀÔ·Â¹ŞÀº ¸í·É¾î¸¦ ÀúÀåÇÏ´Â stringÇü º¯¼ö
-	//¸ó½ºÅÍ ¹øÈ£´Â 1ºÎÅÍ ÃÖ´ë ¸ó½ºÅÍ ¹øÈ£ ±îÁöÀÇ °ªÀÌ´Ù
+	string input_order; //ì…ë ¥ë°›ì€ ëª…ë ¹ì–´ë¥¼ ì €ì¥í•˜ëŠ” stringí˜• ë³€ìˆ˜
+	//ëª¬ìŠ¤í„° ë²ˆí˜¸ëŠ” 1ë¶€í„° ìµœëŒ€ ëª¬ìŠ¤í„° ë²ˆí˜¸ê¹Œì§€ì˜ ê°’ì´ë‹¤.
 	while (1)
 	{
-		show_Stats(myCharacter, nowMonster); //½ºÅÈ Ç¥½Ã
-		std::cout << "ÀüÅõ> ";
+		show_Stats(myCharacter, nowMonster); //ìŠ¤íƒ¯ í‘œì‹œ
 		getline(cin, input_order);
-		
-		if (input_order == "attack") //attack 6±ÛÀÚ¸¦ Á¤È®ÇÏ°Ô ÀÔ·ÂÇÑ °æ¿ì
+		if (input_order == "attack") //attack 6ê¸€ìë¥¼ ì •í™•í•˜ê²Œ ì…ë ¥í•œ ê²½ìš°
 		{
 			int check;
-			check = attack_situation(myCharacter, myInventory, nowMonster, map_num); //°ø°İ »óÈ²À» ±¸ÇöÇØ ³õÀº ÇÔ¼ö È£Ãâ
-			if (check == 2) //ÀüÅõ ºÎ ÇÁ·ÒÇÁÆ®·Î µ¹¾Æ°£´Ù´Â ½ÅÈ£°¡ µ¹¾Æ¿À¸é
+			check = attack_situation(myCharacter, myInventory, nowMonster, map_num, wMessage); //ê³µê²© ìƒí™©ì„ êµ¬í˜„í•´ ë†“ì€ í•¨ìˆ˜ í˜¸ì¶œ
+			if (check == 2) //ì „íˆ¬ ë¶€ í”„ë¡¬í”„íŠ¸ë¡œ ëŒì•„ê°„ë‹¤ëŠ” ì‹ í˜¸ê°€ ëŒì•„ì˜¤ë©´
 				continue;
-			else if (check == 1) //¸¶À»·Î µ¹¾Æ°£´Ù´Â ½ÅÈ£°¡ µ¹¾Æ¿À¸é
+			else if (check == 1) //ë§ˆì„ë¡œ ëŒì•„ê°„ë‹¤ëŠ” ì‹ í˜¸ê°€ ëŒì•„ì˜¤ë©´
 				return 1;
 		}
-		else if (input_order == "run") //run 3±ÛÀÚ¸¦ Á¤È®ÇÏ°Ô ÀÔ·ÂÇÑ °æ¿ì
+		else if (input_order == "run") //run 3ê¸€ìê°€ ì •í™•í•˜ê²Œ ì…ë ¥ëœ ê²½ìš°
 		{
-			std::cout << "ÇöÀç »ç³ÉÅÍ¿¡¼­ µµ¸Á°©´Ï´Ù.\n";
-			return 1; //1À» ¹İÈ¯ÇÑ´Ù. (1À» ¹İÈ¯ÇÒ °æ¿ì ¸¶À»·Î µ¹¾Æ°£´Ù´Â ÀÇ¹ÌÀÓ)
+			std::cout << "í˜„ì¬ ì‚¬ëƒ¥í„°ì—ì„œ ë„ë§ê°‘ë‹ˆë‹¤.\n";
+			return 1; //1ì„ ë°˜í™˜í•œë‹¤. (1ì„ ë°˜í™˜í•  ê²½ìš° ë§ˆì„ë¡œ ëŒì•„ê°„ë‹¤ëŠ” ì˜ë¯¸ì…ë‹ˆë‹¤)
 		}
-		else if (input_order == "inventory") //inventory 9±ÛÀÚ¸¦ Á¤È®ÇÏ°Ô ÀÔ·ÂÇÑ °æ¿ì
+		else if (input_order == "inventory") //inventory 9ê¸€ìê°€ ì •í™•í•˜ê²Œ ì…ë ¥ëœ ê²½ìš°
 		{
-			std::cout << "ÀÎº¥Åä¸®¸¦ ¿ÀÇÂÇÕ´Ï´Ù.\n";
-			myInventory.openInv(); //ÀÎº¥Åä¸® ¿ÀÇÂ
+			std::cout << "ì¸ë²¤í† ë¦¬ë¥¼ ì˜¤í”ˆí•©ë‹ˆë‹¤.\n";
+			myInventory.openInv(); //ì¸ë²¤í† ë¦¬ ì˜¤í”ˆ
 		}
-		else //À¯È¿ÇÏÁö ¾ÊÀº ÀÔ·ÂÀÎ °æ¿ì
+		else //ìœ íš¨í•˜ì§€ ì•Šì€ ì…ë ¥ì¸ ê²½ìš°
 		{
-			std::cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä\n";
-			continue; //ÀüÅõ ºÎ ÇÁ·ÒÇÁÆ®·Î ´Ù½Ã µ¹¾Æ°£´Ù.
+			int check = wMessage.printWarning(1, 1); //1ì€ ê²½ê³ ë¼ëŠ” ëœ», ë‹¤ë¥¸ 1ì€ ìœ íš¨í•˜ì§€ ì•Šì€ í˜•ì‹ì´ë¼ëŠ” ëœ»
+			std::cout << "\n";
+			continue; //ì „íˆ¬ ë¶€ í”„ë¡¬í”„íŠ¸ë¡œ ë‹¤ì‹œ ëŒì•„ê°„ë‹¤
 		}
 	}
-	//ÀüÅõ ºÎ ÇÁ·ÒÇÁÆ®´Â 1ÀÌ return µÇÁö ¾Ê´Â ÇÑ Á¾·áµÇÁö ¾ÊÀ» °ÍÀÔ´Ï´Ù. (¹«ÇÑ·çÇÁ¿¡¼­ ºüÁ®³ª¿À´Â ´Ù¸¥ ¹æ¹ıÀº x)
+	//ì „íˆ¬ ë¶€ í”„ë¡¬í”„íŠ¸ëŠ” 1ì´ return ë˜ì§€ ì•ŠëŠ” í•œ ì¢…ë£Œë˜ì§€ ì•Šì„ ê²ƒì…ë‹ˆë‹¤. (ë¬´í•œë£¨í”„ì—ì„œ ë¹ ì ¸ë‚˜ì˜¤ëŠ” ë‹¤ë¥¸ ë°©ë²•ì€ x)
 }
 
 void battle::show_Stats(Character& myCharacter, Monster& nowMonster)
 {
-	//Á¤º¸ Ç¥½Ã(ºÎ ÇÁ·ÒÆ÷Æ® Ã¹ È­¸é)
+	//ì •ë³´ í‘œì‹œ(ë¶€ í”„ë¡¬í¬íŠ¸ ì²« í™”ë©´)
 	cout << "Player Lv" << myCharacter.get_level() << "\n";
 	cout << "HP " << myCharacter.get_nhp() << "/" << myCharacter.get_mhp() << "\n";
 	cout << "MP " << myCharacter.get_nmp() << "/" << myCharacter.get_mmp() << "\n";
 	cout << "exp " << myCharacter.get_exp() << "\n";
-	cout << "[Monster]"<<nowMonster.get_name(nowMonster.getMonsterNum())<<" HP : " << nowMonster.get_nhp() << "/" << nowMonster.get_mmp() << "\n"; //¸ó½ºÅÍ ÀÌ¸§°ú Ã¼·Â Ãâ·Â
-	cout << "\n"; //°³Çà¹®ÀÚ
+	//ëª¬ìŠ¤í„° ì´ë¦„ê³¼ ì²´ë ¥ ì¶œë ¥
+	cout << "[Monster]"<<nowMonster.get_name(nowMonster.getMonsterNum())<<" HP : " << nowMonster.get_nhp() << "/" << nowMonster.get_mmp() << "\n"; 
+	cout << "\n"; //ê°œí–‰ë¬¸ì
 }
 
-void battle::save_character(Character& myCharacter, Inventory& myInventory) //Ä³¸¯ÅÍ Á¤º¸¸¦ ÀúÀåÇÏ´Â ÇÔ¼ö
+void battle::save_character(Character& myCharacter, Inventory& myInventory, warningMessage &wMessage) //ìºë¦­í„° ì •ë³´ë¥¼ ì €ì¥í•˜ëŠ” í•¨ìˆ˜
 {
-	//Ä³¸¯ÅÍ Á¤º¸ ¼¼ÀÌºê °úÁ¤À» ¸ÕÀú °ÅÄ¥ °ÍÀÓ
-	vector<int> for_save_status; //½ºÅÈ ÀúÀåÀ» À§ÇÑ ÀÓ½Ã º¤ÅÍ
-	vector<int> for_save_slot; //¾ÆÀÌÅÛ ÀúÀåÀ» À§ÇÑ ÀÓ½Ã º¤ÅÍ
-	for_save_slot = myInventory.getSlot(); //¾ÆÀÌÅÛ slotÀÇ Á¤º¸¸¦ ³Ñ°ÜÁØ´Ù
-	for_save_status = myCharacter.get_stat().getstatus(); //½ºÅÈ ÀúÀåÀ» À§ÇØ Á¤º¸¸¦ ³Ñ°ÜÁØ´Ù
-	ofstream fout; //ÆÄÀÏ Ãâ·Â °´Ã¼ »ı¼º
-	fout.open("character.txt"); //character.txt¶ó´Â ÆÄÀÏ ¿­±â(±âÁ¸ÀÇ ÆÄÀÏ ³»¿ëÀº »èÁ¦)
-	//Ä³¸¯ÅÍ°¡ °¡Áö°í ÀÖ´Â ¸ğµç stat¿¡ °üÇÑ Á¤º¸¸¦ Çü½Ä¿¡ ¸Â°Ô txt ÆÄÀÏ¿¡ Ãâ·ÂÇÒ °ÍÀÔ´Ï´Ù.
-	for (auto iter = for_save_status.begin(); iter != for_save_status.end(); iter++) //status¿¡ °üÇÑ Á¤º¸ ÀúÀå
+	//ìºë¦­í„° ì •ë³´ ì„¸ì´ë¸Œ ê³¼ì •ì„ ê±°ì¹  ê²ƒì„
+	vector<int> for_save_status; //ìŠ¤íƒ¯ ì €ì¥ì„ ìœ„í•œ ì„ì‹œ ë²¡í„°
+	vector<int> for_save_slot; //ì•„ì´í…œ ì €ì¥ì„ ìœ„í•œ ì„ì‹œ ë²¡í„°
+	for_save_slot = myInventory.getSlot(); //ì•„ì´í…œ slotì˜ ì •ë³´ë¥¼ ë„˜ê²¨ì¤€ë‹¤
+	for_save_status = myCharacter.get_stat().getstatus(); //ìŠ¤íƒ¯ ì €ì¥ì„ ìœ„í•´ ì •ë³´ë¥¼ ë„˜ê²¨ì¤€ë‹¤
+	ofstream fout; //íŒŒì¼ ì¶œë ¥ ê°ì²´ ìƒì„±
+	fout.open("character.txt"); //character.txtë¼ëŠ” íŒŒì¼ ì—´ê¸°(ê¸°ì¡´ì˜ íŒŒì¼ ë‚´ìš©ì€ ì‚­ì œ)
+	if (!fout.is_open()) //ì—´ë¦¬ì§€ ì•ŠëŠ” ê²½ìš°
+	{
+		int check = wMessage.printWarning(0, 4); //0ì€ ì˜¤ë¥˜ ë©”ì‹œì§€ì´ê³ , 4ëŠ” txt íŒŒì¼ ì¶œë ¥ ì‹¤íŒ¨ë¼ëŠ” ëœ»
+		if (check == 0) //ì˜¤ë¥˜ì¸ ê²ƒì´ í™•ì¸ë˜ë©´
+			exit(0); //ê°•ì œì¢…ë£Œ
+	}
+	//ìºë¦­í„°ê°€ ê°€ì§€ê³  ìˆëŠ” ëª¨ë“  statì— ê´€í•œ ì •ë³´ë¥¼ í˜•ì‹ì— ë§ê²Œ txt íŒŒì¼ì— ì¶œë ¥í•  ê²ƒì…ë‹ˆë‹¤.
+	for (auto iter = for_save_status.begin(); iter != for_save_status.end(); iter++) //statusì— ê´€í•œ ì •ë³´ ì €ì¥
 	{
 		fout << *iter << '\t';
 	}
 	fout << "/";
-	//Ä³¸¯ÅÍ°¡ °¡Áö°í ÀÖ´Â ¸ğµç ¾ÆÀÌÅÛÀ» Çü½Ä¿¡ ¸Â°Ô txt ÆÄÀÏ¿¡ Ãâ·ÂÇÒ °ÍÀÔ´Ï´Ù.
+	
+	//ìºë¦­í„°ê°€ ê°€ì§€ê³  ìˆëŠ” ëª¨ë“  ì•„ì´í…œì„ í˜•ì‹ì— ë§ê²Œ txt íŒŒì¼ì— ì¶œë ¥í•  ê²ƒì…ë‹ˆë‹¤.
 	for (auto iter = for_save_slot.begin(); iter != for_save_slot.end(); iter++)
 	{
-		if (for_save_slot.end() == ++iter) //¸¶Áö¸· Ãâ·ÂÀÎ °æ¿ì
+		if (for_save_slot.end() == ++iter) //ë§ˆì§€ë§‰ ì¶œë ¥ì¸ ê²½ìš°
 		{
 			fout << *iter;
 			fout << "/";
 			break;
 		}
-		else //ÀÏ¹İ Ãâ·ÂÀÎ °æ¿ì
+		else //ì¼ë°˜ ì¶œë ¥ì¸ ê²½ìš°
 			fout << *iter << '\t';
 	}
-	fout.close(); //Ãâ·Â ¿Ï·á ÈÄ¿¡´Â ÆÄÀÏ ´İ±â
+	fout.close(); //ì¶œë ¥ ì™„ë£Œ í›„ì—ëŠ” íŒŒì¼ ë‹«ê¸°
 }
 
-int battle::attack_situation(Character& myCharacter, Inventory& myInventory, Monster& nowMonster, int map_num)
+int battle::attack_situation(Character& myCharacter, Inventory& myInventory, Monster& nowMonster, int map_num, warningMessage &wMessage)
 {
-	if (myCharacter.get_nmp() <= 20) //ÇöÀç MP°¡ »ç¿ëÇÏ·Á´Â MP ÀÌ»ó¸¸Å­ ÀÖ´Â °æ¿ì(¿©±â¼± 20)
+	if (myCharacter.get_nmp() <= 20) //í˜„ì¬ MPê°€ ì‚¬ìš©í•˜ë ¤ëŠ” MP ì´ìƒë§Œí¼ ìˆëŠ” ê²½ìš°(ì—¬ê¸°ì„  20)
 	{
-		std::cout << "Ä³¸¯ÅÍÀÇ ÇöÀç mp°¡ 0 ÀÌÇÏÀÔ´Ï´Ù.\n";
-		return 2; //ÀüÅõ ºÎ ÇÁ·ÒÇÁÆ®·Î µ¹¾Æ°£´Ù
+		std::cout << "ìºë¦­í„°ì˜ í˜„ì¬ mpê°€ 20 ì´í•˜ì…ë‹ˆë‹¤.\n";
+		return 2; //ì „íˆ¬ ë¶€ í”„ë¡¬í”„íŠ¸ë¡œ ëŒì•„ê°„ë‹¤
 	}
-	else //MP°¡ 20 ÃÊ°úÀÎ °æ¿ì
+	else //MPê°€ 20 ì´ˆê³¼ì¸ ê²½ìš°
 	{
-		myCharacter.attack(nowMonster, 20); //Ä³¸¯ÅÍ°¡ ¸ó½ºÅÍ °ø°İ
-		if (nowMonster.get_nhp() > 0) //¸ó½ºÅÍÀÇ Ã¼·ÂÀÌ 0 ÀÌ»óÀÌ¶ó¸é
+		myCharacter.attack(nowMonster, 20); //ìºë¦­í„°ê°€ ëª¬ìŠ¤í„° ê³µê²©
+		if (nowMonster.get_nhp() > 0) //ëª¬ìŠ¤í„°ì˜ ì²´ë ¥ì´ 0 ì´ìƒì´ë¼ë©´
 		{
-			nowMonster.attack(myCharacter, 0); //¸ó½ºÅÍ°¡ Ä³¸¯ÅÍ °ø°İ
-			if (myCharacter.get_nhp() <= 0) //Ä³¸¯ÅÍÀÇ ÇöÀç hp°¡ 0 ÀÌÇÏ¶ó¸é
+			nowMonster.attack(myCharacter, 0); //ëª¬ìŠ¤í„°ê°€ ìºë¦­í„° ê³µê²©
+			if (myCharacter.get_nhp() <= 0) //ìºë¦­í„°ì˜ í˜„ì¬ hpê°€ 0 ì´í•˜ë¼ë©´
 			{
-				std::cout << "Ä³¸¯ÅÍÀÇ ÇöÀç hp°¡ 0 ÀÌÇÏÀÔ´Ï´Ù.\n";
-				std::cout << "¸¶À»·Î µ¹¾Æ°©´Ï´Ù.\n";
-				myCharacter.set_nhp(1); //ÀüÅõ ºÒ´É »óÅÂ·Î hp Á¶Àı(now_HP == 1)
-				return 1; //1À» ¹İÈ¯ÇÑ´Ù. (1À» ¹İÈ¯ÇÒ °æ¿ì ¸¶À»·Î µ¹¾Æ°£´Ù´Â ÀÇ¹ÌÀÔ´Ï´Ù. (ÁÖ ÇÁ·ÒÆ÷Æ®¿¡¼­ Á¤¼ö ¹Ş¾Æ¼­ ¸¶À»·Î ÀÌµ¿½ÃÅ°¸é µÉ °Í °°½À´Ï´Ù.))
+				std::cout << "ìºë¦­í„°ì˜ í˜„ì¬ hpê°€ 0 ì´í•˜ì…ë‹ˆë‹¤.\n";
+				std::cout << "ë§ˆì„ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.\n";
+				myCharacter.set_nhp(1); //ì „íˆ¬ ë¶ˆëŠ¥ ìƒíƒœë¡œ hp ì¡°ì ˆ(now_HP == 1)
+				return 1; //1ì„ ë°˜í™˜í•œë‹¤. (1ì„ ë°˜í™˜í•  ê²½ìš° ë§ˆì„ë¡œ ëŒì•„ê°„ë‹¤ëŠ” ì˜ë¯¸ì…ë‹ˆë‹¤. (ì£¼ í”„ë¡¬í¬íŠ¸ì—ì„œ ì •ìˆ˜ ë°›ì•„ì„œ ë§ˆì„ë¡œ ì´ë™ì‹œí‚¤ë©´ ë  ê²ƒ ê°™ìŠµë‹ˆë‹¤.))
 			}
-			//Ä³¸¯ÅÍÀÇ ÇöÀç hp°¡ 0 ÀÌ»óÀÌ¸é ¿©±â·Î ¿Ã ÅÙµ¥, À§¿¡¼­ ÇØ´ç °úÁ¤Àº ´Ù ½ÃÇàÇßÀ¸¹Ç·Î ´Ù½Ã ÇÁ·ÒÆ÷Æ® Ãâ·ÂÀ¸·Î µ¹¾Æ°©´Ï´Ù
+			//ìºë¦­í„°ì˜ í˜„ì¬ hpê°€ 0 ì´ìƒì´ë©´ ì—¬ê¸°ë¡œ ì˜¬ í…ë°, ë‹¤ì‹œ ì „íˆ¬ ë¶€ í”„ë¡¬í”„íŠ¸ë¡œ ëŒì•„ê°€ê²Œ ë§Œë“¤ì–´ ì£¼ë©´ ë©ë‹ˆë‹¤.
+			return 2; //ì „íˆ¬ ë¶€ í”„ë¡¬í”„íŠ¸ë¡œ ëŒì•„ê°„ë‹¤.
 		}
-		else if (nowMonster.get_nhp() <= 0)//¸ó½ºÅÍÀÇ Ã¼·ÂÀÌ 0 ÀÌÇÏ¶ó¸é(¸ó½ºÅÍ¸¦ ÀâÀº °Í)
+		else if (nowMonster.get_nhp() <= 0) //ëª¬ìŠ¤í„°ì˜ ì²´ë ¥ì´ 0 ì´í•˜ë¼ë©´(ëª¬ìŠ¤í„°ë¥¼ ì¡ì€ ê²ƒ)
 		{
-			if (map_num == 3) //º¸½º¸ÊÀÎ °æ¿ì
+			if (map_num == 3) //ë³´ìŠ¤ë§µì¸ ê²½ìš°
 			{
-				int plus_money, plus_exp; //Ãß°¡ÇÒ µ·, exp
-				plus_money = nowMonster.get_money() + myCharacter.get_money(); //¿ø·¡ ÀÖ´ø µ· + Ãß°¡·Î ¾òÀº µ·
-				plus_exp = nowMonster.get_exp() + myCharacter.get_exp(); //¿ø·¡ ÀÖ´ø exp + Ãß°¡·Î ¾òÀº exp
+				int plus_money, plus_exp; //ì¶”ê°€í•  ëˆ, exp
+				plus_money = nowMonster.get_money() + myCharacter.get_money(); //ì›ë˜ ìˆë˜ ëˆ + ì¶”ê°€ë¡œ ì–»ì€ ëˆ
+				plus_exp = nowMonster.get_exp() + myCharacter.get_exp(); //ì›ë˜ ìˆë˜ exp + ì¶”ê°€ë¡œ ì–»ì€ exp
 
-				save_character(myCharacter, myInventory);
-
-				//Ä³¸¯ÅÍ¿¡ money°ª°ú exp °ªÀ» Àç¼³Á¤ ½ÃÄÑÁØ´Ù (REWARD)
+				 //ìºë¦­í„°ì— moneyê°’ê³¼ exp ê°’ì„ ì¬ì„¤ì • ì‹œì¼œì¤€ë‹¤ (REWARD)
 				myCharacter.set_money(plus_money);
 				myCharacter.set_exp(plus_exp);
 
-				return 1; //1À» ¹İÈ¯ÇÑ´Ù. (1À» ¹İÈ¯ÇÒ °æ¿ì ¸¶À»·Î µ¹¾Æ°£´Ù´Â ÀÇ¹ÌÀÔ´Ï´Ù. (ÁÖ ÇÁ·ÒÆ÷Æ®¿¡¼­ Á¤¼ö ¹Ş¾Æ¼­ ¸¶À»·Î ÀÌµ¿½ÃÅ°¸é µÉ °Í °°½À´Ï´Ù.))
-				//Ä³¸¯ÅÍ ÆÄÀÏ ¹«°á¼º °Ë»ç´Â 1À» ¹İÈ¯ÇÑ ÀÌÈÄ ½Ç½ÃÇÏ¸é µÉ °ÍÀÔ´Ï´Ù.
+				save_character(myCharacter, myInventory, wMessage); //ìºë¦­í„° ì •ë³´ ì €ì¥
+
+				return 1; //1ì„ ë°˜í™˜í•œë‹¤. (1ì„ ë°˜í™˜í•˜ë©´ ë§ˆì„ë¡œ ëŒì•„ê°€ëŠ” ê²ë‹ˆë‹¤.)
+				
 			}
-			else if (map_num == 2) //ÀÏ¹İ »ç³ÉÅÍÀÎ °æ¿ì
+			else if (map_num == 2) //ì¼ë°˜ ì‚¬ëƒ¥í„°ì¸ ê²½ìš°
 			{
-				int plus_money, plus_exp; //Ãß°¡ÇÒ µ·, exp
-				plus_money = nowMonster.get_money() + myCharacter.get_money(); //¿ø·¡ ÀÖ´ø µ· + Ãß°¡·Î ¾òÀº µ·
-				plus_exp = nowMonster.get_exp() + myCharacter.get_exp(); //¿ø·¡ ÀÖ´ø exp + Ãß°¡·Î ¾òÀº exp
-
-				//Ä³¸¯ÅÍ¿¡ money°ª°ú exp °ªÀ» Àç¼³Á¤ ½ÃÄÑÁØ´Ù (REWARD)
+				int plus_money, plus_exp; 
+				plus_money = nowMonster.get_money() + myCharacter.get_money();
+				plus_exp = nowMonster.get_exp() + myCharacter.get_exp();
+				
 				myCharacter.set_money(plus_money);
 				myCharacter.set_exp(plus_exp);
 
-				return 1; //1À» ¹İÈ¯ÇÑ´Ù. (1À» ¹İÈ¯ÇÒ °æ¿ì ¸¶À»·Î µ¹¾Æ°£´Ù´Â ÀÇ¹ÌÀÔ´Ï´Ù. (ÁÖ ÇÁ·ÒÆ÷Æ®¿¡¼­ Á¤¼ö ¹Ş¾Æ¼­ ¸¶À»·Î ÀÌµ¿½ÃÅ°¸é µÉ °Í °°½À´Ï´Ù.))
+				return 1; //1ì„ ë°˜í™˜í•œë‹¤. (1ì„ ë°˜í™˜í•˜ë©´ ë§ˆì„ë¡œ ëŒì•„ê°€ëŠ” ê²ë‹ˆë‹¤.)
 			}
 		}
 	}

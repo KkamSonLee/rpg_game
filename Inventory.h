@@ -12,7 +12,7 @@ class Inventory {
 private:
     int money;
     vector <int> slot;
-    Character character;
+    Character& character;
 public:
 
     Inventory(Character& subCharacter);   //character는 인벤토리를 가지고 있습니다.
@@ -28,6 +28,7 @@ public:
     void changeequip(int nowAtk, int choice);    // 장비교체
     void usepotion(int itemValue, int itemNum);     // 포션 사용
     int getMoney();  // get_Money
+    void slotClear();
     Item item;    //Slot에 있는 int값으로 아이템의 속성을 사용하기 위해 정의
 
 };

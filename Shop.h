@@ -6,6 +6,7 @@
 #include "Character.h"
 #include "Item.h"
 #include "Inventory.h"
+#include "warningMessage.h"
 
 using namespace std;
 

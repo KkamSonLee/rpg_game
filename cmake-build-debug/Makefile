@@ -331,32 +331,32 @@ Town.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/Town.cpp.s
 .PHONY : Town.cpp.s
 
-battle.obj: battle.cpp.obj
+character_integrity_check.obj: character_integrity_check.cpp.obj
 
-.PHONY : battle.obj
+.PHONY : character_integrity_check.obj
 
 # target to build an object file
-battle.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/battle.cpp.obj
-.PHONY : battle.cpp.obj
+character_integrity_check.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/character_integrity_check.cpp.obj
+.PHONY : character_integrity_check.cpp.obj
 
-battle.i: battle.cpp.i
+character_integrity_check.i: character_integrity_check.cpp.i
 
-.PHONY : battle.i
+.PHONY : character_integrity_check.i
 
 # target to preprocess a source file
-battle.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/battle.cpp.i
-.PHONY : battle.cpp.i
+character_integrity_check.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/character_integrity_check.cpp.i
+.PHONY : character_integrity_check.cpp.i
 
-battle.s: battle.cpp.s
+character_integrity_check.s: character_integrity_check.cpp.s
 
-.PHONY : battle.s
+.PHONY : character_integrity_check.s
 
 # target to generate assembly for a file
-battle.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/battle.cpp.s
-.PHONY : battle.cpp.s
+character_integrity_check.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RPG_GAME.dir\build.make CMakeFiles/RPG_GAME.dir/character_integrity_check.cpp.s
+.PHONY : character_integrity_check.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -442,9 +442,9 @@ help:
 	@echo ... Town.obj
 	@echo ... Town.i
 	@echo ... Town.s
-	@echo ... battle.obj
-	@echo ... battle.i
-	@echo ... battle.s
+	@echo ... character_integrity_check.obj
+	@echo ... character_integrity_check.i
+	@echo ... character_integrity_check.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -9,8 +9,10 @@ Inventory::~Inventory() {}
 
 void Inventory::printInvList() {
     int i = 1;
-    for (vector<int>::iterator iter = slot.begin(); iter != slot.end(); iter++, i++) {
-        cout << i << ". " << Item().get_itemName(*(iter)) << "\n";
+    if (!slot.empty()) {
+        for (vector<int>::iterator iter = slot.begin(); iter != slot.end(); iter++, i++) {
+            cout << i << ". " << Item().get_itemName(*(iter)) << "\n";
+        }
     }
 }
 
@@ -34,16 +36,17 @@ void Inventory::openInv() {
             closeInv();
             break;
         } else if (choice >= 1 && choice <= slot.size()) {
+            int *tempvec = (item.get_item(slot.at(choice - 1)));
+            cout << *(tempvec) << "\n";
+            cout << *(tempvec + 1) << "\n";
+            cout << *(tempvec + 2) << "\n";
             if (choice == 1) {
                 cout << "already use equip\n";
-            }
-            if (item.get_item(slot[choice]).at(0) == 1) {//itemType
-                changeequip(item.get_item(slot[0]).at(1), choice);
-                int temp = slot.at(0);
-                slot.at(0) = slot.at(choice);
-                slot.at(choice) = temp;
-            } else if (item.get_item(slot[choice]).at(0) == 0) {
-                usepotion(item.get_item(slot[choice]).at(1), slot[choice]);
+            } else if (tempvec[0] == 1) {//itemType
+                changeequip(item.get_item(slot.at(0))[1], choice);
+
+            } else if (tempvec[0] == 0) {
+                usepotion(item.get_item(slot.at(choice - 1))[1], slot.at(choice - 1));
                 deleteSlot(choice);
             }
         } else {
@@ -53,7 +56,10 @@ void Inventory::openInv() {
 }
 
 void Inventory::changeequip(int nowAtk, int choice) {
-    character.set_atk((character.get_atk() - nowAtk) + item.get_item(slot[choice]).at(1));
+    character.set_atk((character.get_atk() - nowAtk) + (item.get_item(slot.at(choice - 1))[1]));
+    int temp = slot.at(0);
+    slot.at(0) = slot.at(choice - 1);
+    slot.at(choice - 1) = temp;
 }
 
 void Inventory::usepotion(int itemValue, int itemNum) {
@@ -82,7 +88,6 @@ void Inventory::closeInv() {
     cout << "return to game.\n";
 }
 
-
 void Inventory::addSlot(int itemNum) {
     slot.push_back(itemNum);
 }
@@ -91,8 +96,8 @@ void Inventory::addSlotArr(vector<int> itemArr) {
     slot.assign(itemArr.begin(), itemArr.end());
 }
 
-void Inventory::changeMoney(int money) {
-    character.set_money(character.get_money() + money);
+void Inventory::changeMoney(int moneyChange) {
+    character.set_money(character.get_money() + moneyChange);
 }
 
 int Inventory::getMoney() {
@@ -101,4 +106,7 @@ int Inventory::getMoney() {
 
 vector<int> Inventory::getSlot() {
     return slot;
+}
+void Inventory::slotClear(){
+    slot.clear();
 }
