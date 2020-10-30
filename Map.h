@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "map_integrity_check.h"
+#include "warningMessage.h"
 
 using namespace std;
 
