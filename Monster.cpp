@@ -1,17 +1,17 @@
 #include "Monster.h"
 
 class Character;
-Status Monster::Monsterlist[99]; // ������ �⺻�������� ����ֽ��ϴ�(���� ���� ���� ����)
+Status Monster::Monsterlist[99] = { Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) , Status(100, 20, 100, 20, 20, 50, 1, 2 , 100), Status(100, 20, 100, 20, 20, 50, 1, 2 , 100) }; 
+//우선은 같은 형식을 
 const string Monster::namelist[4] = { "목검", "장검", "HP포션", "MP포션" };
 Monster::Monster()
     : MonsterNum(0){
 }
 
-Monster::Monster(const Status& i_status, const int& i_MonsterNum)
+Monster::Monster(const int& i_MonsterNum) // 번호만 주도록 변경
     :MonsterNum(0)
 {
-    this->monsterStatus = i_status;
-    Monsterlist[i_MonsterNum] = i_status; // ������ �⺻������ ����, ���� ������ �ش��ϴ� ��ȣ�� ���� �⺻ ���� ����
+    this->monsterStatus = Monsterlist[i_MonsterNum - 1]; // 해당하는 배열에 담긴 status를 몬스터 객체에 넣어준다. 
     this->MonsterNum = i_MonsterNum;
    
 }
@@ -20,10 +20,7 @@ Monster::~Monster(){
 }
 
 void Monster::attack(Character& i_ch , int i_mp) {
-    int use_mp = i_mp;
-    if (this->get_nmp() < i_mp) {
-        cout << "MP가 모자랍니다." << endl;
-    }
+
     int damage = i_ch.get_nhp() - (this->get_atk());// ������ ĳ������ ���� hp - ������ ���ݷ�
     i_ch.set_nhp(damage); // ��������� ������ ���ݴ�� ĳ������ hp �ٲ��ش�.
     this->set_nmp(this->get_nmp() - i_mp); //���� mp�� �Ű����� �޴� ��ŭ ���� �����ش�.
@@ -31,7 +28,7 @@ void Monster::attack(Character& i_ch , int i_mp) {
 }
 
 void Monster::reset(const int& num) {
-    this->monsterStatus = Monsterlist[num]; // ������ ���� ������ ���Ͱ� ������ �ִ� �⺻ ������ �缳��
+    this->monsterStatus = Monsterlist[num-1]; // ������ ���� ������ ���Ͱ� ������ �ִ� �⺻ ������ �缳��
 }
 
 void Monster::change(const int& num, Status st) { // ���� ��ȣ�� �ش��ϴ� �⺻������ü ��ȯ 
