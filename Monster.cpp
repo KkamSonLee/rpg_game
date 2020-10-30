@@ -14,7 +14,7 @@ Monster::Monster(const Status& i_status, const int& i_MonsterNum)
     :MonsterNum(0)
 {
     this->monsterStatus = i_status;
-    Monsterlist[i_MonsterNum] = i_status; // ������ �⺻������ ����, ���� ������ �ش��ϴ� ��ȣ�� ���� �⺻ ���� ����
+    Monsterlist[i_MonsterNum] = i_status; //몬스터 리스트
     this->MonsterNum = i_MonsterNum;
    
 }

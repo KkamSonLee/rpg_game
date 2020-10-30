@@ -58,15 +58,15 @@ void Town::choice() {
 }
 
 void Town::help() {
-    cout << "명령어 도움말" << endl;
-    cout << "help : 도움말" << endl;
-    cout << "save : 저장" << endl;
-    cout << "quit : 종료" << endl;
-    cout << "load : 불러오기" << endl;
-    cout << "inventory : Inventory" << endl;
-    cout << "move : 맵 이동" << endl;
-    cout << "shop : 상점" << endl;
-    cout << "stat : 상태창" << endl;
+    cout << "명령어 도움말\n";
+    cout << "help : 도움말\n";
+    cout << "save : 저장\n";
+    cout << "quit : 종료\n";
+    cout << "load : 불러오기\n";
+    cout << "inventory : Inventory\n";
+    cout << "move : 맵 이동\n";
+    cout << "shop : 상점\n";
+    cout << "stat : 상태창\n";
 
     choice();
 }
