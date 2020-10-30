@@ -83,41 +83,53 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
     strcpy(savefilename, sfilename.c_str());
 
     vector<int> sitem;
-    vector<int> sstat;
+   
     sitem = myInventory.getSlot();
-    sstat = myCharacter.get_stat().getstatus();
+    
     ofstream sfile(savefilename);
 
     if (sfile.is_open()) {
-        for (vector<int>::iterator iter = sstat.begin(); iter != sstat.end(); ++iter) {
-            if (sstat.end() == ++iter) {
-                sfile << *iter;
-                sfile << "\t";
-                //sfile << "/";
-                break;
-            } else {
-                sfile << *iter << "\t";
-            }
-        }
+        sfile << myCharacter.get_level();
+        sfile << "\t";
+        sfile << myCharacter.get_exp();
+        sfile << "\t";
+        sfile << myCharacter.get_mhp();
+        sfile << "\t";
+        sfile << myCharacter.get_mmp();
+        sfile << "\t";
+        sfile << myCharacter.get_nhp();
+        sfile << "\t";
+        sfile << myCharacter.get_nmp();
+        sfile << "\t";
+        sfile << myCharacter.get_atk();
+        sfile << "\t";
+        sfile << myCharacter.get_location();
+        sfile << "\t";
+        sfile << myCharacter.get_money();
+        sfile << "\t";
 
         for (vector<int>::iterator iter = sitem.begin(); iter != sitem.end(); ++iter) {
             if (sitem.end() == ++iter) {
                 sfile << *iter;
                 //sfile << "/";
                 break;
-            } else {
+            }
+            else {
                 sfile << *iter << "\t";
             }
         }
         sfile.close();
     }
 
-    charcheck.load_set(sfilename);
+    charcheck->load_set(sfilename);
     if (true) {
         cout << "현재 데이터를 세이브합니다." << endl;
-    } else {
-        warning.printWarning(0, 4);//파일 저장 실패 오류 메세지
+        choice();
+    }
+    else {
+        warning->printWarning(0, 4);//파일 저장 실패 오류 메세지
         cout << endl;
+        choice();
     }
 }
 
