@@ -17,7 +17,7 @@ private:
 public:
 
     Monster();
-    Monster(const Status& i_status, const int& MonsterNum);
+    Monster(const int& MonsterNum);
     ~Monster();
     
 
