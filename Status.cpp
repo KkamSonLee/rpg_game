@@ -69,7 +69,12 @@ void Status::set_mmp(int i_mp) {
     this->max_MP = i_mp;
 }
 void Status::set_atk(int i_atk) {
-    this->atk = i_atk;
+    if(i_atk < 0) {
+        this->atk = 100;
+    }//load item exception
+    else{
+        this->atk = i_atk;
+    }
 }
 void Status::set_level(int i_level){
     this->level = i_level;
