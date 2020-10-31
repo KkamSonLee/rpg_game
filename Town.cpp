@@ -31,7 +31,7 @@ void Town::choice() {
         getline(cin, select);
         istringstream ss(select);
         ss >> mselect >> nselect;
-        if (mselect == "help" && is_digit(nselect) == 0) {
+        if (mselect == "help" && is_digit(nselect) == 0 && nselect.empty()==true) {
             help();
         } else if (mselect == "save" && is_digit(nselect) == 1) {
             int i = std::stoi(nselect);
@@ -42,16 +42,16 @@ void Town::choice() {
                 cout << endl;
 
             }
-        } else if (mselect == "quit" && is_digit(nselect) == 0) {
+        } else if (mselect == "quit" && is_digit(nselect) == 0 && nselect.empty()==true) {
             quit();
             loop = false;
-        } else if (mselect == "inventory" && is_digit(nselect) == 0) {
+        } else if (mselect == "inventory" && is_digit(nselect) == 0 && nselect.empty()==true) {
             inventory();
-        } else if (mselect == "move" && is_digit(nselect) == 0) {
+        } else if (mselect == "move" && is_digit(nselect) == 0 && nselect.empty()==true) {
             loop = move();
-        } else if (mselect == "shop" && is_digit(nselect) == 0) {
+        } else if (mselect == "shop" && is_digit(nselect) == 0 && nselect.empty()==true) {
             shop();
-        } else if (mselect == "stat" && is_digit(nselect) == 0) {
+        } else if (mselect == "stat" && is_digit(nselect) == 0 && nselect.empty()==true) {
             stat();
         } else {
             //warning.printWarning(0, 0);//문법에 맞지 않는 오류메세지
