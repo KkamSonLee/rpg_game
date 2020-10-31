@@ -8,7 +8,7 @@ int sellList[4] = {1, 2, 3, 4};
 vector<int> temp;
 
 Shop::Shop(Character &myCharacter, Inventory &myInventory) : myInventory(myInventory), myCharacter(myCharacter) {
-    int index, sellCount;
+    int index, buyCount;
     warningMessage wm;
     bool loop = true;
     while (loop) {
@@ -22,8 +22,8 @@ Shop::Shop(Character &myCharacter, Inventory &myInventory) : myInventory(myInven
             cin >> index;
             cout << "원하는 수량을 입력하세요 : ";
             cin.clear();
-            cin >> sellCount;
-            loop = buy(index, sellCount);
+            cin >> buyCount;
+            loop = buy(index, buyCount);
             cout << "now money : " << myCharacter.get_money() << "\n";
         } else if (choice == "sell") {
             cout << "어떤 항목을 판매하겠습니까? \n";
