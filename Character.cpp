@@ -24,9 +24,15 @@ void Character::attack(Monster& mon, const int& i_mp) {
 }
 
 void Character::check_level() {
-    while (100 < this->get_exp()) { // 레벨당 요구 경험치 100설정 레벌업 끝날때 까지 반복
+    while (100 < this->get_exp() || 100 == this->get_exp()) { // 레벨당 요구 경험치 100설정 레벌업 끝날때 까지 반복
+        cout << "Level up!!" << endl;
         this->set_exp(this->get_exp() - 100);
-        this->set_level(get_level() + 1);
+        this->set_level(this->get_level() + 1);
+        this->set_mhp(this->get_mhp()+10);
+        this->set_nhp(this->get_mhp()); // heal and increase the status!
+        this->set_mmp(this->get_mmp()+10);
+        this->set_nmp(this->get_mmp()); // heal and increase the status
+        this->set_atk(this->get_atk()+10);
     }
 }
 
