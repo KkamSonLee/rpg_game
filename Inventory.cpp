@@ -10,8 +10,8 @@ Inventory::~Inventory() {}
 void Inventory::printInvList() {
     int i = 1;
     if (!slot.empty()) {
-        for (vector<int>::iterator iter = slot.begin(); iter != slot.end(); iter++, i++) {
-            cout << i << ". " << Item().get_itemName(*(iter)) << "\n";
+        for (vector<int>::iterator iter = slot.begin(); iter != slot.end(); iter++) {
+            cout << i++ << ". " << Item().get_itemName(*(iter)) << "\n";
         }
     }
 }
@@ -104,8 +104,14 @@ int Inventory::getMoney() {
 }
 
 vector<int> Inventory::getSlot() {
-    return slot;
+    if(slot.empty()){
+        vector<int> s;
+        return s;
+    }else{
+        return slot;
+    }
 }
+
 void Inventory::slotClear() {
     slot.clear();
 }

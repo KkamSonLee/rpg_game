@@ -76,6 +76,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
     string snumstr = to_string(snum);
     string sstr = "character" + snumstr;
     stringstream sss;
+    Item item;
     sss << sstr << ".txt";
     string sfilename = sss.str();
     char savefilename[20];
@@ -100,15 +101,20 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
         sfile << "\t";
         sfile << myCharacter.get_nmp();
         sfile << "\t";
+        //if(item.get_item(myInventory.getSlot()[0]-1)[0]==0){
         sfile << myCharacter.get_atk();
+        //}else if(item.get_item(myInventory.getSlot()[0]-1)[0]==1){
+        //   sfile << (myCharacter.get_atk() - item.get_item(myInventory.getSlot()[0]-1)[1]);
+        //}
         sfile << "\t";
         sfile << myCharacter.get_location();
         sfile << "\t";
         sfile << myCharacter.get_money();
         sfile << "\t";
-
-        for (vector<int>::iterator iter = sitem.begin(); iter != sitem.end(); iter++) {
+        if (!sitem.empty()) {
+            for (vector<int>::iterator iter = sitem.begin(); iter != sitem.end(); iter++) {
                 sfile << *iter << "\t";
+            }
         }
         sfile.close();
     }

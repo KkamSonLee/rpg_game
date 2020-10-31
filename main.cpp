@@ -16,7 +16,6 @@ vector<int> invList;
 vector<Map> mapAdmin;
 void load(int inum);
 
-
 int main() {
     warningMessage warning;
     mapAdmin.push_back(Map().load_map("map1.txt"));
@@ -33,7 +32,9 @@ int main() {
     }
     Character ch(stat);
     Inventory inventory(ch);
-    inventory.addSlotArr(invList);
+    if(!invList.empty()){
+        inventory.addSlotArr(invList);
+    }
     bool loop = true;
     Town myTown(ch, inventory);
     cin.clear();
@@ -61,7 +62,8 @@ int main() {
 }
 
 void load(int inum) {
-
+    Item item;
+    character_integrity_check charcheck;
     string numstr = to_string(inum);
     string str = "character" + numstr;
     stringstream ss;
@@ -78,10 +80,10 @@ void load(int inum) {
     int atk;
     int location;
     int money;
-    //charcheck.load_set(filename);
+    charcheck.load_set(filename);
     ifstream file(charfilename);
     if (!file.is_open()) {
-        string basicstat = "1\t0\t100\t50\t100\t50\t10\t0\t0";
+        string basicstat = "1\t0\t100\t50\t100\t50\t10\t1\t0";
         ofstream newfile(charfilename);
         if (newfile.is_open()) {
             newfile << basicstat;
@@ -123,6 +125,11 @@ void load(int inum) {
             ptr = strtok(NULL, "\t");
             money = atoi(ptr);
             ptr = strtok(NULL, "\t");
+/*            if(ptr != NULL){
+                if(item.get_item(atoi(ptr)-1)[0]==1){
+                    atk += item.get_item(atoi(ptr)-1)[1];
+                }
+            }*/
             while (ptr != NULL) {
                 if (!atoi(ptr) == 0) {
                     invList.push_back(atoi(ptr));

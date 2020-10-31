@@ -13,7 +13,7 @@ Shop::Shop(Character &myCharacter, Inventory &myInventory) : myInventory(myInven
     bool loop = true;
     while (loop) {
         showShop();
-        cout << "\n어떤 동작을 하시겠습니까?\n";
+        cout << "\n어떤 동작을 하시겠습니까? buy [num] sell [num]\nnow money : " << myCharacter.get_money();
         cin >> choice;
         if (choice == "buy") {
             cin >> index;
@@ -36,10 +36,11 @@ Shop::Shop(Character &myCharacter, Inventory &myInventory) : myInventory(myInven
 
 void Shop::showShop() {
     temp = myInventory.getSlot();
-
     cout << "------sell List------\n";
     for (int j = 1; j <= (sizeof(sellList) / sizeof(int)); j++) {
-        cout << j << ". " << myInventory.item.get_itemName(sellList[j - 1]) << "\n";
+        cout << j << ". " << myInventory.item.get_itemName(sellList[j - 1]) << "   "
+             << myInventory.item.get_item(sellList[j - 1])[2] << "$"
+             << "\n";
     }
     cout << "\n\n";
     cout << "------my Inventory------\n";
@@ -57,7 +58,7 @@ bool Shop::buy(int index, int buyCount) {
         cout << "out of range\n";
         cin.ignore();
         return false;
-    } else if (myCharacter.get_money() < (myInventory.item.get_item(sellList[index-1])[2]) * buyCount) {
+    } else if (myCharacter.get_money() < (myInventory.item.get_item(sellList[index - 1])[2]) * buyCount) {
         cout << "not enough money\n";
         cin.ignore();
         return false;
@@ -83,7 +84,6 @@ bool Shop::sell(int sellItemNumber) {
         cin.ignore();
         return false;
     } else {
-        cout << "slot size : " << myInventory.getSlot().size() << "\n";
         myInventory.changeMoney(myInventory.item.get_item(myInventory.getSlot().at(sellItemNumber - 1))[2]);
         if (sellItemNumber == 1 && myInventory.getSlot().size() == 1) {
             myInventory.slotClear();
