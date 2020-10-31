@@ -17,19 +17,19 @@ void Inventory::printInvList() {
 }
 
 void Inventory::openInv() {
+    warningMessage wm;
     money = character.get_money();
     cout << "now Money : " << money << "$\n";
     int choice;
     bool loop = true;
     while (loop) {
         if (slot.empty() && money == 0) {
-            cout << "inventory empty\n";
+            wm.printWarning(1, "inventory empty");
             closeInv();
             break;
-        } else if (!slot.empty()) {
-            cout << "0. return\n";
-            printInvList();
         }
+        cout << "0. return\n";
+        printInvList();
         cout << "choice to use item\n";
         cin >> choice;
         if (choice == 0) {
@@ -38,27 +38,30 @@ void Inventory::openInv() {
             break;
         } else if (choice >= 1 && choice <= slot.size()) {
             int *tempvec = (item.get_item(slot.at(choice - 1)));
-            cout << *(tempvec) << "\n";
-            cout << *(tempvec + 1) << "\n";
-            cout << *(tempvec + 2) << "\n";
             if (choice == 1) {
-                cout << "already use equip\n";
+                "already use equip\n";
             } else if (tempvec[0] == 1) {//itemType
+                if (item.get_item(slot.at(0))[0] == 1) {
+                    character.set_atk((character.get_atk() - item.get_item(slot.at(0))[1]) + (tempvec[1]));
+                }else{
+                    character.set_atk((character.get_atk() + tempvec[1]));
+                }
                 changeequip(item.get_item(slot.at(0))[1], choice);
-
             } else if (tempvec[0] == 0) {
                 usepotion(item.get_item(slot.at(choice - 1))[1], slot.at(choice - 1));
                 deleteSlot(choice);
             }
+        } else {
+            wm.printWarning(1, "index error");
         }
     }
 }
 
 void Inventory::changeequip(int nowAtk, int choice) {
-    character.set_atk((character.get_atk() - nowAtk) + (item.get_item(slot.at(choice - 1))[1]));
     int temp = slot.at(0);
     slot.at(0) = slot.at(choice - 1);
     slot.at(choice - 1) = temp;
+
 }
 
 void Inventory::usepotion(int itemValue, int itemNum) {
@@ -104,11 +107,12 @@ int Inventory::getMoney() {
 }
 
 vector<int> Inventory::getSlot() {
-    if(slot.empty()){
+    if (slot.empty()) {
         vector<int> s;
         return s;
-    }else{
+    } else {
         return slot;
+
     }
 }
 

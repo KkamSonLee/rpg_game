@@ -9,19 +9,25 @@ vector<int> temp;
 
 Shop::Shop(Character &myCharacter, Inventory &myInventory) : myInventory(myInventory), myCharacter(myCharacter) {
     int index, sellCount;
-
+    warningMessage wm;
     bool loop = true;
     while (loop) {
         showShop();
-        cout << "\n어떤 동작을 하시겠습니까? buy [num] sell [num]\nnow money : " << myCharacter.get_money();
+        cout << "\n어떤 동작을 하시겠습니까? buy [num] sell [num]\nnow money : " << myCharacter.get_money() << "\n";
+        cin.clear();
         cin >> choice;
         if (choice == "buy") {
+            cout << "어떤 항목을 구매하겠습니까? \n";
+            cin.clear();
             cin >> index;
             cout << "원하는 수량을 입력하세요 : ";
+            cin.clear();
             cin >> sellCount;
             loop = buy(index, sellCount);
             cout << "now money : " << myCharacter.get_money() << "\n";
         } else if (choice == "sell") {
+            cout << "어떤 항목을 판매하겠습니까? \n";
+            cin.clear();
             cin >> index;
             loop = sell(index);
             cout << "now money : " << myCharacter.get_money() << "\n";
@@ -29,7 +35,7 @@ Shop::Shop(Character &myCharacter, Inventory &myInventory) : myInventory(myInven
             cin.ignore();
             loop = false;
         } else {
-            loop = false;
+            wm.printWarning(1, "not valid");
         }
     }
 }
@@ -49,22 +55,17 @@ void Shop::showShop() {
 
 bool Shop::buy(int index, int buyCount) {
     warningMessage wm;
-    if (index > (sizeof(sellList) / sizeof(int))) {
-        //wm.printWarning(0, 1);
-        cout << "error\n";
-        cin.ignore();
-        return false;
-    } else if (index <= 0) {
-        cout << "out of range\n";
+    if (index > (sizeof(sellList) / sizeof(int)) || index <= 0) {
+        wm.printWarning(1, "index error");
         cin.ignore();
         return false;
     } else if (myCharacter.get_money() < (myInventory.item.get_item(sellList[index - 1])[2]) * buyCount) {
-        cout << "not enough money\n";
+        wm.printWarning(1, "not enough money");
         cin.ignore();
         return false;
     } else {
         if (myInventory.getSlot().size() + buyCount > 10) {
-            wm.printWarning(3, 1);
+            wm.printWarning(1, "slot is size exceed");
             cin.ignore();
             return false;
         } else {
@@ -79,18 +80,20 @@ bool Shop::buy(int index, int buyCount) {
 
 
 bool Shop::sell(int sellItemNumber) {
+    warningMessage wm;
     if (sellItemNumber > myInventory.getSlot().size() || sellItemNumber < 0) {
-        cout << "not vaild\n";
+        wm.printWarning(1, "index error");
         cin.ignore();
         return false;
-    } else {
+    } else if(sellItemNumber < myInventory.getSlot().size() && sellItemNumber > 0){
         myInventory.changeMoney(myInventory.item.get_item(myInventory.getSlot().at(sellItemNumber - 1))[2]);
         if (sellItemNumber == 1 && myInventory.getSlot().size() == 1) {
             myInventory.slotClear();
         } else {
             myInventory.deleteSlot(sellItemNumber);
         }
-
-        return true;
+    }else{
+        wm.printWarning(1, "not valid");
     }
+    return true;
 }

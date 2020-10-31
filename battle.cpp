@@ -30,7 +30,7 @@ int battle::Battle(Character &myCharacter, Inventory &myInventory, Monster &nowM
             continue;
         } else //유효하지 않은 입력인 경우
         {
-            int check = wMessage.printWarning(1, 1); //1은 경고라는 뜻, 다른 1은 유효하지 않은 형식이라는 뜻
+//            int check = wMessage.printWarning(1, 1); //1은 경고라는 뜻, 다른 1은 유효하지 않은 형식이라는 뜻
             std::cout << "\n";
             continue; //전투 부 프롬프트로 다시 돌아간다
         }

@@ -12,6 +12,7 @@ CMakeFiles/RPG_GAME.dir/Inventory.cpp.obj: ../Inventory.h
 CMakeFiles/RPG_GAME.dir/Inventory.cpp.obj: ../Item.h
 CMakeFiles/RPG_GAME.dir/Inventory.cpp.obj: ../Monster.h
 CMakeFiles/RPG_GAME.dir/Inventory.cpp.obj: ../Status.h
+CMakeFiles/RPG_GAME.dir/Inventory.cpp.obj: ../warningMessage.h
 
 CMakeFiles/RPG_GAME.dir/Item.cpp.obj: ../Item.cpp
 CMakeFiles/RPG_GAME.dir/Item.cpp.obj: ../Item.h

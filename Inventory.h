@@ -7,6 +7,7 @@
 #include "Inventory.h"
 #include <vector>
 #include <iostream>
+#include "warningMessage.h"
 using namespace std;
 class Inventory {
 private:

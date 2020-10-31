@@ -38,7 +38,7 @@ void Town::choice() {
             if (i <= max_slot) {
                 save(i);
             } else {
-                warning->printWarning(0, 6);
+//                warning->printWarning(0, 6);
                 cout << endl;
 
             }
@@ -124,7 +124,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
         cout << "현재 데이터를 세이브합니다." << endl;
         choice();
     } else {
-        warning->printWarning(0, 4);//파일 저장 실패 오류 메세지
+//        warning->printWarning(0, 4);//파일 저장 실패 오류 메세지
         cout << endl;
         choice();
     }

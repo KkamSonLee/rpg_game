@@ -37,13 +37,13 @@ Map Map::load_map(string s)
 		}
 		set_item_list(temp_item_list);
 		if (Flag == 2) {
-			msg.printWarning(1, 1);
+			//msg.printWarning(1, 1);
 		}
 		return *this;
 	}
 	else                    //error
 	{
-		msg.printWarning(0, 1);
+		//msg.printWarning(0, 1);
 		return *this;
 	}
 }

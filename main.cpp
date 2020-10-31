@@ -28,7 +28,7 @@ int main() {
     if(1<=fileNum&&fileNum<=5){
         load(fileNum);
     }else{
-        warning.printWarning(0,1);
+        warning.printWarning(0,"invalid context!");
     }
     Character ch(stat);
     Inventory inventory(ch);
@@ -125,11 +125,13 @@ void load(int inum) {
             ptr = strtok(NULL, "\t");
             money = atoi(ptr);
             ptr = strtok(NULL, "\t");
-/*            if(ptr != NULL){
+            if(!atoi(ptr) == 0){
                 if(item.get_item(atoi(ptr)-1)[0]==1){
+                    cout << atk << "atk";
                     atk += item.get_item(atoi(ptr)-1)[1];
+                    cout << atk;
                 }
-            }*/
+            }
             while (ptr != NULL) {
                 if (!atoi(ptr) == 0) {
                     invList.push_back(atoi(ptr));
