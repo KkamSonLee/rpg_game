@@ -28,10 +28,11 @@ void Town::choice() {
         string mselect;
         string nselect;
         cout << "Mainp>\n";
+        cin.clear();
         getline(cin, select);
         istringstream ss(select);
         ss >> mselect >> nselect;
-        if (mselect == "help" && is_digit(nselect) == 0 && nselect.empty()==true) {
+        if (mselect == "help" && is_digit(nselect) == 0 && nselect.empty() == true) {
             help();
         } else if (mselect == "save" && is_digit(nselect) == 1) {
             int i = std::stoi(nselect);
@@ -42,16 +43,16 @@ void Town::choice() {
                 cout << endl;
 
             }
-        } else if (mselect == "quit" && is_digit(nselect) == 0 && nselect.empty()==true) {
+        } else if (mselect == "quit" && is_digit(nselect) == 0 && nselect.empty() == true) {
             quit();
             loop = false;
-        } else if (mselect == "inventory" && is_digit(nselect) == 0 && nselect.empty()==true) {
+        } else if (mselect == "inventory" && is_digit(nselect) == 0 && nselect.empty() == true) {
             inventory();
-        } else if (mselect == "move" && is_digit(nselect) == 0 && nselect.empty()==true) {
+        } else if (mselect == "move" && is_digit(nselect) == 0 && nselect.empty() == true) {
             loop = move();
-        } else if (mselect == "shop" && is_digit(nselect) == 0 && nselect.empty()==true) {
+        } else if (mselect == "shop" && is_digit(nselect) == 0 && nselect.empty() == true) {
             shop();
-        } else if (mselect == "stat" && is_digit(nselect) == 0 && nselect.empty()==true) {
+        } else if (mselect == "stat" && is_digit(nselect) == 0 && nselect.empty() == true) {
             stat();
         } else {
             //warning.printWarning(0, 0);//문법에 맞지 않는 오류메세지
@@ -101,11 +102,15 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
         sfile << "\t";
         sfile << myCharacter.get_nmp();
         sfile << "\t";
-        //if(item.get_item(myInventory.getSlot()[0]-1)[0]==0){
-        sfile << myCharacter.get_atk();
-        //}else if(item.get_item(myInventory.getSlot()[0]-1)[0]==1){
-        //   sfile << (myCharacter.get_atk() - item.get_item(myInventory.getSlot()[0]-1)[1]);
-        //}
+        if (myInventory.getSlot().empty()) {
+            sfile << myCharacter.get_atk();
+        } else {
+            if (item.get_item(myInventory.getSlot()[0])[0] == 0) {
+                sfile << myCharacter.get_atk();
+            } else if (item.get_item(myInventory.getSlot()[0])[0] == 1) {
+                sfile << (myCharacter.get_atk() - item.get_item(myInventory.getSlot()[0])[1]);
+            }
+        }
         sfile << "\t";
         sfile << myCharacter.get_location();
         sfile << "\t";

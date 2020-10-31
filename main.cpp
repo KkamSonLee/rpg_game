@@ -126,10 +126,8 @@ void load(int inum) {
             money = atoi(ptr);
             ptr = strtok(NULL, "\t");
             if(!atoi(ptr) == 0){
-                if(item.get_item(atoi(ptr)-1)[0]==1){
-                    cout << atk << "atk";
-                    atk += item.get_item(atoi(ptr)-1)[1];
-                    cout << atk;
+                if(item.get_item(atoi(ptr))[0]==1){
+                    atk += item.get_item(atoi(ptr))[1];
                 }
             }
             while (ptr != NULL) {

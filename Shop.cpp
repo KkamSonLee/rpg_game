@@ -70,8 +70,13 @@ bool Shop::buy(int index, int buyCount) {
             return false;
         } else {
             for (int i = 1; i <= buyCount; i++) {
+                if (myInventory.getSlot().empty()) {
+                    if (Item().get_item(index)[0] == 1) {
+                        myCharacter.set_atk(myCharacter.get_atk() + Item().get_item(index)[1]);
+                    }
+                }
                 myInventory.addSlot(index);
-                myInventory.changeMoney(-(myInventory.item.get_item(sellList[index])[2]));
+                myInventory.changeMoney(-(myInventory.item.get_item(sellList[index - 1])[2]));
             }
             return true;
         }
@@ -85,14 +90,25 @@ bool Shop::sell(int sellItemNumber) {
         wm.printWarning(1, "index error");
         cin.ignore();
         return false;
-    } else if(sellItemNumber < myInventory.getSlot().size() && sellItemNumber > 0){
+    } else if (sellItemNumber <= myInventory.getSlot().size() && sellItemNumber > 0) {
         myInventory.changeMoney(myInventory.item.get_item(myInventory.getSlot().at(sellItemNumber - 1))[2]);
         if (sellItemNumber == 1 && myInventory.getSlot().size() == 1) {
+            if (Item().get_item(myInventory.getSlot().at(0))[0] == 1) {
+                myCharacter.set_atk(myCharacter.get_atk() - Item().get_item(myInventory.getSlot().at(0))[1]);
+            }
             myInventory.slotClear();
         } else {
+            if (sellItemNumber == 1) {
+                if (Item().get_item(myInventory.getSlot().at(0))[0] == 1) {
+                    myCharacter.set_atk(myCharacter.get_atk() - Item().get_item(myInventory.getSlot().at(0))[1]);
+                }
+            }
             myInventory.deleteSlot(sellItemNumber);
+            if (Item().get_item(myInventory.getSlot().at(0))[0] == 1) {
+                myCharacter.set_atk(myCharacter.get_atk() + Item().get_item(myInventory.getSlot().at(0))[1]);
+            }
         }
-    }else{
+    } else {
         wm.printWarning(1, "not valid");
     }
     return true;

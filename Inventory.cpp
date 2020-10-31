@@ -31,25 +31,26 @@ void Inventory::openInv() {
         cout << "0. return\n";
         printInvList();
         cout << "choice to use item\n";
+        cin.clear();
         cin >> choice;
         if (choice == 0) {
             closeInv();
-            cin.ignore();
             break;
         } else if (choice >= 1 && choice <= slot.size()) {
             int *tempvec = (item.get_item(slot.at(choice - 1)));
-            if (choice == 1) {
-                "already use equip\n";
-            } else if (tempvec[0] == 1) {//itemType
+            if (tempvec[0] == 1) {//itemType
                 if (item.get_item(slot.at(0))[0] == 1) {
                     character.set_atk((character.get_atk() - item.get_item(slot.at(0))[1]) + (tempvec[1]));
-                }else{
+                } else {
                     character.set_atk((character.get_atk() + tempvec[1]));
                 }
-                changeequip(item.get_item(slot.at(0))[1], choice);
+                changeequip(choice);
             } else if (tempvec[0] == 0) {
                 usepotion(item.get_item(slot.at(choice - 1))[1], slot.at(choice - 1));
                 deleteSlot(choice);
+                if (choice == 1 && Item().get_item(slot.at(0))[0] == 1) {
+                    character.set_atk(character.get_atk() + Item().get_item(slot.at(0))[1]);
+                }
             }
         } else {
             wm.printWarning(1, "index error");
@@ -57,11 +58,10 @@ void Inventory::openInv() {
     }
 }
 
-void Inventory::changeequip(int nowAtk, int choice) {
+void Inventory::changeequip(int choice) {
     int temp = slot.at(0);
     slot.at(0) = slot.at(choice - 1);
     slot.at(choice - 1) = temp;
-
 }
 
 void Inventory::usepotion(int itemValue, int itemNum) {
@@ -88,6 +88,7 @@ void Inventory::deleteSlot(int itemLocation) {
 
 void Inventory::closeInv() {
     cout << "return to game.\n";
+    cin.clear();
 }
 
 void Inventory::addSlot(int itemNum) {

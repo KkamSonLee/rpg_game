@@ -7,7 +7,9 @@
 #include "Inventory.h"
 #include <vector>
 #include <iostream>
+#include <sstream>
 #include "warningMessage.h"
+#include <cctype>
 using namespace std;
 class Inventory {
 private:
@@ -26,7 +28,7 @@ public:
     void addSlot(int itemNum);    // Slot뒤에 값을 추가
     void addSlotArr(vector<int> itemArr);
     void changeMoney(int money);   //Money의 + - 에 대한 처리
-    void changeequip(int nowAtk, int choice);    // 장비교체
+    void changeequip(int choice);    // 장비교체
     void usepotion(int itemValue, int itemNum);     // 포션 사용
     int getMoney();  // get_Money
     void slotClear();
