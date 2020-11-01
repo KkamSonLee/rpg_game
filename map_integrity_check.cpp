@@ -140,6 +140,14 @@ vector<int> map_integrity_check::load_set(string s)
 			return result;
 		}
 	}
+	//맵번호>총맵수
+	if (check_value_1[0] > map_list.size()+1) {
+		result.push_back(ERROR);
+		msg = "맵번호가 총 맵의 개수보다 큽니다.";
+		warn.printWarning(0, msg);
+		return result;
+	}
+	
 	//중복 맵 존재
 	for (int i = 0; i < map_list.size(); i++) {
 		if (check_value_1[0] == stoi(map_list[i])) {
