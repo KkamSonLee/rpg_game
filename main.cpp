@@ -29,7 +29,7 @@ int main() {
     if(1<=fileNum&&fileNum<=5){
         load(fileNum);
     }else{
-        warning.printWarning(0,"context!");
+        warning.printWarning(0,"load error!");
     }
     Character ch(stat);
     Inventory inventory(ch);
@@ -140,6 +140,6 @@ void load(int inum) {
             file.close();
         }
     }
-    //warning->printWarning(0, 3);//ºÒ·¯¿À·Á´Â ÆÄÀÏ ¹®¹ı ¿À·ù ¸Ş¼¼Áö
+    //warning->printWarning(0, 3);//ë¶ˆëŸ¬ì˜¤ë ¤ëŠ” íŒŒì¼ ë¬¸ë²• ì˜¤ë¥˜ ë©”ì„¸ì§€
     //return Character(Status());
 }
