@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 #include "Item.h"
 #include "Status.h"
@@ -14,22 +15,34 @@
 
 using namespace std;
 
-class Town
-{
+class Town {
 private:
-    Character& myCharacter;
-	Inventory& myInventory;
+    Character &myCharacter;
+    Inventory &myInventory;
 public:
-	int max_slot;
-	Town(Character& myCharacter, Inventory& myInventory);
-	~Town();
-	void choice();
-	void help();
-	void save(int);
-	void quit();
-	void inventory();
-	bool move();
-	void shop();
-	void stat();
-	bool is_digit(string);
+    int max_slot;
+    vector<Map> admin;
+    int cnt = 0;
+
+    Town(Character &myCharacter, Inventory &myInventory, vector<Map> admin);
+
+    ~Town();
+
+    void choice();
+
+    void help();
+
+    void save(int);
+
+    void quit();
+
+    void inventory();
+
+    bool move();
+
+    void shop();
+
+    void stat();
+
+    bool is_digit(string);
 };

@@ -264,7 +264,6 @@ vector<int> map_integrity_check::load_set(string s)
 	map_list.push_back(check_list_1[0]);
 
 	ofstream sfile("total_map.txt");
-
 	if (sfile.is_open()) {
 		for (int i = 0; i < map_list.size(); i++) {
 			sfile << map_list[i];

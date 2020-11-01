@@ -12,7 +12,11 @@ character_integrity_check *charcheck;
 //map_integrity_check *mapcheck = new map_integrity_check();
 warningMessage warning;
 
-Town::Town(Character &myCharacter, Inventory &myInventory) : myCharacter(myCharacter), myInventory(myInventory) {
+Town::Town(Character &myCharacter, Inventory &myInventory, vector<Map> admin) : myCharacter(myCharacter),
+                                                                                myInventory(myInventory) {
+    for (vector<Map>::iterator iter = admin.begin(); iter != admin.end(); iter++) {
+        this->admin.push_back((*iter));
+    }
 //battle *charbattle=new battle();
     int max_slot = 10;//캐릭터 파일 최대 슬롯 10으로 설정
 
@@ -22,14 +26,13 @@ Town::~Town() {}
 
 void Town::choice() {
     bool loop = true;
-
     while (loop) {
         string select;
         string mselect;
         string nselect;
-        cout << "Mainp>\n";
-        cin.clear();
+        cout << "Mainp>";
         getline(cin, select);
+        cin.clear();
         istringstream ss(select);
         ss >> mselect >> nselect;
         if (mselect == "help" && is_digit(nselect) == 0 && nselect.empty() == true) {
@@ -40,7 +43,7 @@ void Town::choice() {
                 save(i);
             } else {
                 warning.printWarning(1, "slot number error");
-                cout << endl;
+                cout << "\n";
 
             }
         } else if (mselect == "quit" && is_digit(nselect) == 0 && nselect.empty() == true) {
@@ -48,14 +51,23 @@ void Town::choice() {
             loop = false;
         } else if (mselect == "inventory" && is_digit(nselect) == 0 && nselect.empty() == true) {
             inventory();
+            cnt = 0;
         } else if (mselect == "move" && is_digit(nselect) == 0 && nselect.empty() == true) {
             loop = move();
+            cnt = 0;
         } else if (mselect == "shop" && is_digit(nselect) == 0 && nselect.empty() == true) {
             shop();
+            cnt = 0;
         } else if (mselect == "stat" && is_digit(nselect) == 0 && nselect.empty() == true) {
             stat();
+            cnt = 0;
         } else {
-            warning.printWarning(1, "invalid context");//문법에 맞지 않는 경고메세지
+            if (cnt == 0) {
+                cnt++;
+                warning.printWarning(1, "welcome to town");//문법에 맞지 않는 경고메세지
+            } else {
+                warning.printWarning(1, "context error!");
+            }
         }
     }
 }
@@ -78,6 +90,7 @@ void Town::save(int snum) {//캐릭터 파일의 숫자 인자로 받아서 캐�
     string sstr = "character" + snumstr;
     stringstream sss;
     Item item;
+    cin.clear();
     sss << sstr << ".txt";
     string sfilename = sss.str();
     char savefilename[20];
@@ -143,6 +156,8 @@ void Town::quit() {
     delete (charcheck);
     delete (mapcheck);
     delete (warning);*/
+
+    remove("total_map.txt");
     cout << "게임을 종료합니다." << endl;
     exit(0);
 }
@@ -152,13 +167,7 @@ void Town::inventory() {
 }
 
 bool Town::move() {
-    Map admin[4];
-    string mapName[4] = {"town", "dungeon", "boss", "myhouse"};
-    admin[0].load_map("map1.txt");
-    admin[1].load_map("map2.txt");
-    admin[2].load_map("map3.txt");
-    admin[3].load_map("map4.txt");
-
+    string mapName[4] = {"town", "dungeon", "boss"};
     vector<int> linked_mapList = admin[myCharacter.get_location()].get_linked_map();
 
     int type[4];
@@ -179,70 +188,7 @@ bool Town::move() {
     cout << "insert : ";
     cin >> moveto;
     myCharacter.set_location(moveto);
-    cout << myCharacter.get_location();
     return false;
-    if (is) {
-    }
-    /*string map2 = "map2";
-    mapcheck->load_set(map2);
-    if (1 || 3) {
-        char mapinfo[100];
-        char mapinfo2[100];
-        int dmonNum;
-        ifstream mf;
-        mf.open(map2);
-        mf.getline(mapinfo, 100);
-        mf.getline(mapinfo2, 100);
-        char *mptr = strtok(mapinfo2, "\t");
-        mptr = strtok(NULL, "\t");
-        mptr = strtok(NULL, "\t");
-        dmonNum = atoi(mptr);
-        Monster dm;
-        dungeonmonster = new Monster(dm.get_MonsterInfo(dmonNum), dmonNum);
-        character->set_location(2);
-        charbattle.Battle(character, myinventory, dungeonmonster, 2);
-        warningMessage dunwarn;
-        *warning = dunwarn;
-        myCharacter.set_location(2);
-        charbattle->Battle(character, myinventory, dungeonmonster, 2, dunwarn);
-        if (1) {
-            choice();
-        }
-    } else {
-        choice();
-    }
-} else if (place == "boss") {
-    string map3 = "map3";
-    mapcheck->load_set(map3);
-    if (1 || 3) {
-        char bmapinfo[100];
-        char bmapinfo2[100];
-        int bmonNum;
-        ifstream bmf;
-        bmf.open(map3);
-        bmf.getline(bmapinfo, 100);
-        bmf.getline(bmapinfo2, 100);
-        char *bmptr = strtok(bmapinfo2, "\t");
-        bmptr = strtok(NULL, "\t");
-        bmptr = strtok(NULL, "\t");
-        bmonNum = atoi(bmptr);
-        Monster bm;
-        bossmonster = new Monster(bm.get_MonsterInfo(bmonNum), bmonNum);
-        character->set_location(3);
-        charbattle->Battle(character, myinventory, bossmonster, 3);
-        warningMessage bosswarn;
-        *warning = bosswarn;
-        myCharacter.set_location(3);
-        charbattle->Battle(character, myinventory, bossmonster, 3, bosswarn);
-        if (1) {
-            choice();
-        }
-    } else {
-        choice();
-    }
-} else {
-    myCharacter.set_location(1);
-}*/
 }
 
 void Town::shop() {

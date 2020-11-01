@@ -13,7 +13,7 @@ Shop::Shop(Character &myCharacter, Inventory &myInventory) : myInventory(myInven
     bool loop = true;
     while (loop) {
         showShop();
-        cout << "\n어떤 동작을 하시겠습니까? buy [num] sell [num]\nnow money : " << myCharacter.get_money() << "\n";
+        cout << "\n어떤 동작을 하시겠습니까? buy sell return\nnow money : " << myCharacter.get_money() << "\n";
         cin.clear();
         cin >> choice;
         if (choice == "buy") {

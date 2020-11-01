@@ -58,7 +58,6 @@ bool character_integrity_check::load_set(string s) {
     //아이템 번호 오류 검사
     if(sizeof(check_value_2)/sizeof(int) >= 3) { // 캐릭터 텍스트파일에 아이템이 있는 경우 체크
         for (int i = 2; i < sizeof(check_value_2)/sizeof(int); i++) {
-            cout << check_value_2[i] << endl;
             if (check_value_2[i] > ITEM_NUM) { // 캐릭터 파일중 최대 아이템 번호(4)를 넘어간다면 오류
                 return false;
             }

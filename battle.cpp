@@ -73,6 +73,7 @@ int battle::attack_situation(Character &myCharacter, Inventory &myInventory, Mon
             return 2; //전투 부 프롬프트로 돌아간다.
         } else if (nowMonster.get_nhp() <= 0) //몬스터의 체력이 0 이하라면(몬스터를 잡은 것)
         {
+            cout << "몬스터를 잡았습니다\n";
             if (map_num == 3) //보스맵인 경우
             {
                 int plus_money, plus_exp; //추가할 돈, exp
@@ -99,6 +100,7 @@ int battle::attack_situation(Character &myCharacter, Inventory &myInventory, Mon
             }
         }
     }
+    return 1;
 }
 
 

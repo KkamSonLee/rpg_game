@@ -81,6 +81,7 @@ CMakeFiles/RPG_GAME.dir/main.cpp.obj: ../warningMessage.h
 
 CMakeFiles/RPG_GAME.dir/map_integrity_check.cpp.obj: ../map_integrity_check.cpp
 CMakeFiles/RPG_GAME.dir/map_integrity_check.cpp.obj: ../map_integrity_check.h
+CMakeFiles/RPG_GAME.dir/map_integrity_check.cpp.obj: ../warningMessage.h
 
 CMakeFiles/RPG_GAME.dir/warningMessage.cpp.obj: ../warningMessage.cpp
 CMakeFiles/RPG_GAME.dir/warningMessage.cpp.obj: ../warningMessage.h

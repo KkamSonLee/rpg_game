@@ -17,6 +17,7 @@ vector<Map> mapAdmin;
 void load(int inum);
 
 int main() {
+    remove("total_map.txt");
     warningMessage warning;
     mapAdmin.push_back(Map().load_map("map1.txt"));
     mapAdmin.push_back(Map().load_map("map2.txt"));
@@ -28,7 +29,7 @@ int main() {
     if(1<=fileNum&&fileNum<=5){
         load(fileNum);
     }else{
-        warning.printWarning(0,"invalid context!");
+        warning.printWarning(0,"context!");
     }
     Character ch(stat);
     Inventory inventory(ch);
@@ -36,8 +37,7 @@ int main() {
         inventory.addSlotArr(invList);
     }
     bool loop = true;
-    Town myTown(ch, inventory);
-    cin.clear();
+    Town myTown(ch, inventory, mapAdmin);
     while (loop) {
         if (mapAdmin[ch.get_location() - 1].get_map_type() == 1) {
             myTown.choice();
@@ -140,7 +140,6 @@ void load(int inum) {
             file.close();
         }
     }
-    stat.show();
     //warning->printWarning(0, 3);//불러오려는 파일 문법 오류 메세지
     //return Character(Status());
 }

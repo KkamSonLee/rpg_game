@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <string.h>
+#include "warningMessage.h"
 #include <vector>
 using namespace std;
 class map_integrity_check {
