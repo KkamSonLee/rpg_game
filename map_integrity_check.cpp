@@ -61,16 +61,28 @@ vector<int> map_integrity_check::load_set(string s)
 	vector<int> check_value_2;
 	char datas_1[100];
 	char datas_2[100];
+	char t_map[100];
 	int Flag;
 	vector<string> check_list_1;
 	vector<string> check_list_2;
 	vector<int> result;
-	int map_list[10] = { 1,2,3,4,5,6,7,-1,-1,-1 };
+	vector<string> map_list;
+
+	char* temp;
+
+	ifstream ifs2;
+	ifs2.open("total_map.txt");
+	ifs2.getline(t_map, 100);
+	ifs2.close();
+	temp = strtok(t_map, "\t");
+	while (temp != NULL) {
+		map_list.push_back(temp);
+		temp = strtok(NULL, "\t");
+	}
 
 	int list_size_1;
 	int list_size_2;
 
-	char* temp;
 	ifstream ifs;
 	ifs.open(s);
 	ifs.getline(datas_1, 100);
@@ -129,16 +141,10 @@ vector<int> map_integrity_check::load_set(string s)
 		}
 	}
 	//중복 맵 존재
-	int cnt = 0;
-	for (int i = 0; i < MAP_NUM; i++) {
-		if (check_value_1[0] == map_list[i]) {
-			cnt++;
-		}
-		if (cnt == 2) {
-			result.push_back(ERROR);
-			msg = "중복된 맵번호가 있습니다.";
+	for (int i = 0; i < map_list.size(); i++) {
+		if (check_value_1[0] == stoi(map_list[i])) {
+			msg = "맵번호가 중복되었습니다.";
 			warn.printWarning(0, msg);
-			return result;
 		}
 	}
 	//아이템 개수 안맞음
@@ -194,7 +200,7 @@ vector<int> map_integrity_check::load_set(string s)
 	//마을에 몬스터 존재
 	if (check_value_2[1] == 1 && check_value_2[2] != 0) {
 		check_value_2[2] = 0;
-		
+
 		save_change(s, check_value_1, check_value_2);
 		result.push_back(WARNING);
 		result.push_back(list_size_1);
@@ -241,5 +247,16 @@ vector<int> map_integrity_check::load_set(string s)
 	for (int i = 0; i < list_size_2; i++) {
 		result.push_back(check_value_2[i]);
 	}
-	return result;
+	map_list.push_back(check_list_1[0]);
+
+	ofstream sfile("total_map.txt");
+
+	if (sfile.is_open()) {
+		for (int i = 0; i < map_list.size(); i++) {
+			sfile << map_list[i];
+			sfile << "\t";
+
+		}
+		return result;
+	}
 }
