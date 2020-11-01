@@ -5,6 +5,10 @@ using namespace std;
 #define MAP_NUM 10
 
 
+#define MONSTER_NUM 3 // 몬스터 번호의 최대 숫자
+#define ITEM_NUM 4 // 아이템 번호의 최대 숫자
+
+
 enum {
 	SUCCESS,
 	ERROR,
@@ -133,6 +137,19 @@ vector<int> map_integrity_check::load_set(string s)
 		result.push_back(ERROR);
 		return result;
 	}
+
+	/*
+    //아이템 번호 오류 검사
+	if(check_value_2[3] != 0) { // 아이템 개수가 0인지 확인
+        for (int it = 0; it < list_size_2 - 4; it++) { // 아이템 번호들만 뽑음
+                if (ITEM_NUM < check_value_2.at(it + 4)) { // 아이템번호 이더레이터중 아이템 최대번호(4) 넘으면 오류
+                    result.push_back(ERROR);
+                    return result;
+                }
+            }
+    }
+*/
+
 	//맵종류가 1,2,3 모두 아닌 경우
 	if ((check_value_2[1] != 1) && (check_value_2[1] != 2) && (check_value_2[1] != 3)) {
 		result.push_back(ERROR);
@@ -143,6 +160,14 @@ vector<int> map_integrity_check::load_set(string s)
 		result.push_back(ERROR);
 		return result;
 	}
+/*
+    // 몬스터 최대번호 검사
+    if (check_value_2[2] > MONSTER_NUM) { // 맵파일의 몬스터 번호가 최대를 넘어갈 경우 오류
+        result.push_back(ERROR);
+        return result;
+    }
+
+*/
 	//몬스터 없는 경우
 	if (((check_value_2[1] == 2) || (check_value_2[1] == 3)) && (check_value_2[2] == 0)) {
 		result.push_back(ERROR);
