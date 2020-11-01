@@ -54,7 +54,7 @@ bool character_integrity_check::load_set(string s) {
         }
     }
 
-    /*
+
     //아이템 번호 오류 검사
     if(sizeof(check_value_2)/sizeof(int) >= 3) { // 캐릭터 텍스트파일에 아이템이 있는 경우 체크
         for (int i = 2; i < sizeof(check_value_2)/sizeof(int); i++) {
@@ -64,7 +64,7 @@ bool character_integrity_check::load_set(string s) {
             }
         }
     }
-    */
+
 
     for (int i = 0; i < sizeof(check_value_1)/sizeof(int); i++) {
 		if (i == 1 || i == 4 || i == 5) {

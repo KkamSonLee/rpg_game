@@ -142,8 +142,8 @@ void Town::quit() {
     delete (bossmonster);
     delete (charcheck);
     delete (mapcheck);
-    delete (warning);
-    cout << "게임을 종료합니다." << endl;*/
+    delete (warning);*/
+    cout << "게임을 종료합니다." << endl;
     exit(0);
 }
 

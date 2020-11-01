@@ -160,14 +160,13 @@ vector<int> map_integrity_check::load_set(string s)
 		result.push_back(ERROR);
 		return result;
 	}
-/*
+
     // 몬스터 최대번호 검사
     if (check_value_2[2] > MONSTER_NUM) { // 맵파일의 몬스터 번호가 최대를 넘어갈 경우 오류
         result.push_back(ERROR);
         return result;
     }
 
-*/
 	//몬스터 없는 경우
 	if (((check_value_2[1] == 2) || (check_value_2[1] == 3)) && (check_value_2[2] == 0)) {
 		result.push_back(ERROR);
