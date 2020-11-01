@@ -5,6 +5,7 @@
 #include <string>
 #include <string.h>
 #include <vector>
+#include "warningMessage.h"
 using namespace std;
 class map_integrity_check {
 public:
