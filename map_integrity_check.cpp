@@ -1,13 +1,13 @@
 #include "map_integrity_check.h"
-
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
 
 using namespace std;
 #define MAP_NUM 10
-
-
-#define MONSTER_NUM 3 // 몬스터 번호의 최대 숫자
-#define ITEM_NUM 4 // 아이템 번호의 최대 숫자
-
+#define MONSTER_NUM 3
+#define ITEM_NUM 4
 
 enum {
 	SUCCESS,
@@ -54,6 +54,9 @@ void map_integrity_check::save_change(string s,vector<int> val1, vector<int> val
 
 vector<int> map_integrity_check::load_set(string s)
 {
+
+	warningMessage warn;
+	string msg;
 	vector<int> check_value_1;
 	vector<int> check_value_2;
 	char datas_1[100];
@@ -108,6 +111,8 @@ vector<int> map_integrity_check::load_set(string s)
 		}
 		catch (...) {
 			result.push_back(ERROR);
+			msg = "올바르지 않은 데이터가 있습니다.";
+			warn.printWarning(0, msg);
 			return result;
 		}
 	}
@@ -118,6 +123,8 @@ vector<int> map_integrity_check::load_set(string s)
 		}
 		catch (...) {
 			result.push_back(ERROR);
+			msg = "올바르지 않은 데이터가 있습니다.";
+			warn.printWarning(0, msg);
 			return result;
 		}
 	}
@@ -129,35 +136,30 @@ vector<int> map_integrity_check::load_set(string s)
 		}
 		if (cnt == 2) {
 			result.push_back(ERROR);
+			msg = "중복된 맵번호가 있습니다.";
+			warn.printWarning(0, msg);
 			return result;
 		}
 	}
 	//아이템 개수 안맞음
 	if (check_value_2[3] != (list_size_2 - 4)) {
 		result.push_back(ERROR);
+		msg = "아이템 판매 정보가 개수랑 맞지 않습니다.";
+		warn.printWarning(0, msg);
 		return result;
 	}
-
-	/*
-    //아이템 번호 오류 검사
-	if(check_value_2[3] != 0) { // 아이템 개수가 0인지 확인
-        for (int it = 0; it < list_size_2 - 4; it++) { // 아이템 번호들만 뽑음
-                if (ITEM_NUM < check_value_2.at(it + 4)) { // 아이템번호 이더레이터중 아이템 최대번호(4) 넘으면 오류
-                    result.push_back(ERROR);
-                    return result;
-                }
-            }
-    }
-*/
-
 	//맵종류가 1,2,3 모두 아닌 경우
 	if ((check_value_2[1] != 1) && (check_value_2[1] != 2) && (check_value_2[1] != 3)) {
 		result.push_back(ERROR);
+		msg = "하나 이상의 맵종류 맵이 존재하지 않습니다";
+		warn.printWarning(0, msg);
 		return result;
 	}
 	//랩 제한 오류
 	if (check_value_2[0] <= 0) {
 		result.push_back(ERROR);
+		msg = "올바르지 않은 데이터가 있습니다.";
+		warn.printWarning(0, msg);
 		return result;
 	}
 
@@ -170,7 +172,30 @@ vector<int> map_integrity_check::load_set(string s)
 	//몬스터 없는 경우
 	if (((check_value_2[1] == 2) || (check_value_2[1] == 3)) && (check_value_2[2] == 0)) {
 		result.push_back(ERROR);
+		msg = "몬스터 정보가 없습니다.";
+		warn.printWarning(0, msg);
 		return result;
+	}
+
+
+	// 몬스터 최대번호 검사
+	if (check_value_2[2] > MONSTER_NUM) { // 맵파일의 몬스터 번호가 최대를 넘어갈 경우 오류
+		result.push_back(ERROR);
+		msg = "최대 몬스터 번호를 넘는 데이터가 있습니다.";
+		warn.printWarning(0, msg);
+		return result;
+	}
+
+	//아이템 번호 오류 검사
+	if (check_value_2[3] != 0) { // 아이템 개수가 0인지 확인
+		for (int it = 0; it < list_size_2 - 4; it++) { // 아이템 번호들만 뽑음
+			if (ITEM_NUM < check_value_2.at(it + 4)) { // 아이템번호 이더레이터중 아이템 최대번호(4) 넘으면 오류
+				result.push_back(ERROR);
+				msg = "최대 아이템 번호를 넘는 데이터가 있습니다.";
+				warn.printWarning(0, msg);
+				return result;
+			}
+		}
 	}
 	//마을에 몬스터 존재
 	if (check_value_2[1] == 1 && check_value_2[2] != 0) {
@@ -186,6 +211,10 @@ vector<int> map_integrity_check::load_set(string s)
 		for (int i = 0; i < list_size_2; i++) {
 			result.push_back(check_value_2[i]);
 		}
+
+		msg = "몬스터 정보가 입력되어 있습니다.";
+		warn.printWarning(0, msg);
+
 		return result;
 	}
 	//던전에 아이템 존재
@@ -202,6 +231,10 @@ vector<int> map_integrity_check::load_set(string s)
 		for (int i = 0; i < list_size_2; i++) {
 			result.push_back(check_value_2[i]);
 		}
+
+		msg = "아이템 관련 정보가 입력되어 있습니다.";
+		warn.printWarning(0, msg);
+
 		return result;
 	}
 

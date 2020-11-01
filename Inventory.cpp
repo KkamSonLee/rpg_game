@@ -53,7 +53,7 @@ void Inventory::openInv() {
                 }
             }
         } else {
-            wm.printWarning(1, "index error");
+            wm.printWarning(1, "this slot is empty");
         }
     }
 }
