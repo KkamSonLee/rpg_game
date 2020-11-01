@@ -14,10 +14,6 @@ C:/Users/ASUS/CLionProjects/RPG_GAME/Monster.h
 Status.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
 
-C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.cpp
-Inventory.h
-C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
-
 C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
 item.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Item.h
@@ -53,6 +49,22 @@ Character.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
 Status.h
 C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
+
+C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.cpp
+Shop.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h
+
+C:/Users/ASUS/CLionProjects/RPG_GAME/Shop.h
+iostream
+-
+Character.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Character.h
+Item.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Item.h
+Inventory.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/Inventory.h
+warningMessage.h
+C:/Users/ASUS/CLionProjects/RPG_GAME/warningMessage.h
 
 C:/Users/ASUS/CLionProjects/RPG_GAME/Status.h
 iostream
